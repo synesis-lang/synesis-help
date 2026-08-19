@@ -6,8 +6,10 @@ CITATION.cff defasado ja aconteceu duas vezes no ecossistema — a versao e
 declarada em quatro lugares e nada obrigava os quatro a concordarem. Estes
 testes sao a obrigacao.
 
-Nao usam PyYAML: as tres chaves conferidas sao escalares no topo do arquivo,
-e uma dependencia a mais no CI so para ler `version:` nao se paga.
+Nao usam PyYAML nem tomllib: as chaves conferidas sao escalares simples, e
+`tomllib` so entrou na stdlib no Python 3.11 — este pacote suporta 3.10
+(`requires-python = ">=3.10"`), onde o import quebraria a coleta inteira da
+suite. Uma dependencia a mais so para ler `version:` nao se paga.
 """
 
 from __future__ import annotations
@@ -16,15 +18,18 @@ import re
 from pathlib import Path
 
 import pytest
-import tomllib
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
 def _declared_version() -> str:
     """A versao do pyproject e a fonte de verdade; as demais a seguem."""
-    data = tomllib.loads((REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    return data["project"]["version"]
+    text = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    # Ancorado em `[project]`: um `version` de outra secao nao serve.
+    project = text.split("[project]", 1)[1]
+    m = re.search(r'^version\s*=\s*"([^"]+)"', project, re.MULTILINE)
+    assert m, "pyproject.toml: `version` nao encontrado em [project]"
+    return m.group(1)
 
 
 def _cff_field(name: str) -> str | None:
@@ -50,11 +55,13 @@ class TestVersionConsistency:
         assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", date), date
 
     def test_citation_license_matches_pyproject(self):
-        data = tomllib.loads((REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+        text = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        m = re.search(r'^license\s*=\s*"([^"]+)"', text, re.MULTILINE)
+        assert m, "pyproject.toml: `license` nao encontrado"
         # O pyproject carrega a expressao SPDX completa (AGPL + excecao); o
         # CFF so aceita identificador de lista fechada, entao guarda a AGPL.
         # O contrato e que a AGPL apareca nos dois, nao que sejam iguais.
-        assert _cff_field("license") in data["project"]["license"]
+        assert _cff_field("license") in m.group(1)
 
 
 class TestChangelog:
@@ -87,6 +94,9 @@ class TestChangelog:
 class TestPackageData:
     def test_entries_are_packaged(self):
         """Sem as entries o comando instala e abre vazio."""
-        data = tomllib.loads((REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-        patterns = data["tool"]["setuptools"]["package-data"]["synesis_help"]
-        assert any("entries" in p for p in patterns), patterns
+        text = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        section = text.split("[tool.setuptools.package-data]", 1)
+        assert len(section) == 2, "pyproject.toml sem [tool.setuptools.package-data]"
+        m = re.search(r"^synesis_help\s*=\s*\[([^\]]*)\]", section[1], re.MULTILINE)
+        assert m, "package-data sem a chave `synesis_help`"
+        assert "entries" in m.group(1), m.group(1)
