@@ -1,0 +1,80 @@
+---
+id: ECO_CODER
+title: "synesis-coder"
+category: ecosystem
+summary: "Gera anotacoes validas a partir de texto, guiado pelo template."
+see_also: [ECO_SYNESIS, ECO_LSP, ECO_GRAPH, GUIDE_ECOSYSTEM]
+source: generated
+order: 30
+version: "0.9.0"
+---
+
+<!-- GERADO AUTOMATICAMENTE por tools/generate_ecosystem.py. Nao edite. -->
+
+# synesis-coder
+
+## Descricao
+
+Papel no ecossistema: **anotacao assistida por IA** · versao 0.9.0
+
+O template define os campos e as restricoes — nada e fixo no codigo. A qualidade do resultado depende do que voce escreve em `GUIDELINES`.
+
+## Uso
+
+```text
+SYNESIS CODER (v0.9.0)  |  Core (v0.11.0)
+
+Inference engine for generating valid annotations in the Synesis ecosystem.
+The template defines all fields, relations, and constraints — nothing is hardcoded.
+
+(annotations and exports you produce are yours — see LICENSE.exception).
+
+Usage: synesis-coder [OPTIONS] COMMAND [ARGUMENTS]...
+
+Global Options:
+  --model TEXT     Overrides the default model (Current: set by SYNESIS_CODER_MODEL)
+  --format TEXT    Output format (Ex: 'verbose' to display token usage)
+  -v, --verbose    Increase log verbosity (DEBUG). Repeatable.
+  -q, --quiet      Decrease log verbosity (-q WARNING, -qq ERROR). Repeatable.
+  --version        Show version and exit
+  --help           Show this message and exit
+
+Commands:
+
+  Annotating a corpus
+    abstract         Annotates a .bib corpus in batch — SOURCE + ITEMs per reference
+    document         Annotates a long document (.txt/.md), chunked automatically
+    dataset          Annotates a TOML dataset — SOURCE + ITEMs per record
+    item             Annotates a single excerpt, given its bibref
+
+  Building the ontology
+    ontology         Generates ONTOLOGY entries (.syno) from the annotated corpus
+    suggest          Suggests codes from the project vocabulary for an excerpt
+
+  Reviewing annotations (ACT pipeline)
+    critique         [1] Reviews a .syn and emits .synr with # REVISION blocks
+    normalize        [2] Canonicalizes codes across the whole corpus
+    incorporate      [3] Applies the .synr revisions and emits the final .syn
+    refine           [R] Re-extracts flagged ITEMs using the review feedback
+
+  Checking without an LLM
+    anchor           Checks that each ITEM excerpt occurs in its source (free, offline)
+
+  Training data
+    finetune         Enriches an Alpaca dataset via LLM for fine-tuning
+
+Common flags:
+  --prompt-only    Writes the assembled prompt (template GUIDELINES included)
+                   to Markdown and exits. No LLM call, no tokens spent.
+  --debug          Writes a Markdown audit log of the whole LLM pipeline.
+
+Long runs (abstract):
+  --resume         Skips references already annotated in --output-dir.
+  --split-every N  Writes N references per file instead of one big file.
+  --per-reference  Writes one .syn per reference.
+  --cooldown       Pause between batches: 'auto', seconds, or 0 to disable.
+
+Run 'synesis-coder COMMAND --help' for options and examples of each mode.
+```
+
+Para os parametros de um subcomando: `synesis-coder <comando> --help`.

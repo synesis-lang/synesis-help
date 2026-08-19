@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+synesis_help/data/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Gerado pelo job `security` do CI (pip-audit) — nunca versionado.
+runtime-requirements.txt

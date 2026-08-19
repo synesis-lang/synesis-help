@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synesis-help"
+version = "0.1.0"
+description = "Guia de referência rápida da linguagem Synesis, no espírito dos Norton Guides"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception"
+license-files = ["LICENSE", "LICENSE.exception"]
+authors = [
+    {name = "De Britto, Christian Maciel", email = "chriseana@gmail.com"}
+]
+keywords = [
+    "synesis",
+    "documentation",
+    "tui",
+    "reference",
+    "qualitative-research",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Documentation",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "synesis>=0.11.0",
+    "textual>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pyspellchecker>=0.8",  # tools/fix_accents.py
+    "pytest-asyncio>=0.23",
+    "ruff==0.15.17",
+    "mypy==1.16.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# Base deliberadamente branda, igual a do restante do ecossistema: regras que
+# pegam DEFEITO (F) e ordenacao de imports (I). As cosmeticas e de
+# modernizacao (UP, SIM, RUF...) ficam de fora por ora — ligar todas de uma
+# vez num repo que nunca rodou lint produz 23 achados, nenhum deles um bug, e
+# um CI vermelho no primeiro commit ensina a ignorar o CI.
+select = ["F", "I"]
+ignore = ["F541"]  # f-string sem placeholder (cosmetico)
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[project.urls]
+Repository = "https://github.com/synesis-lang/synesis-help"
+
+[project.scripts]
+synesis-help = "synesis_help.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["synesis_help*"]
+
+[tool.setuptools.package-data]
+# As entries acompanham o pacote: sem elas o comando instala sem conteudo —
+# o guia abre vazio e responde "nada encontrado" para tudo, sem erro nenhum.
+# `tools/check_wheel.py` roda no CI e reprova um wheel que perca as entries.
+#
+# Nota: com setuptools>=61 e `include-package-data` no padrao (true), as
+# entries hoje entrariam mesmo sem esta chave. Ela e mantida por ser a
+# declaracao EXPLICITA do que o pacote precisa distribuir — depender do
+# comportamento implicito deixaria o contrato invisivel.
+synesis_help = ["entries/**/*.md"]
