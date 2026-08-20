@@ -1,6 +1,6 @@
 # Guia Synesis — Indice
 
-108 verbetes. Consulta rapida da linguagem Synesis.
+110 verbetes. Consulta rapida da linguagem Synesis.
 
 > Gerado por `tools/generate_index.py`. Nao edite a mao.
 
@@ -39,14 +39,14 @@
 | Verbete | Descricao |
 |---|---|
 | [**QUOTATION**](TYPE_QUOTATION) | Trecho literal transcrito da fonte. |
-| [**CODE**](TYPE_CODE) | Um ou mais conceitos da ontologia atribuidos a unidade. |
+| [**CODE**](TYPE_CODE) | Um ou mais conceitos da ontologia atribuídos à unidade. |
 | [**MEMO**](TYPE_MEMO) | Nota livre do pesquisador, sem estrutura fixa. |
 | [**TEXT**](TYPE_TEXT) | Texto curto de uma linha. |
-| [**CHAIN**](TYPE_CHAIN) | Cadeia de conceitos ligados por relacoes. |
-| [**TOPIC**](TYPE_TOPIC) | Termo unico, sem espacos, para agrupar unidades. |
+| [**CHAIN**](TYPE_CHAIN) | Cadeia de conceitos ligados por relações. |
+| [**TOPIC**](TYPE_TOPIC) | Termo único, sem espaços, para agrupar unidades. |
 | [**ENUMERATED**](TYPE_ENUMERATED) | Valor escolhido de uma lista fechada, sem ordem. |
 | [**ORDERED**](TYPE_ORDERED) | Valor escolhido de uma lista fechada, com ordem. |
-| [**SCALE**](TYPE_SCALE) | Valor numerico dentro de um intervalo declarado. |
+| [**SCALE**](TYPE_SCALE) | Valor numérico dentro de um intervalo declarado. |
 | [**DATE**](TYPE_DATE) | Data. |
 
 ## Modificadores
@@ -155,7 +155,9 @@
 | [`SYNESIS_E084`](SYNESIS_E084) | INCLUDE SHARED usado com tipo diferente de ONTOLOGY. (erro 84). |
 | [`SYNESIS_E085`](SYNESIS_E085) | Campo REQUIRED ... ON DATASET sem valor no registro do dataset TOML. (erro 85). |
 | [`SYNESIS_E086`](SYNESIS_E086) | VALUES definido em campo que nao e ORDERED nem ENUMERATED. (erro 86). |
-| [`SYNESIS_I080`](SYNESIS_I080) ℹ | \"INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80).\ |
+| [`SYNESIS_E087`](SYNESIS_E087) | Prefixo de indice `[N]` em VALUES de campo ENUMERATED. (erro 87). |
+| [`SYNESIS_E088`](SYNESIS_E088) | Campo ORDERED escrito com o rotulo em vez do indice. (erro 88). |
+| [`SYNESIS_I080`](SYNESIS_I080) | \"INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80).\ |
 | [`SYNESIS_W031`](SYNESIS_W031) ⚠ | Mesmo codigo repetido na mesma ocorrencia de campo CODE. (erro 31). |
 | [`SYNESIS_W067`](SYNESIS_W067) ⚠ | Data MODIFIED anterior a data CREATED no bloco METADATA. (erro 67). |
 | [`SYNESIS_W071`](SYNESIS_W071) ⚠ | Dois blocos ONTOLOGY com description identica. (erro 71). |

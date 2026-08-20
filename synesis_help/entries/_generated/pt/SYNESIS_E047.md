@@ -6,14 +6,14 @@ summary: "TYPE CHAIN sem declaracao ARITY. (erro 47)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E047 — Erro
 
-## Descricao
+## Descrição
 
 TYPE CHAIN sem declaracao ARITY. (erro 47)
 

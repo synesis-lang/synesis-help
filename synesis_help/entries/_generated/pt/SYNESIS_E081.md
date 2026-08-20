@@ -6,14 +6,14 @@ summary: "Dois membros declaram IDENTIFIES do mesmo rotulo no link step. (erro 8
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E081 — Erro
 
-## Descricao
+## Descrição
 
 Dois membros declaram IDENTIFIES do mesmo rotulo no link step. (erro 81)
 

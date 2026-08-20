@@ -9,6 +9,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] — 2026-08-20
+
+The guide now ships in Portuguese — 110 entries — with the two new compiler
+diagnostics below. Requires `synesis>=0.12.0`, which introduces them.
+
+### Added
+
+- **`SYNESIS_E087` and `SYNESIS_E088`**, regenerated from the compiler. They
+  govern the two sides of the index/label distinction in closed vocabularies:
+  `E087` rejects an index prefix `[N]` in an `ENUMERATED` block (no order, so
+  no index), and `E088` rejects writing the label where an `ORDERED` field
+  expects the index.
+
+- **"Valor na anotação" section** in `TYPE_ORDERED` and `TYPE_ENUMERATED`.
+  The generated entries described how each type is *declared* but never what
+  is actually *written* in the annotation — the distinction the two new
+  diagnostics enforce. Both entries now also link to their diagnostic.
+
+### Fixed
+
+- **The `ENUMERATED` example taught invalid syntax.** The `VALUES` snippet was
+  shared by both closed-vocabulary types and carried `[1]`/`[2]`, which is now
+  `SYNESIS_E087` for `ENUMERATED`. The snippet is type-aware: `ORDERED` keeps
+  the indexed form (which it requires), `ENUMERATED` drops it.
+
+  `tools/check_examples.py` catches this class of drift — it compiles every
+  `FIELD` example and reported the offending block by code.
+
+---
+
 ## [0.1.0] — 2026-08-18
 
 First release: content, index and TUI.
@@ -279,4 +309,5 @@ Recorded in `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 
 ---
 
+[0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/synesis-lang/synesis-help/releases/tag/v0.1.0

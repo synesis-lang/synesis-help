@@ -9,6 +9,36 @@ e o projeto adota [Versionamento Semântico](https://semver.org/spec/v2.0.0.html
 
 ---
 
+## [0.2.0] — 2026-08-20
+
+O guia passa a sair em português — 110 verbetes — com os dois novos
+diagnósticos do compilador abaixo. Exige `synesis>=0.12.0`, que os introduz.
+
+### Adicionado
+
+- **`SYNESIS_E087` e `SYNESIS_E088`**, regerados a partir do compilador. Eles
+  governam os dois lados da distinção índice/rótulo em vocabulários fechados:
+  `E087` recusa o prefixo de índice `[N]` num bloco `VALUES` de `ENUMERATED`
+  (que não tem ordem, logo não tem índice), e `E088` recusa escrever o rótulo
+  onde um campo `ORDERED` espera o índice.
+
+- **Seção "Valor na anotação"** em `TYPE_ORDERED` e `TYPE_ENUMERATED`. As
+  entradas geradas descreviam como cada tipo se *declara*, mas nunca o que se
+  *escreve* na anotação — justamente a distinção que os dois diagnósticos novos
+  passam a exigir. Ambas também passam a apontar para o seu diagnóstico.
+
+### Corrigido
+
+- **O exemplo de `ENUMERATED` ensinava sintaxe inválida.** O trecho de `VALUES`
+  era compartilhado pelos dois tipos de vocabulário fechado e trazia `[1]`/`[2]`,
+  hoje `SYNESIS_E087` em `ENUMERATED`. O trecho passa a variar por tipo:
+  `ORDERED` mantém a forma indexada (que exige), `ENUMERATED` a dispensa.
+
+  O `tools/check_examples.py` pega essa classe de defasagem — ele compila todo
+  exemplo `FIELD` e apontou o bloco pelo código do erro.
+
+---
+
 ## [0.1.0] — 2026-08-18
 
 Primeira publicação: conteúdo, índice e TUI.
@@ -328,4 +358,5 @@ Registrados em `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 
 ---
 
+[0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/synesis-lang/synesis-help/releases/tag/v0.1.0

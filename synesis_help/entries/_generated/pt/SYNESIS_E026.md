@@ -6,14 +6,14 @@ summary: "Valor decimal em campo SCALE com intervalo inteiro. (erro 26)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E026 — Erro
 
-## Descricao
+## Descrição
 
 Valor decimal em campo SCALE com intervalo inteiro. (erro 26)
 

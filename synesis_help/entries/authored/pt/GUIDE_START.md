@@ -32,12 +32,15 @@ na **sua** metodologia: `GUIDE_PRIMITIVES`.
 
 ## Ordem de escrita
 
-1. **`.synt` primeiro.** Decidir os campos antes dos dados evita retrabalho.
+1. **`.synp` primeiro.** O esqueleto do projeto: nome, template e os
+   `INCLUDE` que vai precisar. É o único arquivo que o compilador procura
+   sozinho — os demais precisam estar declarados nele.
+2. **`.synt` em seguida.** Decidir os campos antes dos dados evita retrabalho.
    Comece mínimo: um campo de citação, um de código.
-2. **`.syno` em seguida.** Os conceitos que você ja sabe que vai usar. A lista
-   cresce durante a analise — e normal.
-3. **`.synp`** amarrando os arquivos.
-4. **`.syn`** por ultimo: proveniência e ocorrências.
+3. **`.syn`**: proveniência e ocorrências — `SOURCE` e `ITEM`.
+4. **`.syno` por último**, e ele cresce ao longo da análise: registre um
+   conceito quando ele aparecer na codificação, não antes. É normal a lista
+   crescer conforme o trabalho avança.
 
 ## Fluxo mínimo
 

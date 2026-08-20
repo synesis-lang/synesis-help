@@ -2,15 +2,15 @@
 id: TYPE_TOPIC
 title: "TOPIC"
 category: field_type
-summary: "Termo unico, sem espacos, para agrupar unidades."
+summary: "Termo único, sem espaços, para agrupar unidades."
 syntax: FIELD <nome> TYPE TOPIC SCOPE <escopo> [...] END FIELD
 see_also: [SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, SYNESIS_E086, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 60
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # TOPIC
 
@@ -37,7 +37,7 @@ END FIELD
 
 ## Propriedades
 
-| Propriedade | Situacao | Erro se violada |
+| Propriedade | Situação | Erro se violada |
 |---|---|---|
 | `CONTEXT FROM DATASET` | Permitido | - |
 | `DESCRIPTION` | Permitido | - |
@@ -49,8 +49,8 @@ END FIELD
 
 ## Regras
 
-- Nenhuma propriedade obrigatoria. O campo funciona apenas com `SCOPE`.
+- Nenhuma propriedade obrigatória. O campo funciona apenas com `SCOPE`.
 
-## Ver tambem
+## Ver também
 
 `SYNESIS_E054`, `SYNESIS_E055`, `SYNESIS_E056`, `SYNESIS_E086`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`

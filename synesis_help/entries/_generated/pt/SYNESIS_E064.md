@@ -6,16 +6,16 @@ summary: "Nenhum arquivo .synp encontrado na raiz do workspace."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E064 — Erro
 
-## Descricao
+## Descrição
 
-Este codigo cobre 3 situacoes distintas:
+Este código cobre 3 situações distintas:
 
 - **MissingProjectFile** — Nenhum arquivo .synp encontrado na raiz do workspace.
 - **MissingTemplateFile** — Template especificado no .synp nao existe no filesystem.

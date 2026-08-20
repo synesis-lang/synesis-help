@@ -6,14 +6,14 @@ summary: "Caminho declarado no .synp aponta para fora do diretorio do projeto. (
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E075 — Erro
 
-## Descricao
+## Descrição
 
 Caminho declarado no .synp aponta para fora do diretorio do projeto. (erro 75)
 

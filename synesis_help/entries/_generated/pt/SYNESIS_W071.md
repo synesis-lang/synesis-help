@@ -6,14 +6,14 @@ summary: "Dois blocos ONTOLOGY com description identica. (erro 71)."
 severity: Aviso
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_W071 — Aviso
 
-## Descricao
+## Descrição
 
 Dois blocos ONTOLOGY com description identica. (erro 71)
 

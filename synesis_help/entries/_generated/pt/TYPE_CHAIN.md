@@ -2,15 +2,15 @@
 id: TYPE_CHAIN
 title: "CHAIN"
 category: field_type
-summary: "Cadeia de conceitos ligados por relacoes."
+summary: "Cadeia de conceitos ligados por relações."
 syntax: FIELD <nome> TYPE CHAIN SCOPE <escopo> ARITY <operador> <n> [...] END FIELD
 see_also: [SYNESIS_E047, SYNESIS_E054, SYNESIS_E086, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 50
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # CHAIN
 
@@ -40,7 +40,7 @@ END FIELD
 
 ## Propriedades
 
-| Propriedade | Situacao | Erro se violada |
+| Propriedade | Situação | Erro se violada |
 |---|---|---|
 | `CONTEXT FROM DATASET` | Permitido | - |
 | `DESCRIPTION` | Permitido | - |
@@ -48,12 +48,12 @@ END FIELD
 | `RELATIONS` | Permitido | - |
 | `FORMAT` | Proibido | SYNESIS_E054 |
 | `VALUES` | Proibido | SYNESIS_E086 |
-| `ARITY` | Obrigatorio | SYNESIS_E047 |
+| `ARITY` | Obrigatório | SYNESIS_E047 |
 
 ## Regras
 
-- **`ARITY` e obrigatorio.** O campo 'nome_do_campo' e do tipo CHAIN, mas nao declara `ARITY`.
+- **`ARITY` é obrigatório.** O campo 'nome_do_campo' e do tipo CHAIN, mas nao declara `ARITY`.
 
-## Ver tambem
+## Ver também
 
 `SYNESIS_E047`, `SYNESIS_E054`, `SYNESIS_E086`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`

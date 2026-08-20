@@ -6,14 +6,14 @@ summary: "Arquivo .bib declarado no projeto nao encontrado no caminho indicado. 
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E063 — Erro
 
-## Descricao
+## Descrição
 
 Arquivo .bib declarado no projeto nao encontrado no caminho indicado. (erro 63)
 

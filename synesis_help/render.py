@@ -381,11 +381,16 @@ def render_entry(entry: "Entry", guide: "Guide", width: int = 76) -> Text:
         out.append("\n")
         # Grid alinhado: o rotulo ocupa largura fixa, a glosa comeca sempre na
         # mesma coluna. Sem sublinhado — o ♦ e o alinhamento ja marcam o item.
-        label_w = min(24, max(len(r) for r, _ in targets) + 2)
+        #
+        # O rotulo exibido e o TITULO do verbete, nao o id (`ref`): para
+        # diagnosticos os dois coincidem (SYNESIS_E087 == SYNESIS_E087), mas
+        # para os demais o id e jargao interno do banco — "ECO_LSP" nao ajuda
+        # quem le, "synesis-lsp" ajuda. `ref` continua guiando o clique.
+        label_w = min(24, max(len(target.title) for _, target in targets) + 2)
         for ref, target in targets:
             link = Text()
             link.append("  ♦ ", style="link_mark")
-            link.append(ref.ljust(label_w), style="link_ref")
+            link.append(target.title.ljust(label_w), style="link_ref")
             room = width - label_w - 6
             glosa = target.summary
             if len(glosa) > room:

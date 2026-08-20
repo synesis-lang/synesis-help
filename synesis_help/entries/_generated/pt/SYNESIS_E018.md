@@ -6,14 +6,14 @@ summary: "BUNDLE declarado com apenas um campo. (erro 18)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E018 — Erro
 
-## Descricao
+## Descrição
 
 BUNDLE declarado com apenas um campo. (erro 18)
 

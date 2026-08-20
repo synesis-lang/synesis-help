@@ -6,14 +6,14 @@ summary: "ARITY declarado em campo que nao e TYPE CHAIN. (erro 55)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_E055 — Erro
 
-## Descricao
+## Descrição
 
 ARITY declarado em campo que nao e TYPE CHAIN. (erro 55)
 

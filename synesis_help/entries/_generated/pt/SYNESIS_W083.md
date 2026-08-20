@@ -6,14 +6,14 @@ summary: "REFERS TO cujo valor nao casa com nenhum IDENTIFIES no link step. (war
 severity: Aviso
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SYNESIS_W083 — Aviso
 
-## Descricao
+## Descrição
 
 REFERS TO cujo valor nao casa com nenhum IDENTIFIES no link step. (warning 83)
 

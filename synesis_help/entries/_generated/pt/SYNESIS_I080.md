@@ -3,17 +3,17 @@ id: SYNESIS_I080
 title: "SYNESIS_I080"
 category: diagnostic
 summary: "\"INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80).\""
-severity: Informacao
+severity: Informação
 see_also: []
 source: generated
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
-# SYNESIS_I080 — Informacao
+# SYNESIS_I080 — Informação
 
-## Descricao
+## Descrição
 
 INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80)
 

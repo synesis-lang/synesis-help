@@ -4,13 +4,13 @@ title: "ORDERED"
 category: field_type
 summary: "Valor escolhido de uma lista fechada, com ordem."
 syntax: FIELD <nome> TYPE ORDERED SCOPE <escopo> VALUES ... END VALUES [...] END FIELD
-see_also: [SYNESIS_E049, SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
+see_also: [SYNESIS_E049, SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, SYNESIS_E088, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 80
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # ORDERED
 
@@ -40,9 +40,19 @@ FIELD exemplo_ordered TYPE ORDERED
 END FIELD
 ```
 
+## Valor na anotação
+
+O valor gravado é o **índice**, não o rótulo:
+
+```synesis
+aspect: 11
+```
+
+O rótulo (`Econômico`) pertence à declaração do template e é exibido pelo editor ao lado do índice — não se repete na anotação, porque admite variantes de grafia (`Economico`, `ECONOMICO`) que fragmentariam o corpus. Escrever o rótulo é `SYNESIS_E088`.
+
 ## Propriedades
 
-| Propriedade | Situacao | Erro se violada |
+| Propriedade | Situação | Erro se violada |
 |---|---|---|
 | `CONTEXT FROM DATASET` | Permitido | - |
 | `DESCRIPTION` | Permitido | - |
@@ -50,12 +60,12 @@ END FIELD
 | `ARITY` | Proibido | SYNESIS_E055 |
 | `FORMAT` | Proibido | SYNESIS_E054 |
 | `RELATIONS` | Proibido | SYNESIS_E056 |
-| `VALUES` | Obrigatorio | SYNESIS_E049 |
+| `VALUES` | Obrigatório | SYNESIS_E049 |
 
 ## Regras
 
-- **`VALUES` e obrigatorio.** O campo 'nome_do_campo' e do tipo ORDERED, mas nao define um bloco
+- **`VALUES` é obrigatório.** O campo 'nome_do_campo' e do tipo ORDERED, mas nao define um bloco
 
-## Ver tambem
+## Ver também
 
-`SYNESIS_E049`, `SYNESIS_E054`, `SYNESIS_E055`, `SYNESIS_E056`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`
+`SYNESIS_E049`, `SYNESIS_E054`, `SYNESIS_E055`, `SYNESIS_E056`, `SYNESIS_E088`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`

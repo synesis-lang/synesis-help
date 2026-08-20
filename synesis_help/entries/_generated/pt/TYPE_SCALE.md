@@ -2,15 +2,15 @@
 id: TYPE_SCALE
 title: "SCALE"
 category: field_type
-summary: "Valor numerico dentro de um intervalo declarado."
+summary: "Valor numérico dentro de um intervalo declarado."
 syntax: FIELD <nome> TYPE SCALE SCOPE <escopo> FORMAT [<min>..<max>] [...] END FIELD
 see_also: [SYNESIS_E051, SYNESIS_E055, SYNESIS_E056, SYNESIS_E086, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 90
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # SCALE
 
@@ -39,7 +39,7 @@ END FIELD
 
 ## Propriedades
 
-| Propriedade | Situacao | Erro se violada |
+| Propriedade | Situação | Erro se violada |
 |---|---|---|
 | `CONTEXT FROM DATASET` | Permitido | - |
 | `DESCRIPTION` | Permitido | - |
@@ -47,12 +47,12 @@ END FIELD
 | `ARITY` | Proibido | SYNESIS_E055 |
 | `RELATIONS` | Proibido | SYNESIS_E056 |
 | `VALUES` | Proibido | SYNESIS_E086 |
-| `FORMAT` | Obrigatorio | SYNESIS_E051 |
+| `FORMAT` | Obrigatório | SYNESIS_E051 |
 
 ## Regras
 
-- **`FORMAT` e obrigatorio.** O campo 'nome_do_campo' e do tipo SCALE, mas nao declara o intervalo
+- **`FORMAT` é obrigatório.** O campo 'nome_do_campo' e do tipo SCALE, mas nao declara o intervalo
 
-## Ver tambem
+## Ver também
 
 `SYNESIS_E051`, `SYNESIS_E055`, `SYNESIS_E056`, `SYNESIS_E086`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`

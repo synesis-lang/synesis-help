@@ -4,13 +4,13 @@ title: "ENUMERATED"
 category: field_type
 summary: "Valor escolhido de uma lista fechada, sem ordem."
 syntax: FIELD <nome> TYPE ENUMERATED SCOPE <escopo> VALUES ... END VALUES [...] END FIELD
-see_also: [SYNESIS_E050, SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
+see_also: [SYNESIS_E050, SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, SYNESIS_E087, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 70
-requires_synesis: ">=0.11.0"
+requires_synesis: ">=0.12.0"
 ---
 
-<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Nao edite. Conteudo autoral vai em entries/authored/. -->
+<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
 
 # ENUMERATED
 
@@ -34,15 +34,25 @@ END FIELD
 FIELD exemplo_enumerated TYPE ENUMERATED
     SCOPE ITEM
     VALUES
-        [1] baixo: intensidade baixa
-        [2] alto: intensidade alta
+        baixo: intensidade baixa
+        alto: intensidade alta
     END VALUES
 END FIELD
 ```
 
+## Valor na anotação
+
+O valor gravado é o **rótulo** declarado em `VALUES`:
+
+```synesis
+zone: Method
+```
+
+Diferente de `ORDERED`, aqui não há índice: `ENUMERATED` não tem ordem, então o prefixo `[N]` no bloco `VALUES` é recusado com `SYNESIS_E087`.
+
 ## Propriedades
 
-| Propriedade | Situacao | Erro se violada |
+| Propriedade | Situação | Erro se violada |
 |---|---|---|
 | `CONTEXT FROM DATASET` | Permitido | - |
 | `DESCRIPTION` | Permitido | - |
@@ -50,12 +60,12 @@ END FIELD
 | `ARITY` | Proibido | SYNESIS_E055 |
 | `FORMAT` | Proibido | SYNESIS_E054 |
 | `RELATIONS` | Proibido | SYNESIS_E056 |
-| `VALUES` | Obrigatorio | SYNESIS_E050 |
+| `VALUES` | Obrigatório | SYNESIS_E050 |
 
 ## Regras
 
-- **`VALUES` e obrigatorio.** O campo 'nome_do_campo' e do tipo ENUMERATED, mas nao define um bloco
+- **`VALUES` é obrigatório.** O campo 'nome_do_campo' e do tipo ENUMERATED, mas nao define um bloco
 
-## Ver tambem
+## Ver também
 
-`SYNESIS_E050`, `SYNESIS_E054`, `SYNESIS_E055`, `SYNESIS_E056`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`
+`SYNESIS_E050`, `SYNESIS_E054`, `SYNESIS_E055`, `SYNESIS_E056`, `SYNESIS_E087`, `TYPE_QUOTATION`, `TYPE_MEMO`, `TYPE_CODE`

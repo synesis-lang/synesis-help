@@ -37,27 +37,28 @@ OUT = Path(__file__).resolve().parent.parent / "synesis_help" / "entries" / "_ge
 # --------------------------------------------------------------------------
 L = {
     "pt": {
-        "required": "Obrigatorio",
+        "required": "Obrigatório",
         "allowed": "Permitido",
         "forbidden": "Proibido",
-        "sec_desc": "Descricao",
+        "sec_desc": "Descrição",
         "sec_syntax": "Sintaxe",
         "sec_props": "Propriedades",
         "sec_example": "Exemplo",
         "sec_rules": "Regras",
-        "sec_seealso": "Ver tambem",
+        "sec_seealso": "Ver também",
         "syntax_legend": "`[ ]` opcional · `<>` valor a substituir",
         "sec_message": "Mensagem do compilador",
         "sec_context": "Onde aparece",
-        "prop_header": "| Propriedade | Situacao | Erro se violada |",
-        "no_props": "Nenhuma propriedade obrigatoria. O campo funciona apenas com `SCOPE`.",
+        "sec_value": "Valor na anotação",
+        "prop_header": "| Propriedade | Situação | Erro se violada |",
+        "no_props": "Nenhuma propriedade obrigatória. O campo funciona apenas com `SCOPE`.",
         "gen_warning": (
             "<!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. "
-            "Nao edite. Conteudo autoral vai em entries/authored/. -->"
+            "Não edite. Conteúdo autoral vai em entries/authored/. -->"
         ),
         "severity_error": "Erro",
         "severity_warning": "Aviso",
-        "severity_info": "Informacao",
+        "severity_info": "Informação",
     }
 }
 
@@ -83,18 +84,62 @@ TYPE_ORDER = {
     "TOPIC": 60, "ENUMERATED": 70, "ORDERED": 80, "SCALE": 90, "DATE": 95,
 }
 
+#: Como se ESCREVE o valor do campo na anotacao (.syn/.syno) — distinto de como
+#: o tipo se DECLARA no template, que a matriz de propriedades ja cobre.
+#:
+#: O compilador sabe validar o valor, mas a distincao "o que se declara" x "o
+#: que se grava" e decisao de linguagem, nao consequencia de uma sondagem: por
+#: isso mora aqui, junto de TYPE_SUMMARY. Preenchido so para os tipos em que a
+#: diferenca nao e obvia e ja causou erro real em campo.
+TYPE_VALUE_FORM = {
+    "pt": {
+        "ORDERED": (
+            "O valor gravado é o **índice**, não o rótulo:\n"
+            "\n"
+            "```synesis\n"
+            "aspect: 11\n"
+            "```\n"
+            "\n"
+            "O rótulo (`Econômico`) pertence à declaração do template e é "
+            "exibido pelo editor ao lado do índice — não se repete na anotação, "
+            "porque admite variantes de grafia (`Economico`, `ECONOMICO`) que "
+            "fragmentariam o corpus. Escrever o rótulo é `SYNESIS_E088`."
+        ),
+        "ENUMERATED": (
+            "O valor gravado é o **rótulo** declarado em `VALUES`:\n"
+            "\n"
+            "```synesis\n"
+            "zone: Method\n"
+            "```\n"
+            "\n"
+            "Diferente de `ORDERED`, aqui não há índice: `ENUMERATED` não tem "
+            "ordem, então o prefixo `[N]` no bloco `VALUES` é recusado com "
+            "`SYNESIS_E087`."
+        ),
+    }
+}
+
+#: Diagnosticos que governam o VALOR de um tipo (nao suas propriedades de
+#: declaracao). A matriz tipo x propriedade nao os alcanca, porque eles nao
+#: nascem de uma propriedade do template — mas quem le sobre o tipo precisa
+#: chegar neles.
+TYPE_VALUE_CODES = {
+    "ORDERED": ["SYNESIS_E088"],
+    "ENUMERATED": ["SYNESIS_E087"],
+}
+
 TYPE_SUMMARY = {
     "pt": {
         "QUOTATION": "Trecho literal transcrito da fonte.",
         "MEMO": "Nota livre do pesquisador, sem estrutura fixa.",
-        "CODE": "Um ou mais conceitos da ontologia atribuidos a unidade.",
-        "CHAIN": "Cadeia de conceitos ligados por relacoes.",
+        "CODE": "Um ou mais conceitos da ontologia atribuídos à unidade.",
+        "CHAIN": "Cadeia de conceitos ligados por relações.",
         "TEXT": "Texto curto de uma linha.",
         "DATE": "Data.",
-        "SCALE": "Valor numerico dentro de um intervalo declarado.",
+        "SCALE": "Valor numérico dentro de um intervalo declarado.",
         "ENUMERATED": "Valor escolhido de uma lista fechada, sem ordem.",
         "ORDERED": "Valor escolhido de uma lista fechada, com ordem.",
-        "TOPIC": "Termo unico, sem espacos, para agrupar unidades.",
+        "TOPIC": "Termo único, sem espaços, para agrupar unidades.",
     }
 }
 
@@ -126,12 +171,29 @@ PROP_SYNTAX = {
         "        REDUZ: quando um fator atenua outro",
         "    END RELATIONS",
     ],
+    # Forma valida em ENUMERATED, que nao aceita o prefixo `[N]` (SYNESIS_E087).
+    # ORDERED, que o exige, usa a variante em PROP_SYNTAX_BY_TYPE.
     "VALUES": [
         "    VALUES",
-        "        [1] baixo: intensidade baixa",
-        "        [2] alto: intensidade alta",
+        "        baixo: intensidade baixa",
+        "        alto: intensidade alta",
         "    END VALUES",
     ],
+}
+
+#: Trechos cuja forma depende do TIPO. `VALUES` e o unico caso: o prefixo `[N]`
+#: estabelece ordem, sendo obrigatorio em ORDERED (SYNESIS_E049 sem ele) e
+#: recusado em ENUMERATED (SYNESIS_E087). Um exemplo unico ensinaria uma
+#: construcao invalida para um dos dois tipos.
+PROP_SYNTAX_BY_TYPE = {
+    "ORDERED": {
+        "VALUES": [
+            "    VALUES",
+            "        [1] baixo: intensidade baixa",
+            "        [2] alto: intensidade alta",
+            "    END VALUES",
+        ],
+    },
 }
 
 
@@ -170,8 +232,10 @@ def gen_field_types(lang: str = "pt") -> dict[str, str]:
         # Sintaxe: obrigatorias no corpo. Concreto e compilavel de proposito —
         # e verificado por tools/check_examples.py (secao 5.4 do estudo).
         body = [f"FIELD exemplo_{ft.name.lower()} TYPE {ft.name}", "    SCOPE ITEM"]
+        by_type = PROP_SYNTAX_BY_TYPE.get(ft.name, {})
         for name in req:
-            body.extend(PROP_SYNTAX.get(name, [f"    {name}"]))
+            snippet = by_type.get(name) or PROP_SYNTAX.get(name, [f"    {name}"])
+            body.extend(snippet)
         body.append("END FIELD")
         # Forma completa, no padrao de guia de referencia: obrigatorias sem
         # colchetes, permitidas entre colchetes. Nada de "..." no lugar da
@@ -197,8 +261,11 @@ def gen_field_types(lang: str = "pt") -> dict[str, str]:
             code = p.error_code or "-"
             rows.append(f"| `{p.name}` | {t[REQ_LABEL[p.requirement]]} | {code} |")
 
-        # see_also: irmaos + codigos citados
-        codes = sorted({p.error_code for p in ft.properties if p.error_code})
+        # see_also: irmaos + codigos citados (propriedades + valor)
+        codes = sorted(
+            {p.error_code for p in ft.properties if p.error_code}
+            | set(TYPE_VALUE_CODES.get(ft.name, []))
+        )
         siblings = [f"TYPE_{o.name}" for o in info.field_types if o.name != ft.name][:3]
         see = codes + siblings
 
@@ -235,6 +302,15 @@ def gen_field_types(lang: str = "pt") -> dict[str, str]:
             "```synesis",
             "\n".join(body),
             "```",
+        ]
+
+        # Como se escreve o VALOR — antes das propriedades de declaracao: quem
+        # consulta o tipo costuma estar anotando, nao escrevendo o template.
+        value_form = TYPE_VALUE_FORM.get(lang, {}).get(ft.name)
+        if value_form:
+            parts += ["", f"## {t['sec_value']}", "", value_form]
+
+        parts += [
             "",
             f"## {t['sec_props']}",
             "",
@@ -245,7 +321,7 @@ def gen_field_types(lang: str = "pt") -> dict[str, str]:
             parts += ["", f"## {t['sec_rules']}", ""]
             for p in expl:
                 first = (p.explanation or "").strip().split("\n")[0]
-                parts.append(f"- **`{p.name}` e obrigatorio.** {first}")
+                parts.append(f"- **`{p.name}` é obrigatório.** {first}")
         else:
             parts += ["", f"## {t['sec_rules']}", "", "- " + t["no_props"]]
 
@@ -360,7 +436,7 @@ def gen_diagnostics(lang: str = "pt") -> dict[str, str]:
             parts.append(docs[0][1])
         else:
             parts.append(
-                f"Este codigo cobre {len(members)} situacoes distintas:"
+                f"Este código cobre {len(members)} situações distintas:"
             )
             parts.append("")
             for n, d in docs:
@@ -382,7 +458,7 @@ def gen_diagnostics(lang: str = "pt") -> dict[str, str]:
                 parts.append("")
             if msg is None:
                 parts += [
-                    "> Mensagem nao reproduzivel neste guia; consulte o compilador.",
+                    "> Mensagem não reproduzível neste guia; consulte o compilador.",
                     "",
                 ]
             else:
@@ -515,8 +591,8 @@ def main() -> int:
     print(f"Geradas {len(entries)} entries em {OUT} (synesis {SYNESIS_VERSION})")
 
     if UNRENDERABLE:
-        print(f"\nAVISO: {len(UNRENDERABLE)} diagnostico(s) nao renderizaram.")
-        print("Isto e achado sobre o compilador, nao falha do guia:")
+        print(f"\nAVISO: {len(UNRENDERABLE)} diagnóstico(s) não renderizaram.")
+        print("Isto é achado sobre o compilador, não falha do guia:")
         for code, name, err in UNRENDERABLE:
             print(f"  {code} {name}: {err}")
     return 0

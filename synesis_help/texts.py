@@ -7,7 +7,7 @@ Ficam separados de `cli.py` para que a logica de comandos permaneca legivel.
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 AUTHOR = "Christian Maciel De Britto"
 YEAR = "2026"
