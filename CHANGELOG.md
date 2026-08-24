@@ -9,6 +9,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.1] — 2026-08-24
+
+### Changed
+
+- **The `synesis-graph` entry now covers `ProjectContext`.** Since
+  `synesis-graph` 0.8.0, exporting to a database also writes the project's own
+  context into the graph: the `.synp` `DESCRIPTION` and the whole template as a
+  readable document — every field with its type, scope, description, value scale
+  and **GUIDELINES**, plus the graph's edges with their direction.
+
+  The guide had to say so, because it changes what writing a good template is
+  worth. A database schema is syntax without semantics: it states that a vertex
+  `Aspect` has a property `name`, but not that `Aspect` is an ordered scale nor
+  what each value means. The `GUIDELINES` a researcher writes are their coding
+  protocol — the decision rules that say what counts as a valid instance of a
+  field. Without them in the graph, whoever queries it has to infer that
+  criterion from the data.
+
+  `ECO_GRAPH` is generated from the tool's `--help`, so the explanation lives in
+  the generator's authored `note` field, where regeneration preserves it.
+
+- **`GUIDE_ECOSYSTEM` gained the section "O que o grafo leva junto"**, with the
+  point that matters most to whoever writes a template: good `GUIDELINES` pay
+  twice — they guide `synesis-coder` while annotating, and they travel with the
+  graph afterwards.
+
+- Regenerating the ecosystem entries also refreshed the recorded versions of
+  `ECO_CODER`, `ECO_LSP` and `ECO_SYNESIS`, which had fallen behind.
+
 ## [0.2.0] — 2026-08-20
 
 The guide now ships in Portuguese — 110 entries — with the two new compiler
@@ -309,5 +338,6 @@ Recorded in `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 
 ---
 
+[0.2.1]: https://github.com/synesis-lang/synesis-help/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/synesis-lang/synesis-help/releases/tag/v0.1.0

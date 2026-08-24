@@ -9,6 +9,34 @@ e o projeto adota [Versionamento Semântico](https://semver.org/spec/v2.0.0.html
 
 ---
 
+## [0.2.1] — 2026-08-24
+
+### Alterado
+
+- **O verbete do `synesis-graph` agora cobre o `ProjectContext`.** Desde o
+  `synesis-graph` 0.8.0, exportar para um banco grava também o contexto do
+  próprio projeto no grafo: a `DESCRIPTION` do `.synp` e o template inteiro como
+  documento legível — cada campo com tipo, escopo, descrição, escala de valores e
+  **GUIDELINES**, mais as arestas do grafo com sua direção.
+
+  O guia precisava dizer isso, porque muda o valor de escrever um bom template. O
+  schema de um banco é sintaxe sem semântica: diz que existe um vértice `Aspect`
+  com a propriedade `name`, mas não que `Aspect` é uma escala ordenada nem o que
+  cada valor significa. As `GUIDELINES` que o pesquisador escreve são o seu
+  protocolo de codificação — as regras de decisão que dizem o que conta como
+  instância válida de um campo. Sem elas no grafo, quem consulta precisa inferir
+  esse critério a partir dos dados.
+
+  O `ECO_GRAPH` é gerado a partir do `--help` da ferramenta, então a explicação
+  vive no campo `note` autoral do gerador, onde a regeneração a preserva.
+
+- **O `GUIDE_ECOSYSTEM` ganhou a seção "O que o grafo leva junto"**, com o ponto
+  que mais interessa a quem escreve um template: boas `GUIDELINES` rendem duas
+  vezes — guiam o `synesis-coder` na anotação e viajam com o grafo depois.
+
+- A regeneração dos verbetes de ecossistema também atualizou as versões
+  registradas de `ECO_CODER`, `ECO_LSP` e `ECO_SYNESIS`, que estavam defasadas.
+
 ## [0.2.0] — 2026-08-20
 
 O guia passa a sair em português — 110 verbetes — com os dois novos
@@ -358,5 +386,6 @@ Registrados em `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 
 ---
 
+[0.2.1]: https://github.com/synesis-lang/synesis-help/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/synesis-lang/synesis-help/releases/tag/v0.1.0
