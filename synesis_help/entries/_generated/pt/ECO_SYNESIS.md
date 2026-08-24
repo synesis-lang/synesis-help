@@ -6,7 +6,7 @@ summary: "Compilador da linguagem: valida, compila e exporta."
 see_also: [ECO_LSP, ECO_CODER, ECO_GRAPH, GUIDE_ECOSYSTEM]
 source: generated
 order: 10
-version: "0.11.0"
+version: "0.12.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_ecosystem.py. Nao edite. -->
@@ -15,14 +15,14 @@ version: "0.11.0"
 
 ## Descricao
 
-Papel no ecossistema: **compilador** · versao 0.11.0
+Papel no ecossistema: **compilador** · versao 0.12.0
 
 E o nucleo do ecossistema. Todos os outros modulos dependem dele, e nenhum reimplementa suas regras.
 
 ## Uso
 
 ```text
-SYNESIS COMPILER (v0.11.0)
+SYNESIS COMPILER (v0.12.0)
 
 Semantic compiler for knowledge engineering.
 

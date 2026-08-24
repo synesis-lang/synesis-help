@@ -74,7 +74,29 @@ MODULES = [
         "role": "exportacao para grafos",
         "order": 40,
         "summary": "Converte projetos compilados em bancos de grafo e visualizacoes.",
-        "note": "Consome o artefato do `synesis compile`, nao os `.syn` diretamente.",
+        "note": (
+            "Consome o artefato do `synesis compile`, nao os `.syn` diretamente.\n\n"
+            "**O grafo exportado se descreve.** Ao sincronizar com um banco "
+            "(ArcadeDB ou Neo4j), o `synesis-graph` grava um vertice "
+            "`ProjectContext` com o contexto do proprio projeto: a `DESCRIPTION` "
+            "do `.synp`, e o template inteiro como documento legivel — cada campo "
+            "com tipo, escopo, descricao, escala de valores e **GUIDELINES**, mais "
+            "as arestas do grafo com sua direcao.\n\n"
+            "Isso importa porque o schema de um banco e sintaxe sem semantica: ele "
+            "diz que existe um vertice `Aspect` com a propriedade `name`, mas nao "
+            "que `Aspect` e uma escala ordenada nem o que cada valor significa. "
+            "As `GUIDELINES` que voce escreveu sao o seu protocolo de codificacao — "
+            "as regras de decisao que dizem o que conta como instancia valida de um "
+            "campo. Sem elas no grafo, quem consulta precisa inferir seu criterio a "
+            "partir dos dados; com elas, passa a conhece-lo.\n\n"
+            "O contexto viaja com os dados, nao com a ferramenta: qualquer "
+            "consumidor do grafo o recebe — o Claude Desktop, qualquer cliente MCP, "
+            "o studio do proprio banco, ou um colega que receba uma copia. E e "
+            "derivado do seu template, entao dois projetos diferentes produzem "
+            "contextos diferentes.\n\n"
+            "Para ler: `MATCH (p:ProjectContext) RETURN p.description, "
+            "p.template_doc`."
+        ),
     },
 ]
 

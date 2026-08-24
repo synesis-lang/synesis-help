@@ -47,6 +47,22 @@ O `synesis-graph` lê o **artefato compilado**, não os `.syn` diretamente —
 por isso `compile` vem antes. O `synesis-coder` lê o **template**, porque é
 dele que saem os campos e as restrições que o modelo deve respeitar.
 
+## O que o grafo leva junto
+
+Ao exportar para um banco, o `synesis-graph` não grava só os dados: grava
+também o **contexto do projeto**, num vértice `ProjectContext`. Vai ali a
+`DESCRIPTION` do seu `.synp` e o template inteiro como documento legível —
+campos, escalas de valores e as `GUIDELINES` que você escreveu.
+
+A razão é que o schema de um banco é sintaxe sem semântica: ele diz que
+existe um vértice `Aspect` com a propriedade `name`, mas não que aquilo é
+uma escala ordenada nem o que cada valor significa. Sem isso, quem consulta
+o grafo — uma IA por MCP, um colega que recebeu uma cópia — precisa
+adivinhar o seu critério de codificação. Com isso, passa a lê-lo.
+
+É por isso que escrever boas `GUIDELINES` rende duas vezes: elas guiam o
+`synesis-coder` na anotação e viajam com o grafo depois. Veja `ECO_GRAPH`.
+
 ## Instalação
 
 Cada módulo é um pacote próprio:
