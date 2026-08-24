@@ -6,7 +6,7 @@ summary: "Gera anotacoes validas a partir de texto, guiado pelo template."
 see_also: [ECO_SYNESIS, ECO_LSP, ECO_GRAPH, GUIDE_ECOSYSTEM]
 source: generated
 order: 30
-version: "0.9.0"
+version: "0.10.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_ecosystem.py. Nao edite. -->
@@ -15,14 +15,14 @@ version: "0.9.0"
 
 ## Descricao
 
-Papel no ecossistema: **anotacao assistida por IA** · versao 0.9.0
+Papel no ecossistema: **anotacao assistida por IA** · versao 0.10.0
 
 O template define os campos e as restricoes — nada e fixo no codigo. A qualidade do resultado depende do que voce escreve em `GUIDELINES`.
 
 ## Uso
 
 ```text
-SYNESIS CODER (v0.9.0)  |  Core (v0.11.0)
+SYNESIS CODER (v0.10.0)  |  Core (v0.12.0)
 
 Inference engine for generating valid annotations in the Synesis ecosystem.
 The template defines all fields, relations, and constraints — nothing is hardcoded.

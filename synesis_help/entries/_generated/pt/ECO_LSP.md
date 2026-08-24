@@ -22,7 +22,7 @@ Nao e chamado a mao: o editor o inicia. Instale-o e a extensao do VS Code o enco
 ## Uso
 
 ```text
-SYNESIS LANGUAGE SERVER (v0.23.0) | Core (v0.11.0)
+SYNESIS LANGUAGE SERVER (v0.23.0) | Core (v0.12.0)
 Language server for knowledge engineering.
 
 Registered Capabilities:
