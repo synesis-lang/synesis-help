@@ -6,7 +6,7 @@ summary: "Dois blocos ONTOLOGY com o mesmo nome de conceito. (erro 68)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,13 +20,13 @@ Dois blocos ONTOLOGY com o mesmo nome de conceito. (erro 68)
 ## Mensagem do compilador
 
 ```text
-O conceito `exemplo` esta definido mais de uma vez na
-  ontologia do projeto:
+The concept `exemplo` is defined more than once in the
+  project's organizing model:
   - exemplo
   - exemplo
-  Cada conceito deve ter um nome unico em todo o projeto. Verifique
-  se os dois blocos representam o mesmo conceito — se sim, unifique-os.
-  Se nao, renomeie um deles para que os nomes sejam distintos.
+  Each concept must have a unique name across the project. Check
+  whether the two blocks represent the same concept — if so, merge them.
+  If not, rename one of them so the names differ.
 ```
 
 ## Onde aparece

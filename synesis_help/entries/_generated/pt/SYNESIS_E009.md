@@ -6,7 +6,7 @@ summary: "Chain simples usada mas template exige RELATIONS. (erro 9)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Chain simples usada mas template exige RELATIONS. (erro 9)
 ## Mensagem do compilador
 
 ```text
-O template exige que as cadeias usem relacoes nomeadas, mas esta cadeia
-  foi escrita sem relacoes para o campo `nome_do_campo`.
-  Relacoes disponiveis: `exemplo_a`, `exemplo_b`.
-  Reescreva a cadeia no formato: `Conceito -> RELACAO -> Conceito`.
+The template requires chains to use named relations, but this chain
+  was written without relations for the field `nome_do_campo`.
+  Available relations: `exemplo_a`, `exemplo_b`.
+  Rewrite the chain as: `Concept -> RELATION -> Concept`.
 ```
 
 ## Onde aparece

@@ -6,7 +6,7 @@ summary: "Campo usado no arquivo nao esta definido no template."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,8 +20,8 @@ Campo usado no arquivo nao esta definido no template.
 ## Mensagem do compilador
 
 ```text
-Campo 'nome_do_campo' nao definido no template para bloco ITEM.
-  Defina um FIELD 'nome_do_campo' no template ou ajuste o nome do campo.
+Field 'nome_do_campo' is not defined in the template for the ITEM block.
+  Define a FIELD 'nome_do_campo' in the template or fix the field name.
 ```
 
 ## Onde aparece

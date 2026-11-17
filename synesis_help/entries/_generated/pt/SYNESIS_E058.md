@@ -6,7 +6,7 @@ summary: "Valor em bloco VALUES com espaco no inicio ou fim. (erro 58)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Valor em bloco VALUES com espaco no inicio ou fim. (erro 58)
 ## Mensagem do compilador
 
 ```text
-O valor `"valor"` declarado no campo 'nome_do_campo' contem
-  espaco em branco no inicio ou no final. Esses espacos invisiveis fariam
-  com que o valor nao fosse reconhecido quando usado nas anotacoes.
-  Remova os espacos extras ao redor do valor na declaracao do template.
+The value `"valor"` declared in the field 'nome_do_campo' has
+  whitespace at the start or end. These invisible spaces would
+  keep the value from being recognized when used in the annotations.
+  Remove the extra spaces around the value in the template declaration.
 ```
 
 ## Onde aparece

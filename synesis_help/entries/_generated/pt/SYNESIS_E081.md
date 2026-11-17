@@ -6,7 +6,7 @@ summary: "Dois membros declaram IDENTIFIES do mesmo rotulo no link step. (erro 8
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Dois membros declaram IDENTIFIES do mesmo rotulo no link step. (erro 81)
 ## Mensagem do compilador
 
 ```text
-A entidade `exemplo` e declarada com `IDENTIFIES` por dois projetos:
-  `exemplo` e `exemplo`.
-  Um rotulo de entidade tem um unico corpus proprietario (a chave primaria).
-  Se sao esquemas de ID distintos da mesma pessoa (Lattes vs ORCID), o hub
-  deve `REFERS TO` a periferia — nao declarar dois `IDENTIFIES` do mesmo rotulo.
+The entity `exemplo` is declared with `IDENTIFIES` by two projects:
+  `exemplo` and `exemplo`.
+  An entity label has a single owning corpus (the primary key).
+  If they are distinct ID schemes of the same person (Lattes vs ORCID), the hub
+  should `REFERS TO` the periphery — not declare two `IDENTIFIES` of the same label.
 ```
 
 ## Onde aparece

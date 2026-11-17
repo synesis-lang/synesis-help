@@ -6,7 +6,7 @@ summary: "TYPE divergente entre campos da mesma entidade no link step. (erro 82)
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ TYPE divergente entre campos da mesma entidade no link step. (erro 82)
 ## Mensagem do compilador
 
 ```text
-Os campos que participam da entidade `exemplo` tem `TYPE` divergente:
-  `exemplo` declara `TYPE exemplo`; `exemplo` declara `TYPE exemplo`.
-  Campos da mesma entidade (o `IDENTIFIES` e todos os `REFERS TO`) devem ter
-  o mesmo `TYPE` — a divergencia indica que os dois lados nao modelam a
-  mesma coisa. Alinhe os tipos no template.
+The fields taking part in the entity `exemplo` have diverging `TYPE`:
+  `exemplo` declares `TYPE exemplo`; `exemplo` declares `TYPE exemplo`.
+  Fields of the same entity (the `IDENTIFIES` and every `REFERS TO`) must have
+  the same `TYPE` — the divergence means the two sides do not model the
+  same thing. Align the types in the template.
 ```
 
 ## Onde aparece

@@ -6,7 +6,7 @@ summary: "ONTOLOGY presente mas template nao declara ONTOLOGY FIELDS. (erro 5)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,14 +20,14 @@ ONTOLOGY presente mas template nao declara ONTOLOGY FIELDS. (erro 5)
 ## Mensagem do compilador
 
 ```text
-O projeto contem blocos ONTOLOGY, mas o template nao declara nenhum
-  campo em `ONTOLOGY FIELDS`. Sem essa configuracao, os campos dos
-  conceitos nao podem ser validados.
-  Este problema esta na definicao do template. Se voce nao e o autor
-  do template, avise o coordenador do projeto.
-  Para corrigir, adicione ao template:
+The project has ONTOLOGY blocks, but the template does not declare any
+  field in `ONTOLOGY FIELDS`. Without this, the fields of the
+  concepts cannot be validated.
+  This problem is in the template definition. If you are not the author
+  of the template, tell the project coordinator.
+  To fix it, add to the template:
       ONTOLOGY FIELDS
-          REQUIRED nome_do_campo
+          REQUIRED field_name
       END ONTOLOGY FIELDS
 ```
 

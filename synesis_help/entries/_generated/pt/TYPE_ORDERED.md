@@ -7,7 +7,7 @@ syntax: FIELD <nome> TYPE ORDERED SCOPE <escopo> VALUES ... END VALUES [...] END
 see_also: [SYNESIS_E049, SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, SYNESIS_E088, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 80
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -64,7 +64,7 @@ O rótulo (`Econômico`) pertence à declaração do template e é exibido pelo 
 
 ## Regras
 
-- **`VALUES` é obrigatório.** O campo 'nome_do_campo' e do tipo ORDERED, mas nao define um bloco
+- **`VALUES` é obrigatório.** The field 'nome_do_campo' is of type ORDERED, but does not define a
 
 ## Ver também
 

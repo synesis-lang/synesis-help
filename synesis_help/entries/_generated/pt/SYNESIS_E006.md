@@ -6,7 +6,7 @@ summary: "Campo listado em SCOPE FIELDS cujo FIELD tem SCOPE diferente. (erro 6)
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,12 +20,12 @@ Campo listado em SCOPE FIELDS cujo FIELD tem SCOPE diferente. (erro 6)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' esta listado em `exemplo FIELDS`,
-  mas sua definicao FIELD declara `SCOPE exemplo`.
-  Cada campo listado precisa ter sua propria definicao com o mesmo escopo.
-  Corrija o escopo na definicao FIELD ou mova o campo para o bloco correto.
-  Este problema esta na definicao do template. Se voce nao e o autor
-  do template, avise o coordenador do projeto.
+The field 'nome_do_campo' is listed in `exemplo FIELDS`,
+  but its FIELD definition declares `SCOPE exemplo`.
+  Each listed field needs its own definition with the same scope.
+  Fix the scope in the FIELD definition or move the field to the right block.
+  This problem is in the template definition. If you are not the author
+  of the template, tell the project coordinator.
 ```
 
 ## Onde aparece

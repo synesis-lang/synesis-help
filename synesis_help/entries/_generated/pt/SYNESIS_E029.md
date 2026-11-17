@@ -6,7 +6,7 @@ summary: "Valor fora do range ORDERED."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Valor fora do range ORDERED.
 ## Mensagem do compilador
 
 ```text
-O valor `valor` nao e valido para o campo `nome_do_campo`.
-  Este campo usa uma escala ordenada com opcoes especificas.
+The value `valor` is not valid for the field `nome_do_campo`.
+  This field uses an ordered scale with specific options.
   Opcoes disponiveis: `exemplo_a`, `exemplo_b`.
-  Voce pode usar o rotulo textual ou o numero de posicao na escala.
+  You can use the text label or the position number on the scale.
 ```
 
 ## Onde aparece

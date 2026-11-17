@@ -45,7 +45,7 @@ def _ensure_db() -> Path:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(
         prog="synesis-help",
-        description="Guia de referencia rapida da linguagem Synesis.",
+        description="Quick reference guide to the Synesis language.",
         epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -54,17 +54,17 @@ def main(argv: list[str] | None = None) -> int:
     )
     sub = ap.add_subparsers(dest="cmd")
 
-    sub.add_parser("build", help="compila as entries no indice SQLite")
+    sub.add_parser("build", help="compile the entries into the SQLite index")
 
-    p_lookup = sub.add_parser("lookup", help="consulta um verbete")
-    p_lookup.add_argument("termo")
+    p_lookup = sub.add_parser("lookup", help="look up an entry")
+    p_lookup.add_argument("termo", metavar="term")
     p_lookup.add_argument(
         "--format", choices=("text", "json"), default="text",
-        help="json expoe o contrato de invocacao externa",
+        help="json exposes the external invocation contract",
     )
 
-    sub.add_parser("docs", help="como escrever e corrigir verbetes")
-    sub.add_parser("credits", help="autoria, licenca e como citar")
+    sub.add_parser("docs", help="how to write and fix entries")
+    sub.add_parser("credits", help="authorship, license and how to cite")
 
     args = ap.parse_args(argv)
 
@@ -82,14 +82,14 @@ def main(argv: list[str] | None = None) -> int:
         except RuntimeError as exc:
             print(str(exc), file=sys.stderr)
             return 1
-        print(f"Indice compilado: {DB} ({n} verbetes)")
+        print(f"Index compiled: {DB} ({n} entries)")
         return 0
 
     if args.cmd == "lookup":
         guide = Guide(_ensure_db())
         entry = guide.get(args.termo) or next(iter(guide.search(args.termo)), None)
         if entry is None:
-            print(f"Nada encontrado para '{args.termo}'.", file=sys.stderr)
+            print(f"Nothing found for '{args.termo}'.", file=sys.stderr)
             return 1
         if args.format == "json":
             print(json.dumps({

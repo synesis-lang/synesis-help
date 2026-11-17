@@ -168,8 +168,8 @@ def test_statusbar_lists_global_keys(db: Path) -> None:
     app = GuideApp(db)
     for focus in ("categories", "entries", "content", ""):
         line = app._status_text(focus)
-        assert "F10 Creditos" in line, focus
-        assert "F3 Busca" in line and "Esc" in line
+        assert "F10 Credits" in line, focus
+        assert "F3 Search" in line and "Esc" in line
         assert len(line) <= 80, f"{focus}: {len(line)} colunas"
 
 
@@ -200,7 +200,7 @@ def test_cli_documents_itself(capsys) -> None:
 
     assert main(["docs"]) == 0
     out = capsys.readouterr().out
-    assert "authored/pt" in out and "SEM `build`" in out
+    assert "authored/pt" in out and "WITHOUT `build`" in out
 
     assert main(["credits"]) == 0
     out = capsys.readouterr().out
@@ -368,9 +368,9 @@ async def test_status_bar_follows_focus(db: Path) -> None:
     app = GuideApp(db)
     async with app.run_test(size=(96, 26)) as pilot:
         await pilot.pause()
-        assert "Categoria" in app._status_text("categories")
-        assert "Ler" in app._status_text("entries")
-        assert "Rolar" in app._status_text("content")
+        assert "Category" in app._status_text("categories")
+        assert "Read" in app._status_text("entries")
+        assert "Scroll" in app._status_text("content")
 
 
 @pytest.mark.asyncio

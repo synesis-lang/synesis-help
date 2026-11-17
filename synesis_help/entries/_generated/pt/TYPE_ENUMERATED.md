@@ -7,7 +7,7 @@ syntax: FIELD <nome> TYPE ENUMERATED SCOPE <escopo> VALUES ... END VALUES [...] 
 see_also: [SYNESIS_E050, SYNESIS_E054, SYNESIS_E055, SYNESIS_E056, SYNESIS_E087, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 70
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -64,7 +64,7 @@ Diferente de `ORDERED`, aqui não há índice: `ENUMERATED` não tem ordem, ent�
 
 ## Regras
 
-- **`VALUES` é obrigatório.** O campo 'nome_do_campo' e do tipo ENUMERATED, mas nao define um bloco
+- **`VALUES` é obrigatório.** The field 'nome_do_campo' is of type ENUMERATED, but does not define a
 
 ## Ver também
 

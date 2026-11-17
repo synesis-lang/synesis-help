@@ -6,7 +6,7 @@ summary: "Conceito em posicao de codigo com nome identico a uma relacao. (erro 1
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,12 +20,12 @@ Conceito em posicao de codigo com nome identico a uma relacao. (erro 14)
 ## Mensagem do compilador
 
 ```text
-O elemento `exemplo` aparece nesta cadeia em posicao de conceito,
-  mas tambem esta declarado como relacao no template para o campo
-  `nome_do_campo`. Essa ambiguidade impede o compilador de
-  determinar o papel do elemento na cadeia.
-  Renomeie o conceito na ontologia para que seja distinto dos nomes
-  de relacao, ou renomeie a relacao no template.
+The element `exemplo` appears in this chain in a concept position,
+  but it is also declared as a relation in the template for the field
+  `nome_do_campo`. This ambiguity keeps the compiler from
+  determining the element's role in the chain.
+  Rename the concept in the organizing model so it differs from the
+  relation names, or rename the relation in the template.
 ```
 
 ## Onde aparece

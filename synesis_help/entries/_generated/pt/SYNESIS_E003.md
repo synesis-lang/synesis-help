@@ -6,7 +6,7 @@ summary: "SOURCE sem ITEMs associados."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ SOURCE sem ITEMs associados.
 ## Mensagem do compilador
 
 ```text
-O bloco `SOURCE @@autor2024` nao possui nenhum ITEM associado. Um SOURCE
-  existe para contextualizar unidades de analise — sem ITEMs, a fonte foi
-  registrada mas nunca analisada.
-  Verifique se ha ITEMs com essa referencia em outro arquivo do projeto,
-  ou adicione pelo menos um ITEM a este SOURCE.
+The `SOURCE @@autor2024` block has no associated ITEM. A SOURCE
+  exists to give context to units of analysis — without ITEMs, the source was
+  registered but never analyzed.
+  Check whether ITEMs with this reference exist in another project file,
+  or add at least one ITEM to this SOURCE.
 ```
 
 ## Onde aparece

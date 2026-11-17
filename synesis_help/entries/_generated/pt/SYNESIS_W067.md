@@ -6,7 +6,7 @@ summary: "Data MODIFIED anterior a data CREATED no bloco METADATA. (erro 67)."
 severity: Aviso
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Data MODIFIED anterior a data CREATED no bloco METADATA. (erro 67)
 ## Mensagem do compilador
 
 ```text
-A data de modificacao `exemplo` e anterior a data de criacao
-  `exemplo` declarada no bloco METADATA do projeto. Um projeto nao
-  pode ter sido modificado antes de existir.
-  Verifique as datas e corrija a que estiver incorreta. O formato esperado
-  e `AAAA-MM-DD`.
+The modification date `exemplo` is earlier than the creation date
+  `exemplo` declared in the project's METADATA block. A project cannot
+  have been modified before it existed.
+  Check the dates and fix the wrong one. The expected format
+  is `YYYY-MM-DD`.
 ```
 
 ## Onde aparece

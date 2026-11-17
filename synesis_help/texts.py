@@ -3,11 +3,13 @@
 """Textos longos da CLI: ajuda de escrita e creditos.
 
 Ficam separados de `cli.py` para que a logica de comandos permaneca legivel.
+A saida da CLI e em ingles (idioma oficial das saidas, 2026-11-17); o
+conteudo dos verbetes continua no locale `pt`.
 """
 
 from __future__ import annotations
 
-__version__ = "0.2.1"
+__version__ = "0.3.0"
 
 AUTHOR = "Christian Maciel De Britto"
 YEAR = "2026"
@@ -16,194 +18,198 @@ REPO = "https://github.com/synesis-lang/synesis-help"
 DOCS = "https://synesis-lang.github.io/synesis-docs"
 
 EPILOG = """\
-exemplos:
-  synesis-help                      abre o guia (TUI)
-  synesis-help lookup CHAIN         consulta um verbete no terminal
+examples:
+  synesis-help                      open the guide (TUI)
+  synesis-help lookup CHAIN         look up an entry in the terminal
   synesis-help lookup E047 --format=json
-  synesis-help docs                 como escrever e corrigir verbetes
-  synesis-help credits              autoria, licenca e como citar
+  synesis-help docs                 how to write and fix entries
+  synesis-help credits              authorship, license and how to cite
 
-no guia:
-  setas   mover / rolar        F2   referencias cruzadas
-  Enter   avancar              F3   busca incremental
-  Tab     trocar de painel     Esc  sair
+in the guide:
+  arrows  move / scroll            F2   cross-references
+  Enter   go forward               F3   incremental search
+  Tab     switch panel             Esc  quit
 """
 
 WRITING_GUIDE = f"""\
-ESCREVENDO NO GUIA
-==================
+WRITING IN THE GUIDE
+====================
 
-Onde o conteudo vive
---------------------
+Where the content lives
+-----------------------
   synesis_help/entries/
-  ├── _generated/pt/   gerado do compilador — NUNCA editar a mao
-  └── authored/pt/     conteudo humano — e aqui que voce escreve
+  ├── _generated/pt/   generated from the compiler — NEVER edit by hand
+  └── authored/pt/     human content — this is where you write
 
-O que o compilador sabe sobre si mesmo (matriz tipo x propriedade, codigos de
-erro, mensagens) e derivado por sondagem, nunca copiado. Assim o guia nao pode
-divergir do compilador. O que exige julgamento metodologico — para que serve
-cada tipo, quando usar, exemplos — e autoral, e vive separado.
+What the compiler knows about itself (type x property matrix, error codes,
+messages) is derived by probing, never copied. That way the guide cannot
+drift from the compiler. What takes methodological judgement — what each type
+is for, when to use it, examples — is authored, and lives apart.
+
+The entries are written in Portuguese (locale `pt`); this tool's own output
+is in English.
 
 
-Corrigir um texto existente
----------------------------
-1. Descubra o arquivo: o nome e o `id` do verbete.
+Fixing an existing text
+-----------------------
+1. Find the file: its name is the entry's `id`.
        synesis-help lookup TYPE_CHAIN --format=json
 
-2. Se o caminho contem `_generated/`, NAO edite — veja a secao adiante.
+2. If the path contains `_generated/`, do NOT edit it — see the section below.
 
-3. Edite o .md em synesis_help/entries/authored/pt/
+3. Edit the .md in synesis_help/entries/authored/pt/
 
-4. Reconstrua e confira:
+4. Rebuild and check:
        python tools/validate_entries.py   links, ids, frontmatter
-       python tools/check_examples.py     exemplos ainda compilam
-       synesis-help build                 regrava o indice
+       python tools/check_examples.py     examples still compile
+       synesis-help build                 rewrites the index
 
-   O guia le o indice compilado, nao os .md.
-   SEM `build`, SUA EDICAO NAO APARECE.
+   The guide reads the compiled index, not the .md files.
+   WITHOUT `build`, YOUR EDIT DOES NOT SHOW.
 
 
-Acrescentar um verbete
-----------------------
-Crie synesis_help/entries/authored/pt/<ID>.md — o nome do arquivo E o `id`:
+Adding an entry
+---------------
+Create synesis_help/entries/authored/pt/<ID>.md — the file name IS the `id`:
 
     ---
-    id: MOD_EXEMPLO
-    title: "EXEMPLO"
+    id: MOD_EXAMPLE
+    title: "EXAMPLE"
     category: modifier
-    summary: "Uma frase. E o que aparece no indice."
-    syntax: "EXEMPLO <valor> [OPCIONAL <n>]"
+    summary: "One sentence. It is what the index shows."
+    syntax: "EXAMPLE <value> [OPTIONAL <n>]"
     see_also: [BLOCK_FIELD, SYNESIS_E020]
     source: authored
     order: 50
     ---
 
-    # EXEMPLO
+    # EXAMPLE
 
-    ## Descricao
-    O que e e para que serve.
+    ## Descrição
+    What it is and what it is for.
 
     ## Sintaxe
-    (bloco de codigo com a forma completa)
+    (code block with the complete form)
 
     ## Regras
-    - Uma regra por linha, citando o codigo do erro.
+    - One rule per line, citing the error code.
 
     ## Exemplo
-    (bloco de codigo que compila)
+    (code block that compiles)
 
-Depois:  python tools/generate_index.py && synesis-help build
+Then:  python tools/generate_index.py && synesis-help build
 
-`order` define a posicao dentro da categoria: menor vem primeiro, 100 e o
-padrao, empate cai no alfabetico. A ordem e DIDATICA — do panorama ao
-detalhe — e nao alfabetica: "Por onde comecar" precisa abrir o guia.
+`order` sets the position inside the category: lower comes first, 100 is the
+default, ties fall back to alphabetical. The order is DIDACTIC — from the
+overview to the detail — not alphabetical: "Por onde começar" must open the
+guide.
 
-Categorias validas:
+Valid categories:
   overview · block · field_type · modifier · linkage
   ecosystem · glossary
 
-As categorias block, field_type, modifier e linkage EXIGEM `syntax` no
-frontmatter e uma secao "## Sintaxe" no corpo — o validador cobra.
+The block, field_type, modifier and linkage categories REQUIRE `syntax` in the
+frontmatter and a "## Sintaxe" section in the body — the validator checks it.
 
-Convencao de `id`:
-  BLOCK_    bloco               BLOCK_ONTOLOGY
-  TYPE_     tipo de campo       TYPE_CHAIN
-  MOD_      modificador         MOD_SCOPE
-  GUIDE_    panorama            GUIDE_START
-  GLOS_     glossario           GLOS_BIBREF
-  (diagnostico usa o proprio codigo: SYNESIS_E047)
+`id` convention:
+  BLOCK_    block               BLOCK_ONTOLOGY
+  TYPE_     field type          TYPE_CHAIN
+  MOD_      modifier            MOD_SCOPE
+  GUIDE_    overview            GUIDE_START
+  GLOS_     glossary            GLOS_BIBREF
+  (a diagnostic uses its own code: SYNESIS_E047)
 
-O `id` e a chave de tudo — cross-references, links e o contrato JSON.
-Escolha e nao mude; o titulo pode mudar a vontade.
-
-
-Corrigir um verbete gerado
---------------------------
-Os 82 verbetes em _generated/ vem do compilador. Edita-los e inutil: a proxima
-regeneracao sobrescreve, e o CI acusa.
-
-  A regra em si .............. no compilador (synesis/)
-  A mensagem do erro ......... synesis/ast/results.py, em to_diagnostic()
-  Resumo do tipo ............. tools/generate_entries.py, dict TYPE_SUMMARY
-  Ajuda de um modulo ......... o proprio --help da ferramenta
-                               (tools/generate_ecosystem.py so captura)
-  Rotulos de secao ........... tools/generate_entries.py, dict L
-
-Para ACRESCENTAR prosa a um verbete gerado, crie um arquivo com o MESMO `id`
-em authored/pt/. O build funde os dois, e o autoral vence.
+The `id` is the key to everything — cross-references, links and the JSON
+contract. Choose it and do not change it; the title may change freely.
 
 
-Regras de escrita
------------------
-Acentuacao   Escreva com acentos. Se esquecer:
-                 python tools/fix_accents.py --check   relata
-                 python tools/fix_accents.py           corrige
-             So a prosa e tocada — codigo e campos tecnicos ficam intactos.
+Fixing a generated entry
+------------------------
+The entries in _generated/ come from the compiler. Editing them is useless: the
+next regeneration overwrites them, and CI flags it.
 
-Codigo       Maximo 72 colunas, recuo de 4 espacos, sem TAB. Todo exemplo que
-             comeca com TEMPLATE ou FIELD e COMPILADO de verdade contra o
-             synesis instalado. Exemplo errado no guia e pior que exemplo
-             ausente.
+  The rule itself ............ in the compiler (synesis/)
+  The error message .......... synesis/ast/results.py, in to_diagnostic()
+  Type summary ............... tools/generate_entries.py, TYPE_SUMMARY dict
+  A module's help ............ the tool's own --help
+                               (tools/generate_ecosystem.py only captures it)
+  Section labels ............. tools/generate_entries.py, L dict
 
-Registro     Este e um guia de REFERENCIA (Diataxis): descreve a maquina,
-             sucinta e ordenadamente. Tutorial, discussao metodologica e
-             estudo de caso pertencem a synesis-docs-sources.
+To ADD prose to a generated entry, create a file with the SAME `id` in
+authored/pt/. The build merges both, and the authored one wins.
 
-see_also     So `id`s existentes — link quebrado falha o build.
 
-Documentacao completa: {REPO}
+Writing rules
+-------------
+Accents      Write with accents. If you forget:
+                 python tools/fix_accents.py --check   reports
+                 python tools/fix_accents.py           fixes
+             Only prose is touched — code and technical fields stay intact.
+
+Code         At most 72 columns, 4-space indent, no TAB. Every example that
+             starts with TEMPLATE or FIELD is really COMPILED against the
+             installed synesis. A wrong example in the guide is worse than a
+             missing one.
+
+Register     This is a REFERENCE guide (Diataxis): it describes the machine,
+             briefly and in order. Tutorials, methodological discussion and
+             case studies belong in synesis-docs.
+
+see_also     Existing `id`s only — a broken link fails the build.
+
+Full documentation: {REPO}
 """
 
 CREDITS = f"""\
   synesis-help {__version__}
 
-  Guia de referencia rapida da linguagem Synesis
+  Quick reference guide to the Synesis language
 
   Copyright (c) {YEAR} {AUTHOR}
   {ORCID}
 
-  LICENCA
+  LICENSE
   -------
   AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
 
-  Este programa e software livre: voce pode redistribui-lo e/ou modifica-lo
-  sob os termos da GNU Affero General Public License, versao 3, publicada
-  pela Free Software Foundation.
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Affero General Public License, version 3, as
+  published by the Free Software Foundation.
 
-  Distribuido na esperanca de ser util, mas SEM QUALQUER GARANTIA; sem
-  sequer a garantia implicita de COMERCIALIZACAO ou ADEQUACAO A UM FIM
-  ESPECIFICO. Consulte a GNU AGPL para mais detalhes.
+  Distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE. See the GNU AGPL for more details.
 
-  Excecao de saida de dados: os dados produzidos por este software NAO sao
-  cobertos pela AGPL. Ver LICENSE.exception.
+  Data output exception: the data produced by this software is NOT covered
+  by the AGPL. See LICENSE.exception.
 
-  Texto integral: LICENSE e LICENSE.exception, na raiz do repositorio.
+  Full text: LICENSE and LICENSE.exception, at the repository root.
 
-  INSPIRACAO
-  ----------
-  Norton Guides (1985), de Warren Woodford — sistema de ajuda residente que
-  definiu o padrao de consulta rapida para programadores, e cuja ergonomia
-  este guia procura reviver: offline, instantaneo, navegavel pelo teclado.
-
-  CONTEUDO
-  --------
-  Os verbetes de diagnostico e de tipo de campo sao derivados por sondagem do
-  compilador Synesis — a documentacao nao pode divergir do que o compilador
-  faz. Os demais sao autorais.
-
-  COMO CITAR
-  ----------
-  De Britto, C. M. ({YEAR}). synesis-help: guia de referencia da linguagem
-  Synesis (versao {__version__}) [Software]. {REPO}
-
-  ECOSSISTEMA
+  INSPIRATION
   -----------
-  synesis          compilador da linguagem
+  Norton Guides (1985), by Warren Woodford — a resident help system that set
+  the standard for quick reference among programmers, whose ergonomics this
+  guide tries to revive: offline, instant, keyboard-navigable.
+
+  CONTENT
+  -------
+  The diagnostic and field-type entries are derived by probing the Synesis
+  compiler — the documentation cannot drift from what the compiler does. The
+  others are authored.
+
+  HOW TO CITE
+  -----------
+  De Britto, C. M. ({YEAR}). synesis-help: reference guide to the Synesis
+  language (version {__version__}) [Software]. {REPO}
+
+  ECOSYSTEM
+  ---------
+  synesis          language compiler
   synesis-lsp      language server
-  synesis-graph    exportacao para bancos de grafo
-  synesis-coder    anotacao assistida por IA
-  synesis-vscode   extensao do editor
-  synesis-help     este guia
+  synesis-graph    export to graph databases
+  synesis-coder    AI-assisted annotation
+  synesis-vscode   editor extension
+  synesis-help     this guide
 
   {DOCS}
 """

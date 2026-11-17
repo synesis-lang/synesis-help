@@ -6,7 +6,7 @@ summary: "Campo FORBIDDEN presente."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,8 +20,8 @@ Campo FORBIDDEN presente.
 ## Mensagem do compilador
 
 ```text
-Campo 'nome_do_campo' e proibido no bloco ITEM.
-  Remova esta linha do arquivo.
+Field 'nome_do_campo' is forbidden in the ITEM block.
+  Remove this line from the file.
 ```
 
 ## Onde aparece

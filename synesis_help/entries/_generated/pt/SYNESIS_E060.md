@@ -2,11 +2,11 @@
 id: SYNESIS_E060
 title: "SYNESIS_E060"
 category: diagnostic
-summary: "\"Valor de ARITY nao e um inteiro (ex: 2.0). (erro 60).\""
+summary: "Valor de ARITY nao e um inteiro (ex: 2.0). (erro 60)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Valor de ARITY nao e um inteiro (ex: 2.0). (erro 60)
 ## Mensagem do compilador
 
 ```text
-A declaracao `ARITY` do campo 'nome_do_campo' usa o valor
-  `valor`, que nao e um numero inteiro.
-  ARITY conta conceitos por cadeia e deve ser um inteiro.
-  Por exemplo: `ARITY >= 2`, nao `ARITY >= 2.0`.
+The `ARITY` declaration of the field 'nome_do_campo' uses the value
+  `valor`, which is not an integer.
+  ARITY counts concepts per chain and must be an integer.
+  For example: `ARITY >= 2`, not `ARITY >= 2.0`.
 ```
 
 ## Onde aparece

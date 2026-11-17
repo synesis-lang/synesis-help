@@ -6,7 +6,7 @@ summary: "ITEM sem SOURCE correspondente."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ ITEM sem SOURCE correspondente.
 ## Mensagem do compilador
 
 ```text
-Este ITEM referencia `@@autor2024`, mas nao ha nenhum bloco SOURCE com
-  essa referencia neste arquivo. Todo ITEM precisa de um SOURCE correspondente
-  no mesmo arquivo.
-  Crie um bloco `SOURCE @@autor2024` antes deste ITEM, ou verifique
-  se a referencia esta correta.
+This ITEM references `@@autor2024`, but there is no SOURCE block with
+  that reference in this file. Every ITEM needs a matching SOURCE
+  in the same file.
+  Create a `SOURCE @@autor2024` block before this ITEM, or check
+  that the reference is correct.
 ```
 
 ## Onde aparece

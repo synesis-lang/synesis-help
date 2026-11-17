@@ -1,6 +1,6 @@
 # Guia Synesis — Indice
 
-110 verbetes. Consulta rapida da linguagem Synesis.
+183 verbetes. Consulta rapida da linguagem Synesis.
 
 > Gerado por `tools/generate_index.py`. Nao edite a mao.
 
@@ -30,7 +30,10 @@
 | [**FIELD**](BLOCK_FIELD) | Define um campo: nome, tipo, escopo e regras de preenchimento. |
 | [**SOURCE**](BLOCK_SOURCE) | Unidade de proveniência: de onde procede a informação. |
 | [**ITEM**](BLOCK_ITEM) | Unidade de ocorrência: o que foi observado ou registrado. |
-| [**ONTOLOGY**](BLOCK_ONTOLOGY) | Unidade de conceituacao: o sistema conceitual que organiza as ocorrências. |
+| [**ONTOLOGY**](BLOCK_ONTOLOGY) | Princípio organizador: o sistema conceitual que organiza as ocorrências. |
+| [**QUESTIONS**](BLOCK_QUESTIONS) | Questões de competência: o que a estrutura do projeto precisa permitir responder. |
+| [**PHASE**](BLOCK_PHASE) | Plano de produção: quais campos o synesis-coder gera em cada fase, e a partir de quê. |
+| [**EXPORT**](BLOCK_EXPORT) | Declara os artefatos do projeto (JSON, CSV, XLS, OKF, SKOS) e executa todos com synesis export. |
 
 ## Tipos de campo
 
@@ -63,6 +66,7 @@
 | [**INCLUDE**](MOD_INCLUDE) | Declara os arquivos que compõem o projeto. |
 | [**METADATA**](MOD_METADATA) | Bloco opcional do projeto com versão, autoria e datas. |
 | [**IDENTIFIES / REFERS TO**](MOD_IDENTIFIES) | Liga projetos independentes: chave primaria e chave estrangeira. |
+| [**ROLE**](MOD_ROLE) | Declara a função de um campo de ONTOLOGY no princípio organizador: rótulo, nota, hierarquia ou consolidação. |
 
 ## Ligacao entre projetos
 
@@ -132,7 +136,7 @@
 | [`SYNESIS_E057`](SYNESIS_E057) | Dois ou mais blocos SCOPE FIELDS no mesmo template. (erro 57). |
 | [`SYNESIS_E058`](SYNESIS_E058) | Valor em bloco VALUES com espaco no inicio ou fim. (erro 58). |
 | [`SYNESIS_E059`](SYNESIS_E059) | Valores duplicados dentro de um mesmo bloco VALUES. (erro 59). |
-| [`SYNESIS_E060`](SYNESIS_E060) | \"Valor de ARITY nao e um inteiro (ex: 2.0). (erro 60).\ |
+| [`SYNESIS_E060`](SYNESIS_E060) | Valor de ARITY nao e um inteiro (ex: 2.0). (erro 60). |
 | [`SYNESIS_E061`](SYNESIS_E061) | Arquivo .syn no diretorio do projeto nao referenciado em INCLUDE ANNOTATIONS. (erro 61). |
 | [`SYNESIS_E062`](SYNESIS_E062) | Arquivo .syno no diretorio do projeto nao referenciado em INCLUDE ONTOLOGY. (erro 62). |
 | [`SYNESIS_E063`](SYNESIS_E063) | Arquivo .bib declarado no projeto nao encontrado no caminho indicado. (erro 63). |
@@ -157,7 +161,76 @@
 | [`SYNESIS_E086`](SYNESIS_E086) | VALUES definido em campo que nao e ORDERED nem ENUMERATED. (erro 86). |
 | [`SYNESIS_E087`](SYNESIS_E087) | Prefixo de indice `[N]` em VALUES de campo ENUMERATED. (erro 87). |
 | [`SYNESIS_E088`](SYNESIS_E088) | Campo ORDERED escrito com o rotulo em vez do indice. (erro 88). |
-| [`SYNESIS_I080`](SYNESIS_I080) | \"INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80).\ |
+| [`SYNESIS_E089`](SYNESIS_E089) | Mesma chave em dois arquivos da bibliografia ou do dataset. (erro 89). |
+| [`SYNESIS_E090`](SYNESIS_E090) | Resumo dos codigos sem conceito na ontologia, quando a checagem esta desligada. |
+| [`SYNESIS_E091`](SYNESIS_E091) | Linha de QUESTIONS fora da forma `<id>: <texto>`. |
+| [`SYNESIS_E092`](SYNESIS_E092) | Questao com identificador e sem texto (`Q1:`). |
+| [`SYNESIS_E093`](SYNESIS_E093) | Identificador de questao repetido no projeto. |
+| [`SYNESIS_E094`](SYNESIS_E094) | Formato de EXPORT desconhecido ou ainda nao disponivel. |
+| [`SYNESIS_E095`](SYNESIS_E095) | Propriedade fora das aceitas pelo formato. |
+| [`SYNESIS_E096`](SYNESIS_E096) | Falta uma propriedade obrigatoria do formato. |
+| [`SYNESIS_E097`](SYNESIS_E097) | Propriedade repetida no mesmo bloco. |
+| [`SYNESIS_E098`](SYNESIS_E098) | Dois blocos do mesmo formato sem nome, ou nome repetido. |
+| [`SYNESIS_E099`](SYNESIS_E099) | MAP (ou MAP RELATIONS) num formato que nao o usa. |
+| [`SYNESIS_E100`](SYNESIS_E100) | GENERATED_AT que nao e data ISO 8601 com fuso. |
+| [`SYNESIS_E101`](SYNESIS_E101) | Conceito citado num campo CODE do ONTOLOGY sem bloco ONTOLOGY. |
+| [`SYNESIS_E102`](SYNESIS_E102) | Item vazio numa lista (`a, , b`) de um campo CODE do ONTOLOGY. |
+| [`SYNESIS_E103`](SYNESIS_E103) | Dois blocos com nomes que so coincidem pela forma Unicode (NFC). |
+| [`SYNESIS_E104`](SYNESIS_E104) | Papel fora do catalogo. |
+| [`SYNESIS_E105`](SYNESIS_E105) | Papel previsto e ainda indisponivel (DIVISION). |
+| [`SYNESIS_E106`](SYNESIS_E106) | LABEL, NOTE, HIERARCHY ou DIVISION sem especie. |
+| [`SYNESIS_E107`](SYNESIS_E107) | Papel com tipo de campo incompativel. |
+| [`SYNESIS_E108`](SYNESIS_E108) | ROLE num campo fora de SCOPE ONTOLOGY. |
+| [`SYNESIS_E109`](SYNESIS_E109) | ROLE repetido no mesmo FIELD. |
+| [`SYNESIS_E110`](SYNESIS_E110) | Dois campos com NOTE DEFINITION, ou dois com LABEL PREFERRED. |
+| [`SYNESIS_E111`](SYNESIS_E111) | Campo HIERARCHY declarado REQUIRED. |
+| [`SYNESIS_E112`](SYNESIS_E112) | Campo do ONTOLOGY com nome de chave canonica do JSON. |
+| [`SYNESIS_E113`](SYNESIS_E113) | Mais de um termo em LABEL PREFERRED num conceito. |
+| [`SYNESIS_E114`](SYNESIS_E114) | O mesmo termo em duas especies de LABEL no mesmo conceito. |
+| [`SYNESIS_E115`](SYNESIS_E115) | O mesmo termo de LABEL em dois conceitos. |
+| [`SYNESIS_E116`](SYNESIS_E116) | Termo de LABEL igual ao nome de outro conceito. |
+| [`SYNESIS_E117`](SYNESIS_E117) | Conceito que aponta para si mesmo num campo HIERARCHY. |
+| [`SYNESIS_E118`](SYNESIS_E118) | Ciclo na hierarquia (uniao das especies). |
+| [`SYNESIS_E119`](SYNESIS_E119) | O mesmo par filho-pai em duas especies de HIERARCHY. |
+| [`SYNESIS_E120`](SYNESIS_E120) | Bloco sem mencao em ITEM (CODE ou CHAIN) e sem descendente mencionado. |
+| [`SYNESIS_E121`](SYNESIS_E121) | Hierarquia pela rota de nome (`parent`/`is_a`). |
+| [`SYNESIS_E122`](SYNESIS_E122) | Relacao de MAP RELATIONS ausente das RELATIONS dos campos CHAIN. |
+| [`SYNESIS_E123`](SYNESIS_E123) | Relacao presente em mais de um campo CHAIN, sem FROM. |
+| [`SYNESIS_E124`](SYNESIS_E124) | Alvo de MAP RELATIONS fora de HIERARCHY KIND/PART/INSTANCE e RELATED. |
+| [`SYNESIS_E125`](SYNESIS_E125) | A mesma relacao em dois MAP RELATIONS do bloco. |
+| [`SYNESIS_E126`](SYNESIS_E126) | MIN_SOURCES que nao e inteiro >= 1. |
+| [`SYNESIS_E127`](SYNESIS_E127) | NAMESPACE que nao e IRI absoluto terminado em / ou #. |
+| [`SYNESIS_E128`](SYNESIS_E128) | LANGUAGE que nao e etiqueta BCP 47 bem formada. |
+| [`SYNESIS_E129`](SYNESIS_E129) | prefLabel derivado do nome coincide com um rotulo de outro conceito. |
+| [`SYNESIS_E130`](SYNESIS_E130) | prefLabel derivado coincide com altLabel/hiddenLabel do mesmo conceito (S13). |
+| [`SYNESIS_E131`](SYNESIS_E131) | Dois recursos com o mesmo IRI (defesa). |
+| [`SYNESIS_E132`](SYNESIS_E132) | Valores de TOPIC com a mesma identidade e grafias diferentes, unidos. |
+| [`SYNESIS_E133`](SYNESIS_E133) | Propriedade fora de FIELDS, INPUT, RULES e OUTPUT (OUTPUT so em ONTOLOGY). |
+| [`SYNESIS_E134`](SYNESIS_E134) | Propriedade repetida no bloco PHASE. |
+| [`SYNESIS_E135`](SYNESIS_E135) | FIELDS, INPUT ou RULES sem campo; PHASE sem FIELDS. |
+| [`SYNESIS_E136`](SYNESIS_E136) | Campo de FIELDS, INPUT ou RULES ausente do template. |
+| [`SYNESIS_E137`](SYNESIS_E137) | O mesmo campo em FIELDS de duas fases. |
+| [`SYNESIS_E138`](SYNESIS_E138) | Campo de ONTOLOGY numa PHASE ANNOTATIONS, ou de SOURCE/ITEM numa PHASE ONTOLOGY. |
+| [`SYNESIS_E139`](SYNESIS_E139) | INPUT produzido só por uma fase POSTERIOR (ordem das fases). |
+| [`SYNESIS_E140`](SYNESIS_E140) | Campos de um BUNDLE em fases diferentes. |
+| [`SYNESIS_E141`](SYNESIS_E141) | Com blocos PHASE, campo REQUIRED que nenhuma fase produz. |
+| [`SYNESIS_E142`](SYNESIS_E142) | PHASE ONTOLOGY sem OUTPUT num projeto sem exatamente um .syno elegivel. |
+| [`SYNESIS_E143`](SYNESIS_E143) | OUTPUT fora dos .syno locais citados como arquivo. |
+| [`SYNESIS_E144`](SYNESIS_E144) | Fases com o mesmo nome, ou nomes que viram a mesma variavel de ambiente. |
+| [`SYNESIS_E145`](SYNESIS_E145) | Bloco cujo USE aponta para ele mesmo. |
+| [`SYNESIS_E146`](SYNESIS_E146) | USE que aponta para um conceito que tambem e preterido. |
+| [`SYNESIS_E147`](SYNESIS_E147) | Campo USE com mais de um conceito. |
+| [`SYNESIS_E148`](SYNESIS_E148) | Bloco preterido com outros campos alem do USE. |
+| [`SYNESIS_E149`](SYNESIS_E149) | Depois de resolver USE, um conceito seria pai de si mesmo. |
+| [`SYNESIS_E150`](SYNESIS_E150) | ALIAS_LABEL fora de HIDDEN e ALTERNATIVE. |
+| [`SYNESIS_E151`](SYNESIS_E151) | Nome preterido igual a um rotulo que o alvo ja tem. |
+| [`SYNESIS_E152`](SYNESIS_E152) | REGISTRY que nao e um arquivo de texto utilizavel. |
+| [`SYNESIS_E153`](SYNESIS_E153) | IRI registrado como publicado sem bloco nem USE que o substitua. |
+| [`SYNESIS_E154`](SYNESIS_E154) | SKOS gerado viola condicao de integridade (S9, S13, S14, S27, S37) ou a regra de hierarquia aciclica do Synesis. |
+| [`SYNESIS_E155`](SYNESIS_E155) | Verificacao editorial do SKOS gerado (sem prefLabel, sem posicao, esquema sem topo...). |
+| [`SYNESIS_E156`](SYNESIS_E156) | REGISTRY com IRIs de outro NAMESPACE: nao sao conferidos (aviso; o namespace e do pesquisador). |
+| [`SYNESIS_E157`](SYNESIS_E157) | REGISTRY e OUTPUT apontam para o mesmo arquivo: um sobrescreveria o outro. |
+| [`SYNESIS_I080`](SYNESIS_I080) | INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80). |
 | [`SYNESIS_W031`](SYNESIS_W031) ⚠ | Mesmo codigo repetido na mesma ocorrencia de campo CODE. (erro 31). |
 | [`SYNESIS_W067`](SYNESIS_W067) ⚠ | Data MODIFIED anterior a data CREATED no bloco METADATA. (erro 67). |
 | [`SYNESIS_W071`](SYNESIS_W071) ⚠ | Dois blocos ONTOLOGY com description identica. (erro 71). |

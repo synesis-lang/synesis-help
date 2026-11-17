@@ -6,7 +6,7 @@ summary: "Caminho declarado no .synp aponta para fora do diretorio do projeto. (
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Caminho declarado no .synp aponta para fora do diretorio do projeto. (erro 75)
 ## Mensagem do compilador
 
 ```text
-O caminho `arquivo.syn` declarado no projeto aponta para fora da pasta
-  do projeto. Por seguranca, o compilador so carrega arquivos contidos na
-  pasta onde esta o `.synp` (ou em suas subpastas).
-  Mova o arquivo para dentro da pasta do projeto e ajuste o caminho.
+The path `arquivo.syn` declared in the project points outside the
+  project folder. For safety, the compiler only loads files inside the
+  folder of the `.synp` (or its subfolders).
+  Move the file into the project folder and fix the path.
 ```
 
 ## Onde aparece

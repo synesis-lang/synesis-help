@@ -6,7 +6,7 @@ summary: "Tipo de valor incompativel com FieldSpec."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,9 +20,9 @@ Tipo de valor incompativel com FieldSpec.
 ## Mensagem do compilador
 
 ```text
-Tipo invalido para o campo `nome_do_campo`.
-  Esperado: exemplo
-  Encontrado: exemplo
+Invalid type for the field `nome_do_campo`.
+  Expected: exemplo
+  Found: exemplo
 ```
 
 ## Onde aparece

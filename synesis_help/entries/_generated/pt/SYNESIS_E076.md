@@ -6,7 +6,7 @@ summary: "Arquivo declarado no .synp existe mas nao pode ser lido/parseado. (err
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Arquivo declarado no .synp existe mas nao pode ser lido/parseado. (erro 76)
 ## Mensagem do compilador
 
 ```text
-O arquivo `arquivo.syn` foi encontrado mas nao pode ser lido pelo
-  compilador:
+The file `arquivo.syn` was found but could not be read by the
+  compiler:
     exemplo
-  Verifique se o arquivo esta salvo em codificacao UTF-8 e se nao esta
-  corrompido ou aberto exclusivamente por outro programa.
+  Check that the file is saved as UTF-8 and is not
+  corrupted or locked by another program.
 ```
 
 ## Onde aparece

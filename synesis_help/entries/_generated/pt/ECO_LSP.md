@@ -6,7 +6,7 @@ summary: "Servidor LSP: realce, hover, autocomplete e navegacao."
 see_also: [ECO_SYNESIS, ECO_CODER, ECO_GRAPH, GUIDE_ECOSYSTEM]
 source: generated
 order: 20
-version: "0.23.0"
+version: "0.25.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_ecosystem.py. Nao edite. -->
@@ -15,14 +15,14 @@ version: "0.23.0"
 
 ## Descricao
 
-Papel no ecossistema: **language server** · versao 0.23.0
+Papel no ecossistema: **language server** · versao 0.25.0
 
 Nao e chamado a mao: o editor o inicia. Instale-o e a extensao do VS Code o encontra sozinha.
 
 ## Uso
 
 ```text
-SYNESIS LANGUAGE SERVER (v0.23.0) | Core (v0.12.0)
+SYNESIS LANGUAGE SERVER (v0.25.0) | Core (v0.15.0)
 Language server for knowledge engineering.
 
 Registered Capabilities:

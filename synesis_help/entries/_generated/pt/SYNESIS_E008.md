@@ -6,7 +6,7 @@ summary: "Chain qualificada usada mas template nao define RELATIONS. (erro 8)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,12 +20,12 @@ Chain qualificada usada mas template nao define RELATIONS. (erro 8)
 ## Mensagem do compilador
 
 ```text
-Esta cadeia usa relacoes nomeadas (ex: `Conceito -> RELACAO -> Conceito`),
-  mas o template nao define nenhum bloco `RELATIONS` para o campo
+This chain uses named relations (e.g. `Concept -> RELATION -> Concept`),
+  but the template does not define a `RELATIONS` block for the field
   `nome_do_campo`.
-  Se o template usa cadeias simples, reescreva a cadeia sem relacoes:
-  `Conceito -> Conceito`. Se deseja usar relacoes nomeadas, peca ao
-  coordenador do projeto que adicione um bloco `RELATIONS` ao template.
+  If the template uses simple chains, rewrite the chain without relations:
+  `Concept -> Concept`. If you want named relations, ask the
+  project coordinator to add a `RELATIONS` block to the template.
 ```
 
 ## Onde aparece

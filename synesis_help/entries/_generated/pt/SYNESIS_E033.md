@@ -6,7 +6,7 @@ summary: "Nome de codigo ou conceito com caracteres invalidos. (erro 33)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Nome de codigo ou conceito com caracteres invalidos. (erro 33)
 ## Mensagem do compilador
 
 ```text
-O nome `exemplo` contem o caractere invalido `exemplo`,
-  que nao e permitido em identificadores Synesis. Identificadores aceitam
-  apenas letras, numeros, underscore e hifen, e devem comecar com uma letra.
-  Por exemplo: use `_` em vez de `exemplo`.
+The name `exemplo` contains the invalid character `exemplo`,
+  which is not allowed in Synesis identifiers. Identifiers accept
+  only letters, digits, underscore and hyphen, and must start with a letter.
+  For example: use `_` instead of `exemplo`.
 ```
 
 ## Onde aparece

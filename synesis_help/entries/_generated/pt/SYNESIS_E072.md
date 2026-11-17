@@ -6,7 +6,7 @@ summary: "Entrada em arquivo .bib nao esta em formato BibTeX valido. (erro 72)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,18 +20,18 @@ Entrada em arquivo .bib nao esta em formato BibTeX valido. (erro 72)
 ## Mensagem do compilador
 
 ```text
-A entrada `@exemplo` no arquivo de referencias `arquivo.syn`
-  nao esta em formato BibTeX valido e foi ignorada pelo compilador. Por
-  isso, qualquer `@bibref` que aponte para ela sera reportada como nao
-  encontrada.
-  Uma entrada BibTeX valida tem tres partes: um tipo, a chave de citacao
-  entre chaves, e campos separados por virgula usando `=`:
+The entry `@exemplo` in the references file `arquivo.syn`
+  is not valid BibTeX and was ignored by the compiler. Because of
+  that, any `@bibref` pointing to it will be reported as not
+  found.
+  A valid BibTeX entry has three parts: a type, the citation key
+  in braces, and comma-separated fields using `=`:
     @book{exemplo,
-        title = {Titulo da obra},
+        title = {Title of the work},
         year = {2024}
     }
-  Verifique se a entrada comeca com um tipo (@book, @article, @misc...),
-  se a chave vem entre chaves `{ }`, e se cada campo usa `=` (e nao `:`).
+  Check that the entry starts with a type (@book, @article, @misc...),
+  that the key is in braces `{ }`, and that each field uses `=` (not `:`).
 ```
 
 ## Onde aparece

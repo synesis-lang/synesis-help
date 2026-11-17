@@ -6,7 +6,7 @@ summary: "Arquivo .syn no diretorio do projeto nao referenciado em INCLUDE ANNOT
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Arquivo .syn no diretorio do projeto nao referenciado em INCLUDE ANNOTATIONS. (e
 ## Mensagem do compilador
 
 ```text
-O arquivo `arquivo.syn` (extensao `.syn`) existe no diretorio do projeto
-  mas nao esta referenciado em nenhum bloco INCLUDE ANNOTATIONS no `.synp`.
-  Sem essa declaracao, o compilador ignora o arquivo e as anotacoes nele
-  contidas nao serao carregadas nem validadas.
-  Adicione ao arquivo de projeto:
+The file `arquivo.syn` (`.syn` extension) exists in the project folder
+  but is not referenced by any INCLUDE ANNOTATIONS in the `.synp`.
+  Without that declaration, the compiler ignores the file and the annotations
+  in it are neither loaded nor validated.
+  Add to the project file:
     INCLUDE ANNOTATIONS "arquivo.syn"
 ```
 

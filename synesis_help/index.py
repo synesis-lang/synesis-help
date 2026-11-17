@@ -17,13 +17,13 @@ from typing import Iterator, Optional
 
 #: Ordem de apresentacao das categorias no painel esquerdo.
 CATEGORY_ORDER = [
-    ("overview", "Panorama"),
-    ("block", "Blocos"),
-    ("field_type", "Tipos de campo"),
-    ("modifier", "Modificadores"),
-    ("linkage", "Ligacao"),
-    ("ecosystem", "Ecossistema"),
-    ("diagnostic", "Diagnosticos"),
+    ("overview", "Overview"),
+    ("block", "Blocks"),
+    ("field_type", "Field types"),
+    ("modifier", "Modifiers"),
+    ("linkage", "Linkage"),
+    ("ecosystem", "Ecosystem"),
+    ("diagnostic", "Diagnostics"),
 ]
 CATEGORY_LABEL = dict(CATEGORY_ORDER)
 
@@ -145,8 +145,8 @@ def build(entries_dir: Path, db_path: Path) -> int:
             # No Windows o arquivo nao pode ser removido enquanto outra
             # instancia o mantem aberto (uma TUI rodando, por exemplo).
             raise RuntimeError(
-                f"O indice esta em uso e nao pode ser reconstruido:"
-                f" {db_path}\nFeche o guia (synesis-help) e tente de novo."
+                f"The index is in use and cannot be rebuilt:"
+                f" {db_path}\nClose the guide (synesis-help) and try again."
             ) from exc
     db_path.parent.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(db_path)

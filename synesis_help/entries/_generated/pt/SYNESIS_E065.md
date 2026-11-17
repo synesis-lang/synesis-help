@@ -6,7 +6,7 @@ summary: "Bloco PROJECT sem declaracao TEMPLATE. (erro 65)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Bloco PROJECT sem declaracao TEMPLATE. (erro 65)
 ## Mensagem do compilador
 
 ```text
-O arquivo de projeto nao declara nenhum template. O template e obrigatorio
-  — ele define as regras de validacao para todas as anotacoes do projeto.
-  Sem ele, o compilador nao pode verificar se as anotacoes estao corretas.
-  Adicione ao bloco PROJECT:
-    TEMPLATE "nome_do_arquivo.synt"
+The project file declares no template. The template is required
+  — it defines the validation rules for every annotation in the project.
+  Without it, the compiler cannot check whether the annotations are correct.
+  Add to the PROJECT block:
+    TEMPLATE "file_name.synt"
 ```
 
 ## Onde aparece

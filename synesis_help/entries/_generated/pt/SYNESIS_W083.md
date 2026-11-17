@@ -6,7 +6,7 @@ summary: "REFERS TO cujo valor nao casa com nenhum IDENTIFIES no link step. (war
 severity: Aviso
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,9 +20,9 @@ REFERS TO cujo valor nao casa com nenhum IDENTIFIES no link step. (warning 83)
 ## Mensagem do compilador
 
 ```text
-O valor `valor` (`REFERS TO exemplo` em `exemplo`) nao tem
-  `IDENTIFIES exemplo` correspondente — e uma referencia orfa.
-  Pode ser esperado (ex. autor externo sem curriculo no corpus). Nenhum no e criado.
+The value `valor` (`REFERS TO exemplo` in `exemplo`) has no
+  matching `IDENTIFIES exemplo` — it is an orphan reference.
+  This may be expected (e.g. an external author with no record in the corpus). No node is created.
 ```
 
 ## Onde aparece

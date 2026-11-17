@@ -6,7 +6,7 @@ summary: "Arquivo .bib declarado no projeto nao encontrado no caminho indicado. 
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,13 +20,13 @@ Arquivo .bib declarado no projeto nao encontrado no caminho indicado. (erro 63)
 ## Mensagem do compilador
 
 ```text
-O arquivo de referencias bibliograficas `arquivo.syn` declarado no
-  projeto nao foi encontrado. Sem ele, nenhuma referencia `@bibref` pode
-  ser validada.
-  Verifique se o arquivo existe e se o caminho esta correto. O caminho
-  deve ser relativo a pasta onde esta o arquivo de projeto (`.synp`).
+The bibliographic references file `arquivo.syn` declared in the
+  project was not found. Without it, no `@bibref` reference can
+  be validated.
+  Check that the file exists and that the path is correct. The path
+  must be relative to the folder of the project file (`.synp`).
 ```
 
 ## Onde aparece
 
-- **MissingBibliographyFile**: `filename`
+- **MissingBibliographyFile**: `filename`, `no_matches`

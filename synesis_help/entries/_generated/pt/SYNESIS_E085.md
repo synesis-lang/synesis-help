@@ -6,7 +6,7 @@ summary: "Campo REQUIRED ... ON DATASET sem valor no registro do dataset TOML. (
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,12 +20,12 @@ Campo REQUIRED ... ON DATASET sem valor no registro do dataset TOML. (erro 85)
 ## Mensagem do compilador
 
 ```text
-O campo `nome_do_campo` foi declarado `REQUIRED ... ON DATASET`,
-  ou seja, seu valor deve vir do registro TOML do SOURCE — nao do texto.
-  Mas o registro `@autor2024` nao tem valor no caminho
+The field `nome_do_campo` was declared `REQUIRED ... ON DATASET`,
+  so its value must come from the SOURCE's TOML record — not from the text.
+  But the record `@autor2024` has no value at the path
   `exemplo`.
-  Verifique a secao/campo TOML, ou remova a exigencia `ON DATASET`
-  do template.
+  Check the TOML section/field, or remove the `ON DATASET` requirement
+  from the template.
 ```
 
 ## Onde aparece

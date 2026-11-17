@@ -6,7 +6,7 @@ summary: "Arquivo .syno no diretorio do projeto nao referenciado em INCLUDE ONTO
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Arquivo .syno no diretorio do projeto nao referenciado em INCLUDE ONTOLOGY. (err
 ## Mensagem do compilador
 
 ```text
-O arquivo `arquivo.syn` (extensao `.syno`) existe no diretorio do projeto
-  mas nao esta referenciado em nenhum bloco INCLUDE ONTOLOGY no `.synp`.
-  Sem essa declaracao, a ontologia nao sera carregada e os codigos definidos
-  nela nao poderao ser validados.
-  Adicione ao arquivo de projeto:
+The file `arquivo.syn` (`.syno` extension) exists in the project folder
+  but is not referenced by any INCLUDE ONTOLOGY in the `.synp`.
+  Without that declaration, the organizing model is not loaded and the codes
+  defined in it cannot be validated.
+  Add to the project file:
     INCLUDE ONTOLOGY "arquivo.syn"
 ```
 

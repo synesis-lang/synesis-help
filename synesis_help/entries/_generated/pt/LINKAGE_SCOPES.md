@@ -6,7 +6,7 @@ summary: "Onde IDENTIFIES e REFERS TO podem ser declarados."
 syntax: FIELD <nome> TYPE <tipo> SCOPE SOURCE <IDENTIFIES|REFERS TO> <entidade> END FIELD
 see_also: [SYNESIS_E078]
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->

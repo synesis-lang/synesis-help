@@ -6,7 +6,7 @@ summary: "Campo de BUNDLE ausente (violacao de pareamento)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Campo de BUNDLE ausente (violacao de pareamento).
 ## Mensagem do compilador
 
 ```text
-Os campos `exemplo_a, exemplo_b` formam um pacote indivisivel (bundle) neste bloco
-  — eles representam informacao composta e devem sempre aparecer juntos.
-  Um ou mais campos do pacote estao ausentes: `exemplo_b`.
-  Adicione os campos faltantes ou remova todos os campos do pacote.
-  Um bundle parcial nao e valido.
+The fields `exemplo_a, exemplo_b` form an indivisible bundle in this block
+  — they represent compound information and must always appear together.
+  One or more bundle fields are missing: `exemplo_b`.
+  Add the missing fields or remove all fields of the bundle.
+  A partial bundle is not valid.
 ```
 
 ## Onde aparece

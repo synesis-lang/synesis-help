@@ -6,7 +6,7 @@ summary: "Campo REQUIRED ausente."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,9 +20,9 @@ Campo REQUIRED ausente.
 ## Mensagem do compilador
 
 ```text
-O campo `nome_do_campo` e obrigatorio neste bloco ITEM,
-  mas nao foi encontrado.
-  Adicione a linha `nome_do_campo: <valor>` ao bloco antes de
+The field `nome_do_campo` is required in this ITEM block,
+  but it was not found.
+  Add the line `nome_do_campo: <value>` to the block before
   `END ITEM`.
 ```
 

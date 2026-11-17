@@ -6,7 +6,7 @@ summary: "Referencia @bibref nao encontrada no arquivo .bib."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Referencia @bibref nao encontrada no arquivo .bib.
 ## Mensagem do compilador
 
 ```text
-A referencia `@@autor2024` nao foi encontrada no arquivo de referencias (`.bib`).
-  Verifique se o identificador esta escrito corretamente — ele deve corresponder
-  exatamente ao campo `ID` da entrada BibTeX.
-  Consulte o arquivo `.bib` para ver as referencias disponiveis.
+The reference `@@autor2024` was not found in the references file (`.bib`).
+  Check that the identifier is spelled correctly — it must match
+  the `ID` field of the BibTeX entry exactly.
+  See the `.bib` file for the available references.
 ```
 
 ## Onde aparece

@@ -6,7 +6,7 @@ summary: "Arquivo .syno declarado em INCLUDE ONTOLOGY nao encontrado. (erro 74).
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Arquivo .syno declarado em INCLUDE ONTOLOGY nao encontrado. (erro 74)
 ## Mensagem do compilador
 
 ```text
-O arquivo de ontologia `arquivo.syn` esta declarado em INCLUDE ONTOLOGY
-  mas nao foi encontrado. Sem ele, os codigos usados nas anotacoes nao podem
-  ser validados contra a ontologia.
-  Verifique se o nome esta correto e se o arquivo existe. O caminho deve ser
-  relativo a pasta onde esta o arquivo de projeto (`.synp`).
+The organizing model file `arquivo.syn` is declared in INCLUDE ONTOLOGY
+  but was not found. Without it, the codes used in the annotations cannot
+  be validated against the organizing model.
+  Check that the name is correct and that the file exists. The path must be
+  relative to the folder of the project file (`.synp`).
 ```
 
 ## Onde aparece

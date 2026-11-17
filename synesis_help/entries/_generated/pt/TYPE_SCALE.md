@@ -7,7 +7,7 @@ syntax: FIELD <nome> TYPE SCALE SCOPE <escopo> FORMAT [<min>..<max>] [...] END F
 see_also: [SYNESIS_E051, SYNESIS_E055, SYNESIS_E056, SYNESIS_E086, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 90
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -51,7 +51,7 @@ END FIELD
 
 ## Regras
 
-- **`FORMAT` é obrigatório.** O campo 'nome_do_campo' e do tipo SCALE, mas nao declara o intervalo
+- **`FORMAT` é obrigatório.** The field 'nome_do_campo' is of type SCALE, but does not declare the allowed
 
 ## Ver também
 

@@ -6,7 +6,7 @@ summary: "Campo TOPIC recebendo valor com espacos. (erro 32)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Campo TOPIC recebendo valor com espacos. (erro 32)
 ## Mensagem do compilador
 
 ```text
-O valor `valor` do campo `nome_do_campo` contem espacos, o que
-  nao e permitido para campos do tipo TOPIC. Espacos sao interpretados como
-  separadores e causariam ambiguidade na hierarquia ontologica.
-  Use underscore no lugar de espacos. Por exemplo: `valor`.
+The value `valor` of the field `nome_do_campo` contains spaces, which
+  is not allowed in TOPIC fields. Spaces are read as
+  separators and would make the grouping ambiguous.
+  Use underscores instead of spaces. For example: `valor`.
 ```
 
 ## Onde aparece

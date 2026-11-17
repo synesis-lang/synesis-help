@@ -6,7 +6,7 @@ summary: "Nenhum arquivo .synp encontrado na raiz do workspace."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -26,26 +26,26 @@ Este código cobre 3 situações distintas:
 **MissingProjectFile**
 
 ```text
-Nenhum arquivo .synp encontrado na raiz do workspace: exemplo
-  Validacao semantica desativada.
-  Para ativar validacao completa, crie um arquivo PROJECT na raiz do workspace.
-  Exemplo: projeto.synp
+No .synp file found at the workspace root: exemplo
+  Semantic validation disabled.
+  To enable full validation, create a PROJECT file at the workspace root.
+  Example: project.synp
 ```
 
 **MissingTemplateFile**
 
 ```text
-Template 'exemplo' especificado em 'exemplo' nao encontrado.
-  Verifique se o caminho esta correto e relativo ao diretorio do projeto.
-  Ou crie o arquivo de template no local especificado.
+Template 'exemplo' given in 'exemplo' was not found.
+  Check that the path is correct and relative to the project folder.
+  Or create the template file at the given location.
 ```
 
 **InvalidProjectFile**
 
 ```text
-Arquivo de projeto 'exemplo' contem erros de sintaxe:
+Project file 'exemplo' has syntax errors:
   exemplo
-  Validacao semantica desativada ate que o arquivo seja corrigido.
+  Semantic validation is disabled until the file is fixed.
 ```
 
 ## Onde aparece

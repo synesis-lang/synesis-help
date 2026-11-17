@@ -6,7 +6,7 @@ summary: "Valor SCALE fora do intervalo [min..max]."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Valor SCALE fora do intervalo [min..max].
 ## Mensagem do compilador
 
 ```text
-O valor `1.5` esta fora do intervalo permitido para o campo
-  `nome_do_campo`. Este campo aceita apenas valores entre
-  `1.5` e `1.5`.
-  Corrija o valor para que fique dentro desse intervalo.
+The value `1.5` is outside the allowed range for the field
+  `nome_do_campo`. This field only accepts values between
+  `1.5` and `1.5`.
+  Fix the value so it falls within this range.
 ```
 
 ## Onde aparece

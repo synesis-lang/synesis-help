@@ -6,7 +6,7 @@ summary: "Dois SOURCEs com o mesmo valor num campo IDENTIFIES. (erro 77)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,12 +20,12 @@ Dois SOURCEs com o mesmo valor num campo IDENTIFIES. (erro 77)
 ## Mensagem do compilador
 
 ```text
-O campo `nome_do_campo` identifica a entidade `exemplo` (IDENTIFIES),
-  ou seja, cada valor deve corresponder a um unico SOURCE — como uma chave
-  primaria. Mas o valor `valor` aparece em dois SOURCEs:
-    `exemplo` e `exemplo`.
-  Se sao a mesma entidade, unifique os dois SOURCEs. Se sao entidades
-  distintas, corrija o valor de `nome_do_campo` em um deles.
+The field `nome_do_campo` identifies the entity `exemplo` (IDENTIFIES),
+  so each value must match a single SOURCE — like a primary
+  key. But the value `valor` appears in two SOURCEs:
+    `exemplo` and `exemplo`.
+  If they are the same entity, merge the two SOURCEs. If they are distinct
+  entities, fix the value of `nome_do_campo` in one of them.
 ```
 
 ## Onde aparece

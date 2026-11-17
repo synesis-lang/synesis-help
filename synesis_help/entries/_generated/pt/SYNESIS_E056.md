@@ -6,7 +6,7 @@ summary: "RELATIONS definido em campo que nao e TYPE CHAIN. (erro 56)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ RELATIONS definido em campo que nao e TYPE CHAIN. (erro 56)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' define um bloco `RELATIONS`, mas seu tipo e
-  `TEXT`, nao `CHAIN`. Blocos `RELATIONS` descrevem os tipos
-  de vinculo possiveis entre conceitos — eles so fazem sentido em campos
-  do tipo CHAIN. Remova o bloco `RELATIONS` ou altere o tipo para `CHAIN`.
+The field 'nome_do_campo' defines a `RELATIONS` block, but its type is
+  `TEXT`, not `CHAIN`. `RELATIONS` blocks describe the possible
+  kinds of link between concepts — they only make sense in fields
+  of type CHAIN. Remove the `RELATIONS` block or change the type to `CHAIN`.
 ```
 
 ## Onde aparece

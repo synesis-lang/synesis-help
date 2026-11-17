@@ -9,6 +9,37 @@ e o projeto adota [Versionamento Semântico](https://semver.org/spec/v2.0.0.html
 
 ---
 
+## [0.3.0] — 2026-11-17
+
+O guia passa a sair em português — 183 verbetes — cobrindo o
+synesis 0.15.
+
+### Adicionado
+
+- **`MOD_ROLE`**: a função de um campo de ONTOLOGY no modelo organizador
+  (`LABEL`, `NOTE`, `HIERARCHY`, `USE`), com a propriedade SKOS de cada uma.
+- **`BLOCK_QUESTIONS`, `BLOCK_PHASE`, `BLOCK_EXPORT`**: os blocos do `.synp`
+  para questões de competência, o plano de produção executado por
+  `synesis-coder phase` e os artefatos do projeto (SKOS com `MAP RELATIONS`,
+  `ALIAS_LABEL`, `REGISTRY` e `synesis export --publish`; IRIs a partir do
+  `NAMESPACE` do projeto).
+- Verbetes gerados para os diagnósticos `SYNESIS_E089`–`SYNESIS_E157`.
+
+### Alterado
+
+- **`BLOCK_ONTOLOGY` explica os blocos ONTOLOGY como princípios
+  organizadores**: o mesmo mecanismo serve a uma lista plana, um tesauro, uma
+  taxonomia ou uma ontologia leve, e o compilador informa o perfil de cada
+  projeto.
+- **A saída da própria ferramenta é em inglês** (ajuda, `docs`, `credits`,
+  rótulos da TUI). Os verbetes seguem no locale `pt`; os de diagnóstico citam
+  as mensagens do compilador, que agora são em inglês.
+
+### Corrigido
+
+- `tools/generate_entries.py` não escapa mais as aspas duas vezes em resumos
+  com `:` (`SYNESIS_E091`, `SYNESIS_E092`).
+
 ## [0.2.1] — 2026-08-24
 
 ### Alterado
@@ -386,6 +417,8 @@ Registrados em `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 
 ---
 
+[0.3.0.dev0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...HEAD
+[0.3.0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/synesis-lang/synesis-help/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/synesis-lang/synesis-help/releases/tag/v0.1.0

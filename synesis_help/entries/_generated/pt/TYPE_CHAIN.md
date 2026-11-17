@@ -7,7 +7,7 @@ syntax: FIELD <nome> TYPE CHAIN SCOPE <escopo> ARITY <operador> <n> [...] END FI
 see_also: [SYNESIS_E047, SYNESIS_E054, SYNESIS_E086, TYPE_QUOTATION, TYPE_MEMO, TYPE_CODE]
 source: generated
 order: 50
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -52,7 +52,7 @@ END FIELD
 
 ## Regras
 
-- **`ARITY` é obrigatório.** O campo 'nome_do_campo' e do tipo CHAIN, mas nao declara `ARITY`.
+- **`ARITY` é obrigatório.** The field 'nome_do_campo' is of type CHAIN, but does not declare `ARITY`.
 
 ## Ver também
 

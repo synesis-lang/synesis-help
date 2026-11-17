@@ -6,7 +6,7 @@ summary: "Dois blocos ONTOLOGY com description identica. (erro 71)."
 severity: Aviso
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Dois blocos ONTOLOGY com description identica. (erro 71)
 ## Mensagem do compilador
 
 ```text
-Os conceitos `exemplo` e `exemplo` tem exatamente
-  a mesma descricao. Isso geralmente indica um erro de copia — dois
-  conceitos distintos nao devem ter definicoes identicas.
-  Revise as definicoes e diferencie as descricoes, ou verifique se os
-  dois conceitos deveriam ser um unico.
+The concepts `exemplo` and `exemplo` have exactly
+  the same description. This usually indicates a copy error — two
+  distinct concepts should not have identical definitions.
+  Review the definitions and make the descriptions differ, or check whether
+  the two concepts should be a single one.
 ```
 
 ## Onde aparece

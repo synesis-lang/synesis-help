@@ -9,6 +9,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] — 2026-11-17
+
+The guide now ships in Portuguese — 183 entries — covering
+synesis 0.15.
+
+### Added
+
+- **`MOD_ROLE`**: the function of an ONTOLOGY field in the organizing model
+  (`LABEL`, `NOTE`, `HIERARCHY`, `USE`), with the SKOS property each one maps to.
+- **`BLOCK_QUESTIONS`, `BLOCK_PHASE`, `BLOCK_EXPORT`**: the `.synp` blocks for
+  competency questions, the production plan run by `synesis-coder phase`, and
+  the project's artifacts (SKOS with `MAP RELATIONS`, `ALIAS_LABEL`,
+  `REGISTRY` and `synesis export --publish`; IRIs from the project `NAMESPACE`).
+- Generated entries for diagnostics `SYNESIS_E089`–`SYNESIS_E157`.
+
+### Changed
+
+- **`BLOCK_ONTOLOGY` explains ONTOLOGY blocks as organizing principles**: the
+  same mechanism serves a flat list, a thesaurus, a taxonomy or a lightweight
+  ontology, and the compiler reports each project's profile.
+- **The tool's own output is in English** (help, `docs`, `credits`, TUI
+  labels). Entries stay in the `pt` locale; diagnostic entries quote the
+  compiler's messages, which are now in English.
+
+### Fixed
+
+- `tools/generate_entries.py` no longer escapes quotes twice in summaries that
+  contain `:` (`SYNESIS_E091`, `SYNESIS_E092`).
+
 ## [0.2.1] — 2026-08-24
 
 ### Changed
@@ -338,6 +367,8 @@ Recorded in `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 
 ---
 
+[0.3.0.dev0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...HEAD
+[0.3.0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/synesis-lang/synesis-help/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/synesis-lang/synesis-help/releases/tag/v0.1.0

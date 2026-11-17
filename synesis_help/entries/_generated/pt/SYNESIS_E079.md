@@ -6,7 +6,7 @@ summary: "Campo REQUIRED ... ON BIBLIOGRAPHY sem valor no .bib do SOURCE. (erro 
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Campo REQUIRED ... ON BIBLIOGRAPHY sem valor no .bib do SOURCE. (erro 79)
 ## Mensagem do compilador
 
 ```text
-O campo `nome_do_campo` foi declarado `REQUIRED ... ON BIBLIOGRAPHY`,
-  ou seja, seu valor deve vir da entrada `.bib` do SOURCE — nao do texto.
-  Mas a entrada `@autor2024` nao tem o campo `nome_do_campo`.
-  Adicione `nome_do_campo = {...}` a entrada `@autor2024` no arquivo
-  `.bib`, ou remova a exigencia `ON BIBLIOGRAPHY` do template.
+The field `nome_do_campo` was declared `REQUIRED ... ON BIBLIOGRAPHY`,
+  so its value must come from the SOURCE's `.bib` entry — not from the text.
+  But the entry `@autor2024` has no `nome_do_campo` field.
+  Add `nome_do_campo = {...}` to the entry `@autor2024` in the
+  `.bib` file, or remove the `ON BIBLIOGRAPHY` requirement from the template.
 ```
 
 ## Onde aparece

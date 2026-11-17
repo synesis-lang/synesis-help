@@ -6,7 +6,7 @@ summary: "Dois ou mais blocos SCOPE FIELDS no mesmo template. (erro 57)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Dois ou mais blocos SCOPE FIELDS no mesmo template. (erro 57)
 ## Mensagem do compilador
 
 ```text
-O template contem mais de um bloco `ITEM FIELDS`. Apenas um bloco
-  desse tipo e permitido por template — ter dois causaria ambiguidade sobre
-  quais campos sao validos nos conceitos.
-  Unifique todas as declaracoes em um unico bloco `ITEM FIELDS`.
+The template has more than one `ITEM FIELDS` block. Only one block
+  of this kind is allowed per template — two would make it ambiguous
+  which fields are valid in the blocks.
+  Merge all declarations into a single `ITEM FIELDS` block.
 ```
 
 ## Onde aparece

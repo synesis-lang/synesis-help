@@ -6,7 +6,7 @@ summary: "Arquivo .syn declarado em INCLUDE ANNOTATIONS nao encontrado. (erro 73
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,11 +20,11 @@ Arquivo .syn declarado em INCLUDE ANNOTATIONS nao encontrado. (erro 73)
 ## Mensagem do compilador
 
 ```text
-O arquivo de anotacoes `arquivo.syn` esta declarado em INCLUDE ANNOTATIONS
-  mas nao foi encontrado. As anotacoes que ele deveria conter nao serao
-  carregadas nem validadas.
-  Verifique se o nome esta correto e se o arquivo existe. O caminho deve ser
-  relativo a pasta onde esta o arquivo de projeto (`.synp`).
+The annotations file `arquivo.syn` is declared in INCLUDE ANNOTATIONS
+  but was not found. The annotations it should contain are neither
+  loaded nor validated.
+  Check that the name is correct and that the file exists. The path must be
+  relative to the folder of the project file (`.synp`).
 ```
 
 ## Onde aparece

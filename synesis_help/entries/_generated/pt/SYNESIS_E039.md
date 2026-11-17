@@ -6,7 +6,7 @@ summary: "Campo listado em SCOPE FIELDS sem FIELD correspondente. (erros 39-41).
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,14 +20,14 @@ Campo listado em SCOPE FIELDS sem FIELD correspondente. (erros 39-41)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' esta listado em `ITEM FIELDS`,
-  mas nao ha uma definicao `FIELD` correspondente no template.
-  Adicione ao template:
+The field 'nome_do_campo' is listed in `ITEM FIELDS`,
+  but there is no matching `FIELD` definition in the template.
+  Add to the template:
       FIELD nome_do_campo TYPE TEXT
           SCOPE ITEM
       END FIELD
-  Este problema esta na definicao do template. Se voce nao e o autor
-  do template, avise o coordenador do projeto.
+  This problem is in the template definition. If you are not the author
+  of the template, tell the project coordinator.
 ```
 
 ## Onde aparece

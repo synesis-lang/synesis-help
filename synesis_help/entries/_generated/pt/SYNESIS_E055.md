@@ -6,7 +6,7 @@ summary: "ARITY declarado em campo que nao e TYPE CHAIN. (erro 55)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ ARITY declarado em campo que nao e TYPE CHAIN. (erro 55)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' declara `ARITY`, mas seu tipo e `TEXT`.
-  A declaracao `ARITY` e exclusiva de campos do tipo CHAIN.
-  Este problema esta na definicao do template.
-  Remova a declaracao `ARITY` ou altere o tipo do campo para `CHAIN`.
+The field 'nome_do_campo' declares `ARITY`, but its type is `TEXT`.
+  The `ARITY` declaration is exclusive to CHAIN fields.
+  This problem is in the template definition.
+  Remove the `ARITY` declaration or change the field type to `CHAIN`.
 ```
 
 ## Onde aparece

@@ -249,11 +249,11 @@ class GuideApp(App):
     TITLE = "Guia Synesis"
 
     BINDINGS = [
-        Binding("escape", "escape", "Sair", priority=True),
-        Binding("f3,slash", "search", "Busca"),
-        Binding("f2", "follow", "Ver tambem"),
-        Binding("backspace", "back", "Voltar"),
-        Binding("f1", "help", "Ajuda"),
+        Binding("escape", "escape", "Quit", priority=True),
+        Binding("f3,slash", "search", "Search"),
+        Binding("f2", "follow", "See also"),
+        Binding("backspace", "back", "Back"),
+        Binding("f1", "help", "Help"),
         Binding("f10,c", "credits", "Creditos"),
         Binding("tab", "focus_next", "Painel", show=False),
         # Atalho para as referencias cruzadas sem tirar as maos do teclado.
@@ -271,7 +271,7 @@ class GuideApp(App):
         self._categories = self.guide.categories()
         self._listed: list[str] = []
         self._entry_labels: list[str] = []
-        self._entries_title = "Verbetes"
+        self._entries_title = "Entries"
         self._searching = False
 
     # ---------------------------------------------------------------- layout
@@ -291,7 +291,7 @@ class GuideApp(App):
         # A barra de status precisa ficar embaixo de tudo.
         yield Static(self._status_text(), id="statusbar")
         yield Input(
-            placeholder="Buscar…   ↵ confirma · Esc cancela",
+            placeholder="Search…   ↵ confirm · Esc cancel",
             id="searchbar",
         )
 
@@ -302,12 +302,12 @@ class GuideApp(App):
         na ordem em que se usa: buscar, trocar de painel, sair.
         """
         local = {
-            "categories": "↑↓ Categoria  ↵ Verbetes",
-            "entries": "↑↓ Verbete  ↵ Ler  F2 Refs",
-            "content": "↑↓ Rolar  F2 Refs  ⌫ Volta",
-        }.get(focus, "↵ Abrir  F2 Refs  ⌫ Volta")
+            "categories": "↑↓ Category  ↵ Entries",
+            "entries": "↑↓ Entry  ↵ Read  F2 Refs",
+            "content": "↑↓ Scroll  F2 Refs  ⌫ Back",
+        }.get(focus, "↵ Open  F2 Refs  ⌫ Back")
         # Cabe em 80 colunas: abaixo disso o terminal cortaria o "Esc".
-        return f" {local}  │  F1 Ajuda  F3 Busca  F10 Creditos  Tab  Esc"
+        return f" {local}  │  F1 Help  F3 Search  F10 Credits  Tab  Esc"
 
     def _refresh_status(self, focus: str = "") -> None:
         self.query_one("#statusbar", Static).update(self._status_text(focus))
@@ -321,8 +321,8 @@ class GuideApp(App):
         # Estilos do corpo (render.py) vivem no console do Rich, nao no CSS.
         self.console.push_theme(GUIDE_THEME)
         cats = self.query_one("#categories", ListView)
-        cats.border_title = "Categorias"
-        self.query_one("#entries", ListView).border_title = "Verbetes"
+        cats.border_title = "Categories"
+        self.query_one("#entries", ListView).border_title = "Entries"
         for _key, label, count in self._categories:
             cats.append(ListItem(Label(f"  {label:<15}{count:>4}")))
         cats.index = 0
@@ -342,7 +342,7 @@ class GuideApp(App):
             mark = glyph if i == view.index else " "
             label.update(f"{mark} {labels[i]}")
 
-    def _fill_entries(self, entries: list, title: str = "Verbetes") -> None:
+    def _fill_entries(self, entries: list, title: str = "Entries") -> None:
         """Repovoa a lista da direita.
 
         Os ids ficam em `self._listed`, paralelos ao indice do ListView — nao
@@ -526,7 +526,7 @@ class GuideApp(App):
                 # real do painel, senao a linha quebra duas vezes.
                 para.append(stripped)
         flush()
-        pane.border_title = "Creditos"
+        pane.border_title = "Credits"
         self.query_one("#body", Static).update(page)
         pane.scroll_home(animate=False)
         pane.focus()

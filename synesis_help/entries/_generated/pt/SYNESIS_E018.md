@@ -6,7 +6,7 @@ summary: "BUNDLE declarado com apenas um campo. (erro 18)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,13 +20,13 @@ BUNDLE declarado com apenas um campo. (erro 18)
 ## Mensagem do compilador
 
 ```text
-O bundle `e, x, e, m, p, l, o` no template foi declarado com apenas um campo.
-  Um bundle precisa de pelo menos dois campos — ele existe para garantir
-  que informacoes relacionadas aparecam sempre juntas.
-  Este problema esta na definicao do template. Se voce nao e o autor
-  do template, avise o coordenador do projeto.
-  Adicione os demais campos ao bundle ou remova a declaracao BUNDLE,
-  tornando o campo simplesmente REQUIRED ou OPTIONAL.
+The bundle `e, x, e, m, p, l, o` in the template was declared with only one field.
+  A bundle needs at least two fields — it exists to ensure that
+  related information always appears together.
+  This problem is in the template definition. If you are not the author
+  of the template, tell the project coordinator.
+  Add the other fields to the bundle or remove the BUNDLE declaration,
+  making the field simply REQUIRED or OPTIONAL.
 ```
 
 ## Onde aparece

@@ -377,7 +377,7 @@ def render_entry(entry: "Entry", guide: "Guide", width: int = 76) -> Text:
     targets = [(r, t) for r, t in targets if t is not None]
     if targets:
         out.append("\n")
-        out.append(_spaced("Ver tambem"), style="section")
+        out.append(_spaced("See also"), style="section")
         out.append("\n")
         # Grid alinhado: o rotulo ocupa largura fixa, a glosa comeca sempre na
         # mesma coluna. Sem sublinhado — o ♦ e o alinhamento ja marcam o item.

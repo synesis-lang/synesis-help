@@ -6,7 +6,7 @@ summary: "Operador invalido na declaracao ARITY. (erro 53)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Operador invalido na declaracao ARITY. (erro 53)
 ## Mensagem do compilador
 
 ```text
-A declaracao `ARITY` do campo 'nome_do_campo' usa um operador
-  nao reconhecido: `exemplo`.
-  Os operadores validos sao: `>=`, `>`, `<=`, `<`, `=`.
-  Por exemplo: `ARITY >= 2` significa 'ao menos dois conceitos por cadeia'.
+The `ARITY` declaration of the field 'nome_do_campo' uses an
+  unrecognized operator: `exemplo`.
+  The valid operators are: `>=`, `>`, `<=`, `<`, `=`.
+  For example: `ARITY >= 2` means 'at least two concepts per chain'.
 ```
 
 ## Onde aparece

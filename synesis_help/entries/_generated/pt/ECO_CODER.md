@@ -6,7 +6,7 @@ summary: "Gera anotacoes validas a partir de texto, guiado pelo template."
 see_also: [ECO_SYNESIS, ECO_LSP, ECO_GRAPH, GUIDE_ECOSYSTEM]
 source: generated
 order: 30
-version: "0.10.0"
+version: "0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_ecosystem.py. Nao edite. -->
@@ -15,14 +15,14 @@ version: "0.10.0"
 
 ## Descricao
 
-Papel no ecossistema: **anotacao assistida por IA** · versao 0.10.0
+Papel no ecossistema: **anotacao assistida por IA** · versao 0.15.0
 
 O template define os campos e as restricoes — nada e fixo no codigo. A qualidade do resultado depende do que voce escreve em `GUIDELINES`.
 
 ## Uso
 
 ```text
-SYNESIS CODER (v0.10.0)  |  Core (v0.12.0)
+SYNESIS CODER (v0.15.0)  |  Core (v0.15.0)
 
 Inference engine for generating valid annotations in the Synesis ecosystem.
 The template defines all fields, relations, and constraints — nothing is hardcoded.
@@ -47,9 +47,13 @@ Commands:
     dataset          Annotates a TOML dataset — SOURCE + ITEMs per record
     item             Annotates a single excerpt, given its bibref
 
-  Building the ontology
-    ontology         Generates ONTOLOGY entries (.syno) from the annotated corpus
-    suggest          Suggests codes from the project vocabulary for an excerpt
+  Building the knowledge model
+    ontology         Generates model entries (.syno) from the annotated corpus
+    phase            Runs a PHASE: fills one declared group of template fields
+                     (ontology phases: descriptive, taxonomy, synonyms)
+    review           Samples a phase's applied proposals for judgement; scores the sample
+    consolidate      Merges a duplicate model entry into the one that remains (ROLE USE); reversible
+    suggest          Suggests codes already used in the project for an excerpt
 
   Reviewing annotations (ACT pipeline)
     critique         [1] Reviews a .syn and emits .synr with # REVISION blocks

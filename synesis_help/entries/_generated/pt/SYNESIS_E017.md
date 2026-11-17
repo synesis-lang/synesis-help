@@ -6,7 +6,7 @@ summary: "Campos de BUNDLE com quantidades diferentes."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,9 +20,9 @@ Campos de BUNDLE com quantidades diferentes.
 ## Mensagem do compilador
 
 ```text
-BUNDLE (exemplo_a, exemplo_b) tem contagens diferentes: exemplo_a=2, exemplo_b=3
-  Todos os campos do bundle devem aparecer o mesmo numero de vezes.
-  Adicione ou remova entradas para igualar as contagens.
+BUNDLE (exemplo_a, exemplo_b) has different counts: exemplo_a=2, exemplo_b=3
+  Every bundle field must appear the same number of times.
+  Add or remove entries to make the counts equal.
 ```
 
 ## Onde aparece

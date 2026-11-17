@@ -6,7 +6,7 @@ summary: "Codigo usado em ITEM/CHAIN sem definicao em ONTOLOGY."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Codigo usado em ITEM/CHAIN sem definicao em ONTOLOGY.
 ## Mensagem do compilador
 
 ```text
-O codigo `CODIGO_A` nao esta definido na ontologia do projeto. Todos os
-  codigos usados nas anotacoes precisam ter um conceito correspondente
-  declarado em um bloco ONTOLOGY.
-  Para criar o conceito, adicione em um arquivo `.syno`:
+The code `CODIGO_A` is not defined in the project's organizing model. Every
+  code used in the annotations needs a matching concept
+  declared in an ONTOLOGY block.
+  To create the concept, add to a `.syno` file:
       ONTOLOGY CODIGO_A
           description: ...
       END ONTOLOGY

@@ -6,7 +6,7 @@ summary: "Prefixo de indice `[N]` em VALUES de campo ENUMERATED. (erro 87)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,12 +20,12 @@ Prefixo de indice `[N]` em VALUES de campo ENUMERATED. (erro 87)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' e do tipo `ENUMERATED`, mas seus valores usam
-  prefixo de indice (`[0]`, `[1]`, ...). O indice existe para estabelecer
-  ORDEM entre os valores e so tem efeito em campos `ORDERED`, onde ele e o
-  dado gravado nas anotacoes. Em `ENUMERATED` nao ha ordem: o dado e o
-  proprio rotulo, e o indice seria ignorado.
-  Remova os prefixos `[N]` ou altere o tipo do campo para `ORDERED`.
+The field 'nome_do_campo' is of type `ENUMERATED`, but its values use
+  an index prefix (`[0]`, `[1]`, ...). The index exists to establish an
+  ORDER among the values and only takes effect in `ORDERED` fields, where it is
+  the data written in the annotations. In `ENUMERATED` there is no order: the data is
+  the label itself, and the index would be ignored.
+  Remove the `[N]` prefixes or change the field type to `ORDERED`.
 ```
 
 ## Onde aparece

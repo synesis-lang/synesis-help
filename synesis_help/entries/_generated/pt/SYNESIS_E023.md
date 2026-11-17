@@ -6,7 +6,7 @@ summary: "Bloco ITEM sem nenhum campo. (erro 23)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Bloco ITEM sem nenhum campo. (erro 23)
 ## Mensagem do compilador
 
 ```text
-Este bloco ITEM esta vazio — nao contem nenhum campo com conteudo.
-  Um ITEM sem campos nao representa nenhuma unidade de analise.
-  Adicione os campos exigidos pelo template ou remova o bloco se ele
-  foi criado por engano.
+This ITEM block is empty — it has no field with content.
+  An ITEM without fields represents no unit of analysis.
+  Add the fields required by the template or remove the block if it
+  was created by mistake.
 ```
 
 ## Onde aparece

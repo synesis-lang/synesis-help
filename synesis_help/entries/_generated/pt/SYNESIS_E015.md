@@ -6,7 +6,7 @@ summary: "Conceito em chain contendo espacos. (erro 15)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ Conceito em chain contendo espacos. (erro 15)
 ## Mensagem do compilador
 
 ```text
-O elemento `exemplo` contem espacos, o que nao e permitido
-  em nomes de conceitos. O compilador interpreta cada espaco como
-  separador entre elementos distintos da cadeia.
-  Substitua os espacos por underscore: `exemplo`.
+The element `exemplo` contains spaces, which are not allowed
+  in concept names. The compiler reads each space as a
+  separator between distinct elements of the chain.
+  Replace the spaces with underscores: `exemplo`.
 ```
 
 ## Onde aparece

@@ -6,7 +6,7 @@ summary: "TYPE ORDERED sem bloco VALUES. (erro 49)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ TYPE ORDERED sem bloco VALUES. (erro 49)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' e do tipo ORDERED, mas nao define um bloco
-  `VALUES` com as opcoes validas e sua ordem. Sem isso, nao ha como
-  validar os valores inseridos nem apresentar a escala aos pesquisadores.
-  Adicione um bloco `VALUES` listando as opcoes em ordem crescente.
+The field 'nome_do_campo' is of type ORDERED, but does not define a
+  `VALUES` block with the valid options and their order. Without it, there is no
+  way to validate the values entered or show the scale to researchers.
+  Add a `VALUES` block listing the options in ascending order.
 ```
 
 ## Onde aparece

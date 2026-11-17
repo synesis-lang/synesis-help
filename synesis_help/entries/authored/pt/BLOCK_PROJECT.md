@@ -5,7 +5,7 @@ category: block
 summary: "Ponto de entrada do projeto. Declara template, fontes e inclusões."
 syntax: "PROJECT <nome> TEMPLATE \"<arquivo>\" [INCLUDE ...] END PROJECT"
 file: ".synp"
-see_also: [BLOCK_TEMPLATE, MOD_INCLUDE, MOD_METADATA, SYNESIS_E064, SYNESIS_E065, SYNESIS_E066]
+see_also: [BLOCK_TEMPLATE, MOD_INCLUDE, MOD_METADATA, BLOCK_QUESTIONS, BLOCK_PHASE, BLOCK_EXPORT, SYNESIS_E064, SYNESIS_E065, SYNESIS_E066]
 source: authored
 order: 10
 ---
@@ -44,6 +44,18 @@ END METADATA]
     <texto livre>
 END DESCRIPTION]
 
+[QUESTIONS
+    <id>: <texto>
+END QUESTIONS]
+
+[PHASE <ANNOTATIONS|ONTOLOGY> <nome>
+    FIELDS <campos>
+END PHASE]
+
+[EXPORT <formato> [<nome>]
+    OUTPUT "<arquivo>"
+END EXPORT]
+
 END PROJECT
 ```
 
@@ -57,6 +69,9 @@ END PROJECT
   (`SYNESIS_E061`, `SYNESIS_E062`). Arquivo esquecido e dado invisível.
 - Caminhos não podem escapar da pasta do projeto (`SYNESIS_E075`), exceto
   `INCLUDE SHARED ONTOLOGY`.
+
+Os blocos `QUESTIONS`, `PHASE` e `EXPORT` (synesis >= 0.15) têm verbetes
+próprios: `BLOCK_QUESTIONS`, `BLOCK_PHASE`, `BLOCK_EXPORT`.
 
 ## Exemplo
 
@@ -79,4 +94,4 @@ END PROJECT
 
 ## Ver também
 
-`BLOCK_TEMPLATE`, `MOD_INCLUDE`, `MOD_METADATA`, `SYNESIS_E065`, `SYNESIS_E066`
+`BLOCK_TEMPLATE`, `MOD_INCLUDE`, `MOD_METADATA`, `BLOCK_QUESTIONS`, `BLOCK_PHASE`, `BLOCK_EXPORT`, `SYNESIS_E065`, `SYNESIS_E066`

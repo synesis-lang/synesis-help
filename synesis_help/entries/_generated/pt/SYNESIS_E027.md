@@ -6,7 +6,7 @@ summary: "Valor fora da lista ENUMERATED."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,9 +20,9 @@ Valor fora da lista ENUMERATED.
 ## Mensagem do compilador
 
 ```text
-O valor `valor` nao e reconhecido para o campo `nome_do_campo`.
-  Este campo aceita apenas valores de uma lista fechada.
-  Valores disponiveis: `exemplo_a`, `exemplo_b`.
+The value `valor` is not recognized for the field `nome_do_campo`.
+  This field only accepts values from a closed list.
+  Available values: `exemplo_a`, `exemplo_b`.
 ```
 
 ## Onde aparece

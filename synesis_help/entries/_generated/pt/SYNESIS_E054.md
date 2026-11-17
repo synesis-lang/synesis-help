@@ -6,7 +6,7 @@ summary: "FORMAT declarado em campo que nao e TYPE SCALE. (erro 54)."
 severity: Erro
 see_also: []
 source: generated
-requires_synesis: ">=0.12.0"
+requires_synesis: ">=0.15.0"
 ---
 
 <!-- GERADO AUTOMATICAMENTE por tools/generate_entries.py. Não edite. Conteúdo autoral vai em entries/authored/. -->
@@ -20,10 +20,10 @@ FORMAT declarado em campo que nao e TYPE SCALE. (erro 54)
 ## Mensagem do compilador
 
 ```text
-O campo 'nome_do_campo' declara `FORMAT`, mas seu tipo e `TEXT`.
-  A declaracao `FORMAT [min..max]` e exclusiva de campos do tipo SCALE.
-  Este problema esta na definicao do template.
-  Remova a declaracao `FORMAT` ou altere o tipo do campo para `SCALE`.
+The field 'nome_do_campo' declares `FORMAT`, but its type is `TEXT`.
+  The `FORMAT [min..max]` declaration is exclusive to SCALE fields.
+  This problem is in the template definition.
+  Remove the `FORMAT` declaration or change the field type to `SCALE`.
 ```
 
 ## Onde aparece

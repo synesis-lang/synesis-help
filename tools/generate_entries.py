@@ -207,6 +207,8 @@ def frontmatter(**kw) -> str:
     for k, v in kw.items():
         if isinstance(v, list):
             lines.append(f"{k}: [{', '.join(v)}]")
+        elif isinstance(v, str) and len(v) >= 2 and v[0] == v[-1] == '"':
+            lines.append(f"{k}: {v}")  # ja vem entre aspas (summary, title)
         elif isinstance(v, str) and (":" in v or v.startswith(("<", ">", "["))):
             q = v.replace('"', '\\"')
             lines.append(f'{k}: "{q}"')
