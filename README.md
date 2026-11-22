@@ -257,7 +257,7 @@ Distribuído sob a **GNU Affero General Public License, versão 3 apenas
 (AGPL-3.0-only), com a Exceção de Saída de Dados Synesis** — ver
 [LICENSE](LICENSE) e [LICENSE.exception](LICENSE.exception).
 
-Identificador SPDX: `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception`
+Identificador SPDX: `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`
 
 **O que você extrai do guia é seu.** O texto que você copia de um verbete para
 o seu template, script ou artigo não é coberto pela AGPL e não carrega

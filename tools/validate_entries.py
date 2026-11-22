@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Christian Maciel De Britto
-# SPDX-License-Identifier: AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+# SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
 """Valida o grafo de entries do guia.
 
 Checa (secao 5.2 e 5.4 do estudo):

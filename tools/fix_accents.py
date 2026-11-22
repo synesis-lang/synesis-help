@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Christian Maciel De Britto
-# SPDX-License-Identifier: AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+# SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
 """Restaura a acentuacao da prosa das entries.
 
 O conteudo autoral foi escrito sem acentos. Isto corrige a prosa **sem tocar

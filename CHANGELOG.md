@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added — EXPORT ALPACA with declared composition (synesis 0.16.0) — 193 entries
+
+- `BLOCK_EXPORT` documents `MAP <fields> TO INSTRUCTION|INPUT|OUTPUT` in EXPORT ALPACA
+  (the BUNDLE as the line unit, labelled text, the dataset card) and its rules.
+- Generated entries for the new diagnostics `SYNESIS_E158`–`SYNESIS_E165` and the
+  notices `SYNESIS_I166`–`SYNESIS_I167`; `SYNESIS_E099` regenerated (MAP is now
+  accepted in ALPACA).
+
+### Fixed — identificador SPDX da licença (L-1)
+
+- `license` passa de `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception` para
+  `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`. Em SPDX, `AND` significa duas
+  licenças cumulativas, não uma permissão adicional sobre a AGPL; uma exceção não
+  cadastrada se representa por um único `LicenseRef` com o conjunto dos termos
+  (`LICENSE` + `LICENSE.exception`). A licença em si não mudou. O `CITATION.cff` segue
+  `AGPL-3.0-only` (o CFF só aceita a lista SPDX).
+
 ## [0.3.0] — 2026-11-17
 
 The guide now ships in Portuguese — 183 entries — covering

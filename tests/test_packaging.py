@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Christian Maciel De Britto
-# SPDX-License-Identifier: AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+# SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
 """Contratos de empacotamento: versao, citacao e changelog em acordo.
 
 CITATION.cff defasado ja aconteceu duas vezes no ecossistema — a versao e
@@ -58,10 +58,15 @@ class TestVersionConsistency:
         text = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
         m = re.search(r'^license\s*=\s*"([^"]+)"', text, re.MULTILINE)
         assert m, "pyproject.toml: `license` nao encontrado"
-        # O pyproject carrega a expressao SPDX completa (AGPL + excecao); o
-        # CFF so aceita identificador de lista fechada, entao guarda a AGPL.
-        # O contrato e que a AGPL apareca nos dois, nao que sejam iguais.
-        assert _cff_field("license") in m.group(1)
+        # O pyproject carrega um LicenseRef unico para o conjunto AGPL + excecao
+        # (L-1, 2026-11-20: a forma `AGPL-3.0-only AND LicenseRef-...` dizia
+        # "duas licencas cumulativas", nao "permissao adicional"). O CFF so
+        # aceita identificador da lista SPDX, entao guarda `AGPL-3.0-only`.
+        # O contrato e que a AGPL 3.0 apareca nos dois, nao que sejam iguais.
+        cff = _cff_field("license")
+        assert cff == "AGPL-3.0-only"
+        assert m.group(1) == "LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception"
+        assert cff.removesuffix("-only") in m.group(1)
 
 
 class TestChangelog:

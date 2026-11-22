@@ -1,6 +1,6 @@
 # Guia Synesis — Indice
 
-183 verbetes. Consulta rapida da linguagem Synesis.
+193 verbetes. Consulta rapida da linguagem Synesis.
 
 > Gerado por `tools/generate_index.py`. Nao edite a mao.
 
@@ -33,7 +33,7 @@
 | [**ONTOLOGY**](BLOCK_ONTOLOGY) | Princípio organizador: o sistema conceitual que organiza as ocorrências. |
 | [**QUESTIONS**](BLOCK_QUESTIONS) | Questões de competência: o que a estrutura do projeto precisa permitir responder. |
 | [**PHASE**](BLOCK_PHASE) | Plano de produção: quais campos o synesis-coder gera em cada fase, e a partir de quê. |
-| [**EXPORT**](BLOCK_EXPORT) | Declara os artefatos do projeto (JSON, CSV, XLS, OKF, SKOS) e executa todos com synesis export. |
+| [**EXPORT**](BLOCK_EXPORT) | Declara os artefatos do projeto (JSON, CSV, XLS, ALPACA, OKF, SKOS) e executa todos com synesis export. |
 
 ## Tipos de campo
 
@@ -230,7 +230,17 @@
 | [`SYNESIS_E155`](SYNESIS_E155) | Verificacao editorial do SKOS gerado (sem prefLabel, sem posicao, esquema sem topo...). |
 | [`SYNESIS_E156`](SYNESIS_E156) | REGISTRY com IRIs de outro NAMESPACE: nao sao conferidos (aviso; o namespace e do pesquisador). |
 | [`SYNESIS_E157`](SYNESIS_E157) | REGISTRY e OUTPUT apontam para o mesmo arquivo: um sobrescreveria o outro. |
+| [`SYNESIS_E158`](SYNESIS_E158) | Modo declarado (MAP de campos ou INSTRUCTION) sem `MAP ... TO OUTPUT`. |
+| [`SYNESIS_E159`](SYNESIS_E159) | Nenhuma origem de instrucao, ou propriedade INSTRUCTION e MAP TO INSTRUCTION juntas. |
+| [`SYNESIS_E160`](SYNESIS_E160) | Campo do MAP ausente do template. |
+| [`SYNESIS_E161`](SYNESIS_E161) | O mesmo campo duas vezes no mesmo alvo. |
+| [`SYNESIS_E162`](SYNESIS_E162) | Campo do OUTPUT tambem em INPUT ou INSTRUCTION: a resposta vazaria no prompt. |
+| [`SYNESIS_E163`](SYNESIS_E163) | Campos de dois bundles diferentes: nao ha uma unidade unica por linha. |
+| [`SYNESIS_E164`](SYNESIS_E164) | Campo de ONTOLOGY, ou de SOURCE com valor fora do .syn (ON BIBLIOGRAPHY/ON DATASET). |
+| [`SYNESIS_E165`](SYNESIS_E165) | Alvo de MAP fora de INSTRUCTION/INPUT/OUTPUT, ou FROM nesses alvos. |
 | [`SYNESIS_I080`](SYNESIS_I080) | INFO: projeto declara REFERS TO — referencia externa nao resolvida isolada. (info 80). |
+| [`SYNESIS_I166`](SYNESIS_I166) | Parceiro qualificador (ENUMERATED/ORDERED/SCALE) do bundle iterador fora do mapa. |
+| [`SYNESIS_I167`](SYNESIS_I167) | Modo Alpaca embutido com template cujo bundle de CHAIN tem qualificador. |
 | [`SYNESIS_W031`](SYNESIS_W031) ⚠ | Mesmo codigo repetido na mesma ocorrencia de campo CODE. (erro 31). |
 | [`SYNESIS_W067`](SYNESIS_W067) ⚠ | Data MODIFIED anterior a data CREATED no bloco METADATA. (erro 67). |
 | [`SYNESIS_W071`](SYNESIS_W071) ⚠ | Dois blocos ONTOLOGY com description identica. (erro 71). |

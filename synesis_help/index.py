@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Christian Maciel De Britto
-# SPDX-License-Identifier: AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+# SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
 """Compila as entries Markdown num indice SQLite com busca full-text.
 
 E o equivalente moderno do arquivo .NG compilado: as entries vivem em Markdown

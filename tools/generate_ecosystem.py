@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Christian Maciel De Britto
-# SPDX-License-Identifier: AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+# SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
 """Gera os verbetes dos modulos do ecossistema a partir do `--help` deles.
 
 Mesma disciplina dos demais geradores: a fonte e a ferramenta instalada, nao

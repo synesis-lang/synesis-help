@@ -1,5 +1,5 @@
 # Copyright (c) 2026 Christian Maciel De Britto
-# SPDX-License-Identifier: AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+# SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
 """Textos longos da CLI: ajuda de escrita e creditos.
 
 Ficam separados de `cli.py` para que a logica de comandos permaneca legivel.
@@ -170,7 +170,8 @@ CREDITS = f"""\
 
   LICENSE
   -------
-  AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception
+  AGPL-3.0-only with the Synesis Data-Output Exception
+  (SPDX: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception)
 
   This program is free software: you can redistribute it and/or modify it
   under the terms of the GNU Affero General Public License, version 3, as

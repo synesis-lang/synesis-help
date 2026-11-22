@@ -21,8 +21,8 @@ MAP (ou MAP RELATIONS) num formato que nao o usa.
 
 ```text
 `exemplo`: this format does not use `MAP` lines.
-  `MAP RELATIONS` is accepted in SKOS and `MAP <fields> TO` will be in CNA, when
-  that format is available. Remove the line.
+  `MAP RELATIONS` is accepted in SKOS and `MAP <fields> TO` in ALPACA (and in CNA,
+  when that format is available). Remove the line.
 ```
 
 ## Onde aparece
