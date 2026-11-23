@@ -246,7 +246,7 @@ class GuideApp(App):
     """Visualizador do Guia Synesis."""
 
     CSS = CSS
-    TITLE = "Guia Synesis"
+    TITLE = "Synesis Guide"
 
     BINDINGS = [
         Binding("escape", "escape", "Quit", priority=True),
@@ -279,7 +279,7 @@ class GuideApp(App):
     def compose(self) -> ComposeResult:
         total = self.guide.total()
         yield Static(
-            f"Guia Synesis{' ' * 44}{total} verbetes", id="titlebar"
+            f"Synesis Guide{' ' * 43}{total} entries", id="titlebar"
         )
         with Horizontal():
             with Vertical(id="sidebar"):

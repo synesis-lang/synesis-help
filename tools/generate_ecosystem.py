@@ -25,20 +25,21 @@ import sys
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "synesis_help" / "entries"
-OUT = OUT / "_generated" / "pt"
+OUT = OUT / "_generated" / "en"
 
-#: Modulos do ecossistema, na ordem em que se encontram no fluxo de trabalho.
+#: Modules of the ecosystem, in the order they meet in the workflow.
 MODULES = [
     {
         "id": "ECO_SYNESIS",
         "cmd": "synesis",
         "title": "synesis",
-        "role": "compilador",
+        "role": "compiler",
         "order": 10,
-        "summary": "Compilador da linguagem: valida, compila e exporta.",
+        "summary": "The language compiler: validates, compiles and exports.",
         "note": (
-            "E o nucleo do ecossistema. Todos os outros modulos dependem "
-            "dele, e nenhum reimplementa suas regras."
+            "The core of the ecosystem. Every other module depends on it, and "
+            "none reimplements its rules. `synesis compile` validates a project; "
+            "`synesis export` runs the `EXPORT` blocks of the `.synp`."
         ),
     },
     {
@@ -48,54 +49,70 @@ MODULES = [
         "role": "language server",
         "order": 20,
         "has_subcommands": False,
-        "summary": "Servidor LSP: realce, hover, autocomplete e navegacao.",
+        "summary": "LSP server: highlighting, hover, completion and navigation.",
         "note": (
-            "Nao e chamado a mao: o editor o inicia. Instale-o e a extensao "
-            "do VS Code o encontra sozinha."
+            "Not run by hand: the editor starts it. Install it and the VS Code "
+            "extension finds it by itself."
         ),
     },
     {
         "id": "ECO_CODER",
         "cmd": "synesis-coder",
         "title": "synesis-coder",
-        "role": "anotacao assistida por IA",
+        "role": "AI-assisted annotation",
         "order": 30,
-        "summary": "Gera anotacoes validas a partir de texto, guiado pelo template.",
+        "summary": "Writes valid annotations from text, guided by the template.",
         "note": (
-            "O template define os campos e as restricoes — nada e fixo no "
-            "codigo. A qualidade do resultado depende do que voce escreve em "
-            "`GUIDELINES`."
+            "The template defines the fields and their constraints; nothing is "
+            "fixed in code. The quality of the result depends on what you write "
+            "in `GUIDELINES`. The coder reads the `.env` of the project folder "
+            "(model, keys, `SYNESIS_CODER_LANGUAGE`)."
         ),
     },
     {
         "id": "ECO_GRAPH",
         "cmd": "synesis-graph",
         "title": "synesis-graph",
-        "role": "exportacao para grafos",
+        "role": "graph export",
         "order": 40,
-        "summary": "Converte projetos compilados em bancos de grafo e visualizacoes.",
+        "summary": "Turns compiled projects into graph databases and visualizations.",
         "note": (
-            "Consome o artefato do `synesis compile`, nao os `.syn` diretamente.\n\n"
-            "**O grafo exportado se descreve.** Ao sincronizar com um banco "
-            "(ArcadeDB ou Neo4j), o `synesis-graph` grava um vertice "
-            "`ProjectContext` com o contexto do proprio projeto: a `DESCRIPTION` "
-            "do `.synp`, e o template inteiro como documento legivel — cada campo "
-            "com tipo, escopo, descricao, escala de valores e **GUIDELINES**, mais "
-            "as arestas do grafo com sua direcao.\n\n"
-            "Isso importa porque o schema de um banco e sintaxe sem semantica: ele "
-            "diz que existe um vertice `Aspect` com a propriedade `name`, mas nao "
-            "que `Aspect` e uma escala ordenada nem o que cada valor significa. "
-            "As `GUIDELINES` que voce escreveu sao o seu protocolo de codificacao — "
-            "as regras de decisao que dizem o que conta como instancia valida de um "
-            "campo. Sem elas no grafo, quem consulta precisa inferir seu criterio a "
-            "partir dos dados; com elas, passa a conhece-lo.\n\n"
-            "O contexto viaja com os dados, nao com a ferramenta: qualquer "
-            "consumidor do grafo o recebe — o Claude Desktop, qualquer cliente MCP, "
-            "o studio do proprio banco, ou um colega que receba uma copia. E e "
-            "derivado do seu template, entao dois projetos diferentes produzem "
-            "contextos diferentes.\n\n"
-            "Para ler: `MATCH (p:ProjectContext) RETURN p.description, "
+            "Consumes the artifact of `synesis compile`, not the `.syn` files.\n\n"
+            "**The exported graph describes itself.** When syncing with a database "
+            "(ArcadeDB or Neo4j), `synesis-graph` writes a `ProjectContext` vertex "
+            "with the context of the project: the `DESCRIPTION` of the `.synp` and "
+            "the whole template as a readable document (each field with type, "
+            "scope, description, value scale and **GUIDELINES**), plus the graph "
+            "edges with their direction.\n\n"
+            "A database schema is syntax without semantics: it says there is an "
+            "`Aspect` vertex with a `name`, not that `Aspect` is an ordered scale "
+            "or what each value means. Your `GUIDELINES` are your coding protocol. "
+            "With them in the graph, whoever queries it (Claude Desktop, any MCP "
+            "client, the database studio, a colleague with a copy) knows your "
+            "criteria instead of guessing them.\n\n"
+            "To read it: `MATCH (p:ProjectContext) RETURN p.description, "
             "p.template_doc`."
+        ),
+    },
+    {
+        "id": "ECO_HELP",
+        "cmd": "synesis-help",
+        "title": "synesis-help",
+        "role": "reference guide (people and agents)",
+        "order": 50,
+        "summary": "This guide: TUI for people, JSON lookup and search for agents.",
+        "note": (
+            "Run without arguments for the keyboard-driven guide. Agents and "
+            "scripts use the JSON contract:\n\n"
+            "- `synesis-help search <words> --format=json` finds entries by text;\n"
+            "- `synesis-help lookup <ID or term> --format=json` returns one entry "
+            "(with suggestions when nothing matches exactly);\n"
+            "- `synesis-help list [--category <name>] --format=json` shows what "
+            "exists.\n\n"
+            "Exit codes: 0 found, 1 not found, 2 usage error. Every JSON answer "
+            "carries `help_version` and `synesis_version` (the compiler the "
+            "generated entries were derived from), so an agent can tell whether "
+            "the guide matches the installed compiler."
         ),
     },
 ]
@@ -191,29 +208,28 @@ def build_entry(mod: dict, version: str, help_text: str) -> str:
     parts = [
         "\n".join(header),
         "",
-        "<!-- GERADO AUTOMATICAMENTE por tools/generate_ecosystem.py."
-        " Nao edite. -->",
+        "<!-- GENERATED by tools/generate_ecosystem.py. Do not edit. -->",
         "",
         f"# {mod['title']}",
         "",
-        "## Descricao",
+        "## Description",
         "",
-        f"Papel no ecossistema: **{mod['role']}**"
-        + (f" · versao {version}" if version else ""),
+        f"Role in the ecosystem: **{mod['role']}**"
+        + (f" · version {version}" if version else ""),
         "",
         mod["note"],
         "",
-        "## Uso",
+        "## Usage",
         "",
         "```text",
         help_text,
         "```",
         "",
         (
-            f"Para os parametros de um subcomando: `{mod['cmd']} <comando>"
+            f"For the options of a subcommand: `{mod['cmd']} <command>"
             " --help`."
             if mod.get("has_subcommands", True)
-            else f"Executavel unico, sem subcomandos: o editor o inicia."
+            else "Single executable, no subcommands: the editor starts it."
         ),
         "",
     ]
@@ -236,7 +252,7 @@ def main() -> int:
         entries[mod["id"]] = build_entry(mod, version, help_text)
 
     if missing:
-        print(f"AVISO: nao instalado(s), verbete nao gerado: {', '.join(missing)}")
+        print(f"WARNING: not installed, entry not generated: {', '.join(missing)}")
 
     OUT.mkdir(parents=True, exist_ok=True)
     if args.check:
@@ -246,14 +262,14 @@ def main() -> int:
             or (OUT / f"{eid}.md").read_text(encoding="utf-8") != content
         ]
         if drift:
-            print(f"DIVERGENCIA: {len(drift)} verbete(s): {', '.join(drift)}")
+            print(f"DRIFT: {len(drift)} entr(ies): {', '.join(drift)}")
             return 1
-        print(f"OK: {len(entries)} verbetes de ecossistema sincronizados")
+        print(f"OK: {len(entries)} ecosystem entries in sync")
         return 0
 
     for eid, content in entries.items():
         (OUT / f"{eid}.md").write_text(content, encoding="utf-8")
-    print(f"Gerados {len(entries)} verbetes de ecossistema em {OUT}")
+    print(f"Generated {len(entries)} ecosystem entries in {OUT}")
     return 0
 
 

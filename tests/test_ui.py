@@ -67,41 +67,35 @@ def test_body_renders_cleanly(db: Path) -> None:
 
 
 def test_tables_are_not_truncated(db: Path) -> None:
-    """Colunas medidas pelo conteúdo, não por largura fixa.
+    """Columns sized by content, not by a fixed width.
 
-    Larguras fixas cortavam texto ("ponto de entrada; amarra tud…") mesmo
-    havendo espaço livre à direita.
+    Fixed widths cut text ("entry point; ties everything tog…") even with free
+    space on the right.
     """
     from synesis_help.render import render_entry
 
     guide = Guide(db)
     text = render_entry(guide.get("GUIDE_FILES"), guide, width=66).plain
-    assert "projeto: template, inclusões, metadados" in text
-    assert "exatamente 1" in text
+    assert "exactly 1" in text
+    assert "1 per project" in text
     for line in text.split("\n"):
         assert len(line) <= 66, repr(line)
 
 
-def test_authored_prose_is_accented() -> None:
-    """A prosa autoral usa português correto.
+def test_guide_is_english_only() -> None:
+    """The guide is English-only (2026-11-21): one source, in sync with the compiler.
 
-    As entries geradas ficam de fora: reproduzem `to_diagnostic()`, que hoje
-    também é sem acento — acentuá-las aqui criaria uma segunda verdade e a
-    regeneração desfaria o trabalho.
+    Code blocks are left out: identifiers in examples are data, not prose.
     """
     import re
 
-    authored = ROOT / "synesis_help" / "entries" / "authored"
-    for md in authored.rglob("*.md"):
+    entries = ROOT / "synesis_help" / "entries"
+    assert not any(entries.rglob("pt")), "a `pt` locale folder is back"
+    for md in entries.rglob("*.md"):
         text = md.read_text(encoding="utf-8")
-        assert any(ord(c) > 127 and c.isalpha() for c in text), (
-            f"{md.name}: prosa sem nenhum acento"
-        )
-        # Blocos de código ficam de fora: acentuar um exemplo o tornaria
-        # inválido, e o texto dentro deles é dado, não prosa.
-        prose = re.sub(r"```.*?```|`[^`]*`", "", text, flags=re.DOTALL)
-        for wrong in (" nao ", " sao ", " codigo ", " descricao "):
-            assert wrong not in prose.lower(), f"{md.name}: '{wrong.strip()}'"
+        prose = re.sub(r"```.*?```|`[^`]*`", "", text, flags=re.DOTALL).lower()
+        for word in (" não ", " são ", " código ", " descrição ", " também ", " campo "):
+            assert word not in prose, f"{md.name}: Portuguese word '{word.strip()}'"
 
 
 def test_field_names_differ_from_values(db: Path) -> None:
@@ -146,13 +140,14 @@ def test_code_blocks_are_highlighted(db: Path) -> None:
 def test_entries_are_in_didactic_order(db: Path) -> None:
     """A ordem é editorial, não alfabética.
 
-    Alfabético punha "Por onde começar" em 4º lugar e `DATE` antes de `CODE`
-    — nenhum dos dois ajuda quem chega agora.
+    Alphabetical put "Where to start" fourth and `DATE` before `CODE`;
+    neither helps a newcomer. The case studies come right after the start.
     """
     guide = Guide(db)
     assert [e.id for e in guide.by_category("overview")][:3] == [
-        "GUIDE_START", "GUIDE_FILES", "GUIDE_PRIMITIVES"
+        "GUIDE_START", "GUIDE_CASE_STUDIES", "GUIDE_FILES"
     ]
+    assert [e.id for e in guide.by_category("case_study")][0] == "CASE_LITERATURE_REVIEW"
     # Blocos na ordem em que se escreve um projeto.
     assert [e.id for e in guide.by_category("block")][:2] == [
         "BLOCK_PROJECT", "BLOCK_TEMPLATE"
@@ -200,7 +195,7 @@ def test_cli_documents_itself(capsys) -> None:
 
     assert main(["docs"]) == 0
     out = capsys.readouterr().out
-    assert "authored/pt" in out and "WITHOUT `build`" in out
+    assert "authored/en" in out and "WITHOUT `build`" in out
 
     assert main(["credits"]) == 0
     out = capsys.readouterr().out

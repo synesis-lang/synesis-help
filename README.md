@@ -1,276 +1,159 @@
 # synesis-help
 
-Guia de referência rápida da linguagem Synesis, offline e instantâneo — inspirado nos
-[Norton Guides](https://harbour.github.io/ng/c52g01b/menu.html) do ecossistema Clipper.
+Quick reference guide to the Synesis language, offline and instant, for people
+and for agents. Inspired by the
+[Norton Guides](https://harbour.github.io/ng/c52g01b/menu.html) of the Clipper
+ecosystem: syntax, description, example, see also.
 
-Sintaxe, descrição, exemplo, ver também. Nada além disso.
+**Version 0.4.0**: English-only content, a JSON contract for agents, and case
+studies. See [CHANGELOG.md](CHANGELOG.md).
 
-**Versão 0.1.0** — conteúdo, índice e TUI. Ver [CHANGELOG.md](CHANGELOG.md).
-Estudo de arquitetura: [`synesis-planning/synesis-help/estudo_synesis_help.md`](../synesis-planning/synesis-help/estudo_synesis_help.md).
-
-## Uso
+## Usage
 
 ```bash
-synesis-help                       # abre a TUI
-synesis-help build                 # recompila o índice
-synesis-help lookup CHAIN          # consulta no terminal
-synesis-help lookup CHAIN --format=json   # contrato de invocação externa
+synesis-help                                  # open the guide (TUI)
+synesis-help lookup CHAIN                     # one entry in the terminal
+synesis-help search bundle status             # full-text search
+synesis-help list --category case_study       # what exists in a category
+synesis-help build                            # rebuild the index
 ```
 
-### Teclas
+### For agents
 
-O painel ativo é o de moldura acesa; a barra inferior mostra as teclas que
-funcionam nele.
+Agents and scripts use `--format=json`:
 
-| Tecla | Ação |
+```bash
+synesis-help lookup E047 --format=json        # SYNESIS_E047 (short forms work)
+synesis-help search "epistemic status" --format=json
+synesis-help list --format=json
+```
+
+- Every answer carries `help_version`, `synesis_version` (the compiler the
+  generated entries were derived from) and `locale`.
+- `lookup` reports how it matched (`id`, `title`, `prefix`, `search`) and
+  returns `suggestions` when nothing matches.
+- Exit codes: `0` found, `1` not found, `2` usage error.
+
+The Synesis Skill for Claude Code calls these commands before writing or
+fixing a template.
+
+### Keys
+
+The active panel has a lit frame; the bottom bar shows the keys that work in
+it.
+
+| Key | Action |
 |---|---|
-| `↑` `↓` | mover na lista / rolar o texto |
-| `Enter` | avançar (categoria → verbetes → texto) |
-| `F2` | abrir as referências cruzadas ("Ver também") |
-| `F3` ou `/` | busca incremental |
-| `Backspace` | voltar |
-| `Tab` | alternar painel |
-| `Esc` | sair |
+| `↑` `↓` | move in the list / scroll the text |
+| `Enter` | go forward (category → entries → text) |
+| `F2` | open the cross-references ("See also") |
+| `F3` or `/` | incremental search |
+| `Backspace` | go back |
+| `Tab` | switch panel |
+| `Esc` | quit |
 
-## Conteúdo atual
+## Content
 
-108 verbetes em português — ver [INDEX.md](INDEX.md).
+204 entries in English; see [INDEX.md](INDEX.md).
 
-| Categoria | Verbetes | Origem |
+| Category | Entries | Origin |
 |---|---|---|
-| Panorama | 7 | autoral |
-| Blocos | 7 | autoral |
-| Tipos de campo | 10 | gerado do compilador |
-| Modificadores | 8 | autoral |
-| Ligação entre projetos | 1 | gerado do compilador |
-| Ecossistema | 4 | capturado do `--help` dos módulos |
-| Diagnósticos | 71 | gerado do compilador |
+| Overview | 8 | authored |
+| Blocks | 10 | authored |
+| Field types | 10 | generated from the compiler |
+| Modifiers | 9 | authored |
+| Linkage | 1 | generated from the compiler |
+| Case studies | 9 | authored, compiled as projects |
+| Ecosystem | 5 | captured from each module's `--help` |
+| Diagnostics | 152 | generated from the compiler |
 
-## Como o conteúdo é mantido
+**Case studies** are complete projects (template, annotations, ontology,
+project file, exports) adapted from real research: literature reviews, factor
+reviews, exegesis of a term, news framing, linked assessments, survey
+answers, topical indexes, participatory diagnosis, causation coding. Names,
+sources and excerpts are fictitious; the designs are real. Start from
+`GUIDE_CASE_STUDIES`.
 
-```
+## How the content is kept in sync
+
+What the compiler knows about itself (type × property matrix, diagnostic
+codes and messages) is **derived by probing it**, never copied, so the guide
+cannot drift from the compiler. What takes methodological judgement (what a
+type is for, how to design a template, the case studies) is authored and
+lives apart.
+
+```text
 synesis_help/entries/
-├── _generated/pt/     # gerado do compilador — NUNCA editar à mão
-└── authored/pt/       # conteúdo humano — é aqui que você escreve
+├── _generated/en/   generated from the compiler: never edit by hand
+└── authored/en/     human content: this is where you write
 ```
 
-O que o compilador sabe sobre si mesmo (matriz tipo×propriedade, códigos de erro,
-mensagens de diagnóstico) é **derivado por sondagem**, nunca copiado. Assim o guia não
-pode divergir do compilador: se uma regra muda, a regeneração reflete.
+The guide is English-only: one source, regenerated with every compiler
+release. Agents translate for researchers who work in other languages.
 
-O que exige julgamento metodológico — para que serve cada tipo, quando usar, exemplos —
-é autoral, e vive separado.
+Writing guide: `synesis-help docs`.
 
----
-
-# Escrevendo no guia
-
-## Corrigir um texto existente
-
-1. **Descubra o arquivo.** O nome é o `id` do verbete, mostrado no rodapé do
-   índice e no `lookup`:
-
-   ```bash
-   synesis-help lookup TYPE_CHAIN --format=json | head -3
-   ```
-
-2. **Verifique de onde ele vem.** Se o caminho contém `_generated/`, **não
-   edite**: a regeneração vai desfazer. Veja [Corrigir um verbete gerado](#corrigir-um-verbete-gerado).
-
-3. **Edite** o `.md` em `synesis_help/entries/authored/pt/`.
-
-4. **Reconstrua e confira:**
-
-   ```bash
-   python tools/validate_entries.py   # links, ids, frontmatter
-   python tools/check_examples.py     # exemplos ainda compilam
-   synesis-help build                 # regrava o índice
-   ```
-
-> O guia lê o índice compilado, não os `.md`. **Sem `build`, sua edição não
-> aparece.**
-
-## Acrescentar um verbete novo
-
-Crie `synesis_help/entries/authored/pt/<ID>.md` — o nome do arquivo **é** o `id`:
-
-````markdown
----
-id: MOD_EXEMPLO
-title: "EXEMPLO"
-category: modifier
-summary: "Uma frase. É o que aparece no índice."
-syntax: "EXEMPLO <valor> [OPCIONAL <n>]"
-see_also: [BLOCK_FIELD, SYNESIS_E020]
-source: authored
-order: 50
----
-
-# EXEMPLO
-
-## Descrição
-
-O que é e para que serve.
-
-## Sintaxe
-
-```synesis
-FIELD nome TYPE TEXT
-    SCOPE ITEM
-END FIELD
-```
-
-`[ ]` opcional · `<>` valor a substituir
-
-## Regras
-
-- Uma regra por linha, citando o código do erro (`SYNESIS_E020`).
-
-## Exemplo
-
-```synesis
-FIELD citacao TYPE QUOTATION
-    SCOPE ITEM
-END FIELD
-```
-````
-
-Depois: `python tools/generate_index.py && synesis-help build`.
-
-`order` define a posição dentro da categoria: menor vem primeiro, 100 é o
-padrão, empate cai no alfabético. A ordem é **didática** — do panorama ao
-detalhe — e não alfabética.
-
-### Categorias válidas
-
-`overview` · `block` · `field_type` · `modifier` · `linkage` ·
-`ecosystem` · `glossary`
-
-`block`, `field_type`, `modifier` e `linkage` **exigem** `syntax` no frontmatter
-e uma seção `## Sintaxe` no corpo — o validador cobra.
-
-### Convenção de `id`
-
-| Categoria | Prefixo | Exemplo |
-|---|---|---|
-| Bloco | `BLOCK_` | `BLOCK_ONTOLOGY` |
-| Tipo de campo | `TYPE_` | `TYPE_CHAIN` |
-| Modificador | `MOD_` | `MOD_SCOPE` |
-| Panorama | `GUIDE_` | `GUIDE_START` |
-| Glossário | `GLOS_` | `GLOS_BIBREF` |
-| Diagnóstico | o próprio código | `SYNESIS_E047` |
-
-O `id` é a chave de tudo: cross-references, links e o contrato JSON. Escolha e
-não mude — o título pode mudar à vontade.
-
-## Corrigir um verbete gerado
-
-Os 86 verbetes em `_generated/` vêm do compilador (82 dele; 4 do
-`--help` dos módulos, via `generate_ecosystem.py`). Editá-los é inútil: a
-próxima regeneração sobrescreve, e o CI acusa (`generate_entries.py --check`).
-
-| O que está errado | Onde corrigir |
-|---|---|
-| A regra em si (o que é obrigatório/proibido) | `synesis/` — é o compilador que decide |
-| A mensagem do erro | `synesis/ast/results.py`, no `to_diagnostic()` |
-| A frase de resumo do tipo | `tools/generate_entries.py`, dicionário `TYPE_SUMMARY` |
-| Rótulos ("Obrigatório", "Sintaxe") | `tools/generate_entries.py`, dicionário `L` |
-
-Para **acrescentar** prosa a um verbete gerado, crie um arquivo com o **mesmo
-`id`** em `authored/pt/`. O build funde os dois, e o autoral vence.
-
-## Regras de escrita
-
-**Acentuação.** Escreva com acentos. Se esquecer:
+## Tools
 
 ```bash
-python tools/fix_accents.py --check   # relata
-python tools/fix_accents.py           # corrige
+python tools/generate_entries.py           # generate derived entries
+python tools/generate_ecosystem.py         # capture the modules' --help
+python tools/generate_entries.py --check   # fail on drift (CI)
+python tools/generate_index.py             # write INDEX.md
+python tools/validate_entries.py           # frontmatter, ids, links, English
+python tools/check_examples.py             # examples and case studies compile
 ```
 
-Só a prosa é tocada — código, crases e campos técnicos do frontmatter ficam
-intactos.
+`check_examples.py` compiles every example against the installed `synesis`,
+and builds each case study as a project and compiles it. It is what keeps an
+example written today from rotting silently when the compiler evolves.
 
-**Blocos de código.** Máximo **72 colunas**, recuo de 4 espaços, sem TAB. Todo
-exemplo que começa com `TEMPLATE` ou `FIELD` é **compilado de verdade** contra o
-`synesis` instalado. Se não compilar, o CI falha — é proposital: exemplo errado
-no guia é pior que exemplo ausente.
-
-**Registro.** Este é um guia de *referência* (Diátaxis): descreve a máquina,
-sucinta e ordenadamente. Tutorial, discussão metodológica e estudo de caso
-pertencem a `synesis-docs-sources`.
-
-**`see_also`.** Só `id`s existentes — link quebrado falha o build, não vira 404
-silencioso.
-
-## Ferramentas
-
-```bash
-python tools/fix_accents.py --check        # acentuação da prosa autoral
-python tools/generate_entries.py           # gera entries derivadas
-python tools/generate_ecosystem.py         # captura o --help dos módulos
-python tools/generate_entries.py --check   # falha se houver drift (CI)
-python tools/generate_index.py             # gera INDEX.md
-python tools/validate_entries.py           # frontmatter, ids únicos, links
-python tools/check_examples.py             # exemplos compilam de verdade
-```
-
-`check_examples.py` compila cada exemplo contra o `synesis` instalado. É o que impede
-que um exemplo escrito hoje apodreça em silêncio quando o compilador evoluir.
-
-## Localização
-
-O guia é em português. A estrutura está pronta para outros idiomas (diretório por
-locale, `id` invariante, rótulos em catálogo), mas a tradução está **bloqueada** pelo
-compilador: as mensagens de diagnóstico vêm de `results.py` em português, e traduzi-las
-por fora criaria uma segunda fonte de verdade. Ver §7 do estudo.
-
-## Instalação
+## Installation
 
 ```bash
 pip install synesis-help
 ```
 
-Requer Python 3.10+ e o compilador `synesis` 0.11.0+, que vem como dependência
-— os verbetes derivados são gerados por sondagem dele.
+Requires Python 3.10+ and the `synesis` compiler, installed as a dependency;
+the derived entries are generated by probing it.
 
-A partir do repositório:
+From the repository:
 
 ```bash
 git clone https://github.com/synesis-lang/synesis-help
 cd synesis-help
 pip install -e ".[dev]"
-synesis-help build     # compila o índice a partir das entries
+synesis-help build     # compile the index from the entries
 ```
 
-O índice (`guide.db`) não é versionado: é construído na primeira execução, ou
-por `synesis-help build` depois de editar um verbete.
+The index (`guide.db`) is not versioned: it is built on first run, or by
+`synesis-help build` after editing an entry.
 
-## Relação com o ecossistema
+## Relation to the ecosystem
 
-Depende de [`synesis`](https://github.com/synesis-lang/synesis) e importa
-`synesis.language_info` e `synesis.ast.results` como fonte de verdade derivada.
+Depends on [`synesis`](https://github.com/synesis-lang/synesis) and imports
+`synesis.language_info` and `synesis.ast.results` as the derived source of
+truth.
 
-## Licença
+## License
 
-Distribuído sob a **GNU Affero General Public License, versão 3 apenas
-(AGPL-3.0-only), com a Exceção de Saída de Dados Synesis** — ver
-[LICENSE](LICENSE) e [LICENSE.exception](LICENSE.exception).
+Distributed under the **GNU Affero General Public License, version 3 only
+(AGPL-3.0-only), with the Synesis Data-Output Exception**; see
+[LICENSE](LICENSE) and [LICENSE.exception](LICENSE.exception).
 
-Identificador SPDX: `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`
+SPDX identifier: `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`
 
-**O que você extrai do guia é seu.** O texto que você copia de um verbete para
-o seu template, script ou artigo não é coberto pela AGPL e não carrega
-obrigação de copyleft em relação ao Synesis. A exceção existe para que o guia
-possa ser usado como fonte de consulta sem contaminar o trabalho de quem
-consulta. Ver `LICENSE.exception`.
+**What you take from the guide is yours.** Text you copy from an entry into
+your template, script or paper is not covered by the AGPL and carries no
+copyleft obligation towards Synesis. See `LICENSE.exception`.
 
-O copyleft vale para o **guia como software**: modificá-lo e distribuí-lo — ou
-oferecê-lo como serviço em rede — exige publicar o código sob a mesma licença.
+The copyleft applies to the **guide as software**: modifying and distributing
+it, or offering it as a network service, requires publishing the code under
+the same license.
 
-## Como citar
+## How to cite
 
-De Britto, C. M. (2026). *synesis-help: guia de referência da linguagem
-Synesis* (versão 0.1.0) [Software]. https://github.com/synesis-lang/synesis-help
+De Britto, C. M. (2026). *synesis-help: reference guide to the Synesis
+language* (version 0.4.0) [Software]. https://github.com/synesis-lang/synesis-help
 
-Ver [CITATION.cff](CITATION.cff) — o GitHub o lê e oferece a citação pronta.
+See [CITATION.cff](CITATION.cff); GitHub reads it and offers the citation.

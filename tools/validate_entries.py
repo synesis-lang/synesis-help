@@ -1,14 +1,17 @@
 # Copyright (c) 2026 Christian Maciel De Britto
 # SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
-"""Valida o grafo de entries do guia.
+"""Validate the entry graph of the guide.
 
-Checa (secao 5.2 e 5.4 do estudo):
-  1. frontmatter presente e com os campos minimos
-  2. `id` unico dentro de cada locale
-  3. todo `see_also` resolve para um `id` existente
-  4. paridade de locale: nenhuma entry orfa fora de pt
+Checks:
+  1. frontmatter present, with the minimum keys and a known category
+  2. `id` unique and equal to the file name
+  3. every `see_also` resolves to an existing `id`
+  4. construct entries (block, field type, modifier, linkage) declare `syntax`
+     and have a `## Syntax` section, without bare "..." in place of structure
+  5. the guide is in English: Portuguese section headings are refused
+  6. case studies have the sections every case study shares
 
-Uso:
+Usage:
     python tools/validate_entries.py
 """
 
@@ -20,12 +23,31 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "synesis_help" / "entries"
-BASE_LOCALE = "pt"
+LOCALE = "en"
 REQUIRED_KEYS = {"id", "title", "category", "summary", "source"}
+CATEGORIES = {
+    "overview", "block", "field_type", "modifier", "linkage",
+    "case_study", "ecosystem", "diagnostic",
+}
 
-#: Categorias que documentam uma construcao da linguagem: precisam declarar a
-#: forma sintatica. Panorama e diagnostico nao descrevem uma construcao.
+#: Categories that document a construct of the language: they must show its form.
 SYNTAX_CATEGORIES = {"block", "field_type", "modifier", "linkage"}
+
+#: Every case study walks the same path, so readers (and agents) know where to look.
+CASE_SECTIONS = (
+    "## Research question",
+    "## Template",
+    "## Annotation",
+    "## Design decisions",
+    "## Adapt it",
+)
+
+#: Headings of the former Portuguese guide. Finding one means an entry was not migrated.
+PT_HEADINGS = re.compile(
+    r"^## (Descrição|Sintaxe|Regras|Exemplo|Exemplos|Ver também|Propriedades|"
+    r"Mensagem do compilador|Onde aparece|Valor na anotação)\s*$",
+    re.MULTILINE,
+)
 
 
 def parse_frontmatter(text: str) -> dict[str, str] | None:
@@ -51,87 +73,85 @@ def parse_list(raw: str) -> list[str]:
     return [x.strip().strip('"`') for x in raw.split(",") if x.strip()]
 
 
-def main() -> int:
+def check(root: Path = ROOT) -> tuple[list[str], dict[str, Path]]:
     problems: list[str] = []
-    # locale -> id -> path
-    ids: dict[str, dict[str, Path]] = defaultdict(dict)
-    links: list[tuple[str, str, str, Path]] = []
+    ids: dict[str, Path] = {}
+    links: list[tuple[str, str, Path]] = []
 
-    for md in sorted(ROOT.rglob("*.md")):
-        rel = md.relative_to(ROOT)
-        locale = rel.parts[1] if len(rel.parts) > 2 else BASE_LOCALE
+    for md in sorted(root.rglob("*.md")):
+        rel = md.relative_to(root)
+        if len(rel.parts) > 2 and rel.parts[1] != LOCALE:
+            problems.append(f"{rel}: outside the `{LOCALE}` locale (the guide is English-only)")
         text = md.read_text(encoding="utf-8")
         fm = parse_frontmatter(text)
         if fm is None:
-            problems.append(f"{rel}: sem frontmatter")
+            problems.append(f"{rel}: no frontmatter")
             continue
 
         missing = REQUIRED_KEYS - fm.keys()
         if missing:
-            problems.append(f"{rel}: frontmatter sem {sorted(missing)}")
+            problems.append(f"{rel}: frontmatter without {sorted(missing)}")
+        category = fm.get("category", "")
+        if category and category not in CATEGORIES:
+            problems.append(f"{rel}: unknown category '{category}'")
 
-        # Entradas de referencia precisam mostrar a forma da construcao.
-        if fm.get("category") in SYNTAX_CATEGORIES:
+        if category in SYNTAX_CATEGORIES:
             syn = fm.get("syntax", "")
             if not syn:
-                problems.append(f"{rel}: categoria '{fm['category']}' sem `syntax`")
+                problems.append(f"{rel}: category '{category}' without `syntax`")
             else:
-                # "..." e legitimo dentro de [ ] (abrevia o interior de um
-                # bloco) e em "END X". Nao e legitimo solto entre keywords,
-                # onde substitui a estrutura que o leitor precisa ver.
-                bare = re.sub(r"\[[^\]]*\]", "", syn)  # trechos opcionais
-                # "X ... END X" abrevia o interior de um bloco delimitado.
+                # "..." is fine inside [ ] (abbreviates the inside of a block)
+                # and in "X ... END X". Bare between keywords it hides the
+                # structure the reader needs to see.
+                bare = re.sub(r"\[[^\]]*\]", "", syn)
                 bare = re.sub(r"\.\.\.\s*END\s+\w+", "", bare)
                 if "..." in bare:
                     problems.append(
-                        f"{rel}: `syntax` usa '...' no lugar da estrutura "
-                        f"(mostre as partes, entre [ ] se opcionais)"
+                        f"{rel}: `syntax` uses '...' in place of structure "
+                        f"(show the parts, inside [ ] when optional)"
                     )
-            if "## Sintaxe" not in text and "## Syntax" not in text:
-                problems.append(f"{rel}: sem secao Sintaxe no corpo")
+            if "## Syntax" not in text:
+                problems.append(f"{rel}: no `## Syntax` section")
+
+        if category == "case_study":
+            for section in CASE_SECTIONS:
+                if section not in text:
+                    problems.append(f"{rel}: case study without `{section}`")
+
+        heading = PT_HEADINGS.search(text)
+        if heading:
+            problems.append(f"{rel}: Portuguese heading `{heading.group(0).strip()}` (the guide is English-only)")
 
         eid = fm.get("id")
         if not eid:
             continue
         if eid != md.stem:
-            problems.append(f"{rel}: id '{eid}' difere do nome do arquivo")
-        if eid in ids[locale]:
-            problems.append(f"{rel}: id duplicado '{eid}'")
-        ids[locale][eid] = md
-
+            problems.append(f"{rel}: id '{eid}' differs from the file name")
+        if eid in ids:
+            problems.append(f"{rel}: duplicate id '{eid}'")
+        ids[eid] = md
         for target in parse_list(fm.get("see_also", "")):
-            links.append((locale, eid, target, md))
+            links.append((eid, target, md))
 
-    # 3. links resolvem
-    for locale, src, target, path in links:
-        if target not in ids[locale] and target not in ids[BASE_LOCALE]:
-            problems.append(
-                f"{path.relative_to(ROOT)}: see_also '{target}' nao existe"
-            )
+    for src, target, path in links:
+        if target not in ids:
+            problems.append(f"{path.relative_to(root)}: see_also '{target}' does not exist")
+    return problems, ids
 
-    # 4. paridade de locale
-    base = set(ids.get(BASE_LOCALE, {}))
-    for locale, entries in ids.items():
-        if locale == BASE_LOCALE:
-            continue
-        for orphan in sorted(set(entries) - base):
-            problems.append(f"{locale}/{orphan}: sem correspondente em {BASE_LOCALE}")
 
-    total = sum(len(v) for v in ids.values())
+def main() -> int:
+    problems, ids = check()
     if problems:
-        print(f"FALHOU: {len(problems)} problema(s) em {total} entries\n")
+        print(f"FAILED: {len(problems)} problem(s) in {len(ids)} entries\n")
         for p in problems:
             print(f"  {p}")
         return 1
-
-    print(f"OK: {total} entries validas")
-    for locale, entries in sorted(ids.items()):
-        by_cat: dict[str, int] = defaultdict(int)
-        for eid, path in entries.items():
-            fm = parse_frontmatter(path.read_text(encoding="utf-8")) or {}
-            by_cat[fm.get("category", "?")] += 1
-        cats = ", ".join(f"{k}={v}" for k, v in sorted(by_cat.items()))
-        print(f"  {locale}: {len(entries)} ({cats})")
+    by_cat: dict[str, int] = defaultdict(int)
+    for path in ids.values():
+        fm = parse_frontmatter(path.read_text(encoding="utf-8")) or {}
+        by_cat[fm.get("category", "?")] += 1
+    cats = ", ".join(f"{k}={v}" for k, v in sorted(by_cat.items()))
+    print(f"OK: {len(ids)} valid entries ({cats})")
     return 0
 
 

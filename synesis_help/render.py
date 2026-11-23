@@ -10,6 +10,7 @@ diagnostico). Aqui o Markdown e convertido a mao para `rich.Text`.
 from __future__ import annotations
 
 import re
+import textwrap
 import unicodedata
 from typing import TYPE_CHECKING
 
@@ -266,7 +267,10 @@ def render_entry(entry: "Entry", guide: "Guide", width: int = 76) -> Text:
     out.append(_RULE * min(width, max(len(entry.title), 40)), style="rule")
     out.append("\n")
     if entry.summary:
-        out.append(entry.summary + "\n", style="summary")
+        # The summaries of the English guide are full sentences: wrap them to
+        # the panel instead of letting the terminal cut them.
+        for line in textwrap.wrap(entry.summary, width=max(20, width)) or [""]:
+            out.append(line + "\n", style="summary")
     out.append("\n")
 
     in_code = False

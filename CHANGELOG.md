@@ -11,22 +11,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added — EXPORT ALPACA with declared composition (synesis 0.16.0) — 193 entries
+## [0.4.0] — 2026-11-23
 
-- `BLOCK_EXPORT` documents `MAP <fields> TO INSTRUCTION|INPUT|OUTPUT` in EXPORT ALPACA
-  (the BUNDLE as the line unit, labelled text, the dataset card) and its rules.
-- Generated entries for the new diagnostics `SYNESIS_E158`–`SYNESIS_E165` and the
-  notices `SYNESIS_I166`–`SYNESIS_I167`; `SYNESIS_E099` regenerated (MAP is now
-  accepted in ALPACA).
+The guide is now **English-only** — 204 entries — and answers agents as well
+as people.
 
-### Fixed — identificador SPDX da licença (L-1)
+### Changed — one language, always in sync
 
-- `license` passa de `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception` para
-  `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`. Em SPDX, `AND` significa duas
-  licenças cumulativas, não uma permissão adicional sobre a AGPL; uma exceção não
-  cadastrada se representa por um único `LicenseRef` com o conjunto dos termos
-  (`LICENSE` + `LICENSE.exception`). A licença em si não mudou. O `CITATION.cff` segue
-  `AGPL-3.0-only` (o CFF só aceita a lista SPDX).
+- All entries moved from the `pt` locale to `en`. The 26 authored entries were
+  rewritten in English (and extended); the generators write English labels,
+  summaries and placeholders. Diagnostic summaries now come from the compiler's
+  own one-line message (`to_cli_line()`), so they are English and never drift.
+- The severity shown for a diagnostic comes from the class (`DEFAULT_SEVERITY`),
+  not from the letter of its code; diagnostics local to an `EXPORT` block say so.
+- `tools/validate_entries.py` refuses Portuguese section headings and locale
+  folders other than `en`. `tools/fix_accents.py` and the `pyspellchecker`
+  dependency were removed.
+- The TUI title reads "Synesis Guide"; long summaries are wrapped to the panel.
+- Compiler floor `synesis>=0.16.0`; the generated entries were derived from
+  synesis 0.16.0 (they record `requires_synesis: ">=0.16.0"`).
+
+### Added — agents
+
+- `synesis-help search <words> --format=json`: full-text search.
+- `synesis-help list [--category <name>] --format=json`: what exists.
+- `synesis-help lookup` accepts short forms (`E047` → `SYNESIS_E047`, `chain` →
+  `TYPE_CHAIN`), reports how it matched (`id`, `title`, `prefix`, `search`) and
+  suggests entries when nothing matches.
+- Every JSON answer carries `help_version`, `synesis_version` (the compiler the
+  generated entries were derived from) and `locale`. Exit codes: 0 found,
+  1 not found, 2 usage error.
+- New ecosystem entry `ECO_HELP` documents the contract.
+
+### Added — case studies
+
+- New category `case_study`, with nine complete projects adapted from real
+  research (names, sources and excerpts fictitious): literature review of
+  mechanisms, factors with signs and conditions, one term across passages,
+  framing in news, assessment across linked projects, open-ended survey answers,
+  a topical index as a SKOS vocabulary, participatory diagnosis, causation coding.
+- `GUIDE_CASE_STUDIES` picks a case by research design or by pattern.
+- `tools/check_examples.py` now **compiles each case study as a project**: the
+  code blocks named after a file (`# review.synt`, `# records/s1.toml`) are
+  written to a temporary folder, a `references.bib` is generated, and every
+  `.synp` must compile without errors.
+
+### Added — EXPORT ALPACA with declared composition (synesis 0.16.0)
+
+- `BLOCK_EXPORT` documents `MAP <fields> TO INSTRUCTION|INPUT|OUTPUT` and its
+  rules; generated entries for `SYNESIS_E158`–`SYNESIS_E165` and
+  `SYNESIS_I166`–`SYNESIS_I167`.
+
+### Fixed
+
+- The frontmatter parser undoes `\"` and `\\`: syntaxes such as
+  `OUTPUT "<file>"` reached the index and the JSON with the backslashes.
+- SPDX license identifier (L-1): `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`
+  instead of `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception` (in
+  SPDX, `AND` means two cumulative licenses). The license did not change;
+  `CITATION.cff` keeps `AGPL-3.0-only`.
 
 ## [0.3.0] — 2026-11-17
 
@@ -387,6 +430,7 @@ Recorded in `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 ---
 
 [0.3.0.dev0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...HEAD
+[0.4.0]: https://github.com/synesis-lang/synesis-help/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/synesis-lang/synesis-help/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0

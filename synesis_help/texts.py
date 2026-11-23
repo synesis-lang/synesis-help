@@ -1,15 +1,15 @@
 # Copyright (c) 2026 Christian Maciel De Britto
 # SPDX-License-Identifier: LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception
-"""Textos longos da CLI: ajuda de escrita e creditos.
+"""Long texts of the CLI: writing guide and credits.
 
-Ficam separados de `cli.py` para que a logica de comandos permaneca legivel.
-A saida da CLI e em ingles (idioma oficial das saidas, 2026-11-17); o
-conteudo dos verbetes continua no locale `pt`.
+Kept apart from `cli.py` so the command logic stays readable. The guide and the
+CLI are English-only (decision of 2026-11-21): one source, always in sync with
+the compiler. Agents translate for the researcher when needed.
 """
 
 from __future__ import annotations
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 AUTHOR = "Christian Maciel De Britto"
 YEAR = "2026"
@@ -19,11 +19,17 @@ DOCS = "https://synesis-lang.github.io/synesis-docs"
 
 EPILOG = """\
 examples:
-  synesis-help                      open the guide (TUI)
-  synesis-help lookup CHAIN         look up an entry in the terminal
-  synesis-help lookup E047 --format=json
-  synesis-help docs                 how to write and fix entries
-  synesis-help credits              authorship, license and how to cite
+  synesis-help                              open the guide (TUI)
+  synesis-help lookup CHAIN                 one entry in the terminal
+  synesis-help lookup E047 --format=json    one entry, JSON contract
+  synesis-help search bundle status         full-text search
+  synesis-help list --category case_study   what exists in a category
+  synesis-help docs                         how to write and fix entries
+  synesis-help credits                      authorship, license and how to cite
+
+for agents:
+  use --format=json; exit codes are 0 found, 1 not found, 2 usage error;
+  every answer carries help_version and synesis_version.
 
 in the guide:
   arrows  move / scroll            F2   cross-references
@@ -38,16 +44,17 @@ WRITING IN THE GUIDE
 Where the content lives
 -----------------------
   synesis_help/entries/
-  ├── _generated/pt/   generated from the compiler — NEVER edit by hand
-  └── authored/pt/     human content — this is where you write
+  ├── _generated/en/   generated from the compiler — NEVER edit by hand
+  └── authored/en/     human content — this is where you write
 
 What the compiler knows about itself (type x property matrix, error codes,
 messages) is derived by probing, never copied. That way the guide cannot
 drift from the compiler. What takes methodological judgement — what each type
 is for, when to use it, examples — is authored, and lives apart.
 
-The entries are written in Portuguese (locale `pt`); this tool's own output
-is in English.
+The guide is English-only. Agents that talk to researchers in another
+language translate the answer; the guide itself stays in one language, so it
+never lags behind the compiler.
 
 
 Fixing an existing text
@@ -57,7 +64,7 @@ Fixing an existing text
 
 2. If the path contains `_generated/`, do NOT edit it — see the section below.
 
-3. Edit the .md in synesis_help/entries/authored/pt/
+3. Edit the .md in synesis_help/entries/authored/en/
 
 4. Rebuild and check:
        python tools/validate_entries.py   links, ids, frontmatter
@@ -70,7 +77,7 @@ Fixing an existing text
 
 Adding an entry
 ---------------
-Create synesis_help/entries/authored/pt/<ID>.md — the file name IS the `id`:
+Create synesis_help/entries/authored/en/<ID>.md — the file name IS the `id`:
 
     ---
     id: MOD_EXAMPLE
@@ -85,38 +92,40 @@ Create synesis_help/entries/authored/pt/<ID>.md — the file name IS the `id`:
 
     # EXAMPLE
 
-    ## Descrição
+    ## Description
     What it is and what it is for.
 
-    ## Sintaxe
+    ## Syntax
     (code block with the complete form)
 
-    ## Regras
+    ## Rules
     - One rule per line, citing the error code.
 
-    ## Exemplo
+    ## Example
     (code block that compiles)
 
 Then:  python tools/generate_index.py && synesis-help build
 
 `order` sets the position inside the category: lower comes first, 100 is the
 default, ties fall back to alphabetical. The order is DIDACTIC — from the
-overview to the detail — not alphabetical: "Por onde começar" must open the
+overview to the detail — not alphabetical: "Where to start" must open the
 guide.
 
 Valid categories:
   overview · block · field_type · modifier · linkage
-  ecosystem · glossary
+  case_study · ecosystem · diagnostic
 
 The block, field_type, modifier and linkage categories REQUIRE `syntax` in the
-frontmatter and a "## Sintaxe" section in the body — the validator checks it.
+frontmatter and a "## Syntax" section in the body — the validator checks it.
+A case_study REQUIRES the sections "## Research question", "## Template",
+"## Annotation", "## Design decisions" and "## Adapt it".
 
 `id` convention:
   BLOCK_    block               BLOCK_ONTOLOGY
   TYPE_     field type          TYPE_CHAIN
   MOD_      modifier            MOD_SCOPE
   GUIDE_    overview            GUIDE_START
-  GLOS_     glossary            GLOS_BIBREF
+  CASE_     case study          CASE_LITERATURE_REVIEW
   (a diagnostic uses its own code: SYNESIS_E047)
 
 The `id` is the key to everything — cross-references, links and the JSON
@@ -136,15 +145,14 @@ next regeneration overwrites them, and CI flags it.
   Section labels ............. tools/generate_entries.py, L dict
 
 To ADD prose to a generated entry, create a file with the SAME `id` in
-authored/pt/. The build merges both, and the authored one wins.
+authored/en/. The build merges both, and the authored one wins.
 
 
 Writing rules
 -------------
-Accents      Write with accents. If you forget:
-                 python tools/fix_accents.py --check   reports
-                 python tools/fix_accents.py           fixes
-             Only prose is touched — code and technical fields stay intact.
+Language     English only. Portuguese section headings are refused by the
+             validator. Case studies never name real people, institutions
+             or projects: describe the design, not who used it.
 
 Code         At most 72 columns, 4-space indent, no TAB. Every example that
              starts with TEMPLATE or FIELD is really COMPILED against the

@@ -11,20 +11,55 @@ e o projeto adota [Versionamento Semântico](https://semver.org/spec/v2.0.0.html
 
 ## [Unreleased]
 
-### Adicionado — EXPORT ALPACA com composição declarada (synesis 0.16.0) — 193 verbetes
+## [0.4.0] — 2026-11-23
 
-- `BLOCK_EXPORT` documenta `MAP <campos> TO INSTRUCTION|INPUT|OUTPUT` no EXPORT ALPACA
-  (o BUNDLE como unidade da linha, o texto rotulado, o cartão do dataset) e suas regras.
-- Verbetes gerados dos diagnósticos novos `SYNESIS_E158`–`SYNESIS_E165` e dos
-  informativos `SYNESIS_I166`–`SYNESIS_I167`; `SYNESIS_E099` regenerado (o MAP passa
-  a ser aceito no ALPACA).
+O guia passa a ser **só em inglês** — 204 verbetes — e responde a agentes além
+de pessoas.
 
-### Corrigido — identificador SPDX da licença (L-1)
+### Alterado — um idioma, sempre sincronizado
 
-- `license` passa de `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception` para
-  `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`. Em SPDX, `AND` significa duas
-  licenças cumulativas, não uma permissão adicional sobre a AGPL. A licença em si não
-  mudou; o `CITATION.cff` segue `AGPL-3.0-only`.
+- Todos os verbetes passaram do locale `pt` para `en`. Os 26 verbetes autorais
+  foram reescritos em inglês (e ampliados); os geradores gravam rótulos, resumos
+  e marcadores em inglês. O resumo de cada diagnóstico vem da mensagem de uma
+  linha do próprio compilador (`to_cli_line()`).
+- A severidade de um diagnóstico vem da classe (`DEFAULT_SEVERITY`), não da letra
+  do código; diagnósticos locais a um bloco `EXPORT` dizem isso.
+- `tools/validate_entries.py` recusa títulos de seção em português e pastas de
+  locale diferentes de `en`. `tools/fix_accents.py` e a dependência
+  `pyspellchecker` foram removidos.
+- A TUI se chama "Synesis Guide"; resumos longos quebram na largura do painel.
+- Piso do compilador `synesis>=0.16.0`; os verbetes gerados foram derivados do
+  synesis 0.16.0 (gravam `requires_synesis: ">=0.16.0"`).
+
+### Adicionado — agentes
+
+- `synesis-help search <palavras> --format=json`: busca de texto completo.
+- `synesis-help list [--category <nome>] --format=json`: o que existe.
+- `synesis-help lookup` aceita formas curtas (`E047`, `chain`), informa como
+  encontrou (`id`, `title`, `prefix`, `search`) e sugere verbetes quando não
+  encontra.
+- Toda resposta JSON traz `help_version`, `synesis_version` e `locale`. Códigos de
+  saída: 0 encontrado, 1 não encontrado, 2 erro de uso.
+- Novo verbete de ecossistema `ECO_HELP` documenta o contrato.
+
+### Adicionado — estudos de caso
+
+- Nova categoria `case_study`, com nove projetos completos adaptados de pesquisas
+  reais (nomes, fontes e trechos fictícios).
+- `GUIDE_CASE_STUDIES` escolhe um caso pelo desenho de pesquisa ou pelo padrão.
+- `tools/check_examples.py` **compila cada estudo de caso como projeto**.
+
+### Adicionado — EXPORT ALPACA com composição declarada (synesis 0.16.0)
+
+- `BLOCK_EXPORT` documenta `MAP <campos> TO INSTRUCTION|INPUT|OUTPUT`; verbetes
+  gerados de `SYNESIS_E158`–`SYNESIS_E165` e `SYNESIS_I166`–`SYNESIS_I167`.
+
+### Corrigido
+
+- O leitor do frontmatter desfaz `\"` e `\\` (a sintaxe chegava ao JSON com as
+  barras).
+- Identificador SPDX da licença (L-1): `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`.
+  A licença não mudou; o `CITATION.cff` segue `AGPL-3.0-only`.
 
 ## [0.3.0] — 2026-11-17
 
@@ -435,6 +470,7 @@ Registrados em `synesis-planning/synesis-help/achados_geracao_2026-08-08.md`:
 ---
 
 [0.3.0.dev0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...HEAD
+[0.4.0]: https://github.com/synesis-lang/synesis-help/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/synesis-lang/synesis-help/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/synesis-lang/synesis-help/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/synesis-lang/synesis-help/compare/v0.1.0...v0.2.0
